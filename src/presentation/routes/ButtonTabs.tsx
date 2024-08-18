@@ -21,6 +21,7 @@ export function ButtonTabs_Navigator() {
 
       screenOptions={{
         tabBarActiveTintColor: globalColors.primary,
+        headerShown: false,
         tabBarLabelStyle: {
           marginBottom: 5,
 

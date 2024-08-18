@@ -31,7 +31,7 @@ export const globalStyles = StyleSheet.create({
     button_Text: {
         color: globalColors.background,
         fontSize: 20
-
-    }
+    },
+    
 
 })

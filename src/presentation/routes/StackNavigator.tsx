@@ -6,6 +6,9 @@ import { RegisterScreen_2 } from '../screens/Register/RegisterScreen_2';
 import { RegisterScreen_3 } from '../screens/Register/RegisterScreen_3';
 import { SettingScreen } from '../screens/Setting/SettingScreen';
 import { ButtonTabs_Navigator } from './ButtonTabs';
+import { Animated } from 'react-native';
+import { Report_problemScreen } from '../screens/Report_problem/Report_problemScreen';
+import { Help_DeskScreen } from '../screens/Help_Desk/Help_DeskScreen';
 
 
 //Type of router_Navigation object
@@ -16,8 +19,11 @@ export type RootStack = {
     Register_1: undefined,
     Register_2: undefined,
     Register_3: undefined,
+    Help_Desk : undefined,
+    Report_problem : undefined
 
 }
+
 
 const Stack = createStackNavigator<RootStack>();
 
@@ -28,14 +34,15 @@ export const Stack_Navigator = () => {
             headerShown: false,
             headerStyle: {
                 elevation: 0,
-                shadowColor: 'transparent'
+                shadowColor: 'transparent',
             }
         }}>
-            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Login"component={LoginScreen} />
             <Stack.Screen name="Home" component={ButtonTabs_Navigator} />
             <Stack.Screen name="Register_1" component={RegisterScreen_1} />
             <Stack.Screen name="Register_2" component={RegisterScreen_2} />
             <Stack.Screen name="Register_3" component={RegisterScreen_3} />
+            <Stack.Screen name= 'Help_Desk' component={Help_DeskScreen} />
         </Stack.Navigator>
     );
 }
