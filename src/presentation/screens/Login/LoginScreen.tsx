@@ -4,6 +4,7 @@ import { globalStyles } from '../../theme/theme'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import type { RootStack } from '../../routes/StackNavigator'
+import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
 
 export const LoginScreen = () => {
 
@@ -19,6 +20,7 @@ export const LoginScreen = () => {
         onPress={() => navigation.navigate("Register_1")}
         label='Regístrase'
       />
+
     </View>
   )
 }

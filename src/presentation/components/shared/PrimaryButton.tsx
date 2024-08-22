@@ -6,6 +6,7 @@ import { globalStyles } from "../../theme/theme";
 interface Props {
     onPress: () => void;
     label: string;
+    
 }
 
 
@@ -20,3 +21,6 @@ export const PrimaryButton = ({ onPress, label }: Props) => {
         </Pressable>
     )
 }
+
+
+

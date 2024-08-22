@@ -21,7 +21,7 @@ export function ButtonTabs_Navigator() {
 
       screenOptions={{
         tabBarActiveTintColor: globalColors.primary,
-        headerShown: false,
+        headerShown: true,
         tabBarLabelStyle: {
           marginBottom: 5,
 
@@ -33,7 +33,7 @@ export function ButtonTabs_Navigator() {
       }}
     >
       <Tab.Screen name="home"
-        options={{ title: 'casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
+        options={{ title: 'Casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
         component={HomeScreen} />
       <Tab.Screen name="Drugs"
         options={{ title: 'Medicamentos', tabBarIcon: ({ color }) => (<IonIcon name="medkit-outline" size={20} color={color} />) }}
@@ -47,9 +47,7 @@ export function ButtonTabs_Navigator() {
       <Tab.Screen name="Vaccine_card"
         options={{ title: 'Tarjeta de Vacuna', tabBarIcon: ({ color }) => (<IonIcon name="reader-outline" size={20} color={color} />) }}
         component={Vaccine_card} />
-      <Tab.Screen name="About"
-        options={{ title: 'Perfil', tabBarIcon: ({ color }) => (<IonIcon name="person-circle-outline" size={20} color={color} />) }}
-        component={AboutScreen} />
+
 
 
 
