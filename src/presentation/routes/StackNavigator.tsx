@@ -12,6 +12,7 @@ import { AboutScreen } from '../screens/About/AboutScreen';
 import { DarkScreen } from '../screens/Dark/DarkScreen';
 import { Notification } from '../screens/Notification/Notification';
 import { DeviceScreen } from '../screens/Device/DeviceScreen';
+import { globalColors } from '../theme/theme';
 
 
 //Type of router_Navigation object
@@ -52,7 +53,11 @@ export const Stack_Navigator = () => {
             <Stack.Screen
                 options={{
                     headerShown: true,
-                    title: 'Perfil'
+                    title: 'Perfil',
+                    headerStyle : {
+                        shadowColor : globalColors.primary,
+                    },
+                    
 
                 }}
 

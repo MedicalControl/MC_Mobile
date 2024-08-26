@@ -70,6 +70,15 @@ export const AboutScreen = () => {
                 size={20}
                 color='black'
             />
+            <SecondButton
+                onPress={() => navigation.dispatch(StackActions.popToTop)}
+                label="Idioma y región"
+                style={{ backgroundColor: globalColors.primary }}
+                name='language-outline'
+                size={20}
+                color='black'
+            />
+
 
             <SecondButton
                 onPress={() => navigation.navigate("Device")}
@@ -83,7 +92,7 @@ export const AboutScreen = () => {
             <SecondButton
                 onPress={() => navigation.navigate("Device")}
                 label="Dispositivos"
-                style={{ backgroundColor: globalColors.primary}}
+                style={{ backgroundColor: globalColors.primary }}
                 name='watch-outline'
                 size={20}
                 color='black'
@@ -92,7 +101,7 @@ export const AboutScreen = () => {
             <SecondButton
                 onPress={() => navigation.dispatch(StackActions.popToTop)}
                 label="Cerrar Sesión"
-                style={{ backgroundColor: globalColors.danger }}
+                style={{ backgroundColor: globalColors.danger}}
                 name='exit-outline'
                 size={20}
                 color='black'

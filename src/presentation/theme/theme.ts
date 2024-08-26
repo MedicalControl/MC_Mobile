@@ -28,7 +28,7 @@ export const globalStyles = StyleSheet.create({
         marginBottom: 20,
         width: '100%',
         alignItems: 'center',
-        elevation : 3
+      elevation : 5
     },
     button_Text: {
         color: globalColors.background,

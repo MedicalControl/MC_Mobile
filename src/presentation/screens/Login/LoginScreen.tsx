@@ -5,13 +5,18 @@ import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import type { RootStack } from '../../routes/StackNavigator'
 import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export const LoginScreen = () => {
 
   const navigation = useNavigation<NavigationProp<RootStack>>();
-
+  const { top } = useSafeAreaInsets();
   return (
-    <View style={globalStyles.container}>
+    <View style={
+      {
+        ...globalStyles.container,
+        top : top
+      }}>
       <PrimaryButton
         onPress={() => navigation.navigate("Home")}
         label='Acceder'

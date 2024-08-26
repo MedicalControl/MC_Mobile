@@ -17,12 +17,16 @@ export const SecondButton = ({ onPress, label, style, name, size = 20, color = '
     return (
         <Pressable onPress={onPress}
             style={[globalStyles.primary_Button, style]}>
-            <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-                <Icon
-                    name={name}
-                    size={size}
-                    color={color} />
-                <Text style={globalStyles.buttonText}> {label} </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                
+                    <Icon name={name} size={size} color={color} />
+              
+                <Text style={{
+                    ...globalStyles.buttonText,
+                    textAlign:'left',
+                    flex: 1
+                
+                }}> {label} </Text>
             </View>
         </Pressable>
     );
