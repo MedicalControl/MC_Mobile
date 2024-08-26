@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet, useWindowDimensions } from "react-native"
 
+    
 
 export const globalColors = {
     primary: '#2AB9B7',
@@ -24,14 +25,22 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: globalColors.primary,
         borderRadius: 5,
         padding: 10,
-        marginBottom : 20,
+        marginBottom: 20,
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        elevation : 3
     },
     button_Text: {
         color: globalColors.background,
         fontSize: 20
     },
-    
+    buttonText: {
+        color: globalColors.dark,
+        fontSize: 20,
+        fontWeight : 'bold',
+        textAlign : 'center'
+        
+    },
+
 
 })

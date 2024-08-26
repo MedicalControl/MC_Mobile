@@ -10,7 +10,8 @@ import { Report_problemScreen } from '../screens/Report_problem/Report_problemSc
 import { Help_DeskScreen } from '../screens/Help_Desk/Help_DeskScreen';
 import { AboutScreen } from '../screens/About/AboutScreen';
 import { DarkScreen } from '../screens/Dark/DarkScreen';
-import { Notification } from '../screens/Notification/notification';
+import { Notification } from '../screens/Notification/Notification';
+import { DeviceScreen } from '../screens/Device/DeviceScreen';
 
 
 //Type of router_Navigation object
@@ -61,6 +62,7 @@ export const Stack_Navigator = () => {
             <Stack.Screen name="Report_problem" component={Report_problemScreen} />
             <Stack.Screen name="Notification" component={Notification} />
             <Stack.Screen name="Dark" component={DarkScreen} />
+            <Stack.Screen name="Device" component={DeviceScreen} />
             
 
 

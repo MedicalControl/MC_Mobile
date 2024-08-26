@@ -1,13 +1,14 @@
 import React from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
+import { StyleSheet, Text, View } from 'react-native'
 import { globalColors, globalStyles } from '../../theme/theme';
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
-import { DrawerActions, NavigationProp, StackActions, useNavigation } from '@react-navigation/native'
+import { NavigationProp, StackActions, useNavigation } from '@react-navigation/native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { RootStack } from '../../routes/StackNavigator'
 import { useWindowDimensions } from 'react-native'
 import { IonIcon } from '../../components/shared/Ionicon';
+import { SecondButton } from '../../components/SecondButton';
+
 
 
 export const AboutScreen = () => {
@@ -15,7 +16,6 @@ export const AboutScreen = () => {
 
     const navigation = useNavigation<NavigationProp<RootStack>>();
     const { top } = useSafeAreaInsets();
-
 
     return (
         <View style={globalStyles.container}>
@@ -35,15 +35,24 @@ export const AboutScreen = () => {
                 <Text style={style.title}>Ayuda y soporte técnico</Text>
             </View>
 
-            <PrimaryButton
+
+            <SecondButton
                 onPress={() => navigation.navigate("Help_Desk")}
-                label='Servicio de Ayuda'
+                label="Servicio de ayuda"
+                style={{ backgroundColor: globalColors.primary }}
+                name='information-circle-outline'
+                size={20}
+                color='black'
             />
 
 
-            <PrimaryButton
+            <SecondButton
                 onPress={() => navigation.navigate("Report_problem")}
-                label='Reportar un problema'
+                label="Reportar un problema"
+                style={{ backgroundColor: globalColors.primary }}
+                name='alert-circle-outline'
+                size={20}
+                color='black'
             />
             <View style={style.container}>
                 <IonIcon
@@ -53,21 +62,40 @@ export const AboutScreen = () => {
                 />
                 <Text style={style.title}>Configuación</Text>
             </View>
-            <PrimaryButton
+            <SecondButton
                 onPress={() => navigation.navigate("Notification")}
-                label='Notifiaciones'
+                label="Notificaciones"
+                style={{ backgroundColor: globalColors.primary }}
+                name='notifications-outline'
+                size={20}
+                color='black'
             />
-            <PrimaryButton
-                onPress={() => navigation.navigate("Dark")}
-                label='Modo Oscuro'
+
+            <SecondButton
+                onPress={() => navigation.navigate("Device")}
+                label="Modo oscuro"
+                style={{ backgroundColor: globalColors.primary }}
+                name='moon-outline'
+                size={20}
+                color='black'
             />
-            <PrimaryButton
-                onPress={() => navigation.navigate("Help_Desk")}
-                label='Dispositvo'
+
+            <SecondButton
+                onPress={() => navigation.navigate("Device")}
+                label="Dispositivos"
+                style={{ backgroundColor: globalColors.primary}}
+                name='watch-outline'
+                size={20}
+                color='black'
             />
-            <PrimaryButton
-                onPress={() => navigation.dispatch(StackActions.popToTop())}
-                label='Cerrar Sesión'
+
+            <SecondButton
+                onPress={() => navigation.dispatch(StackActions.popToTop)}
+                label="Cerrar Sesión"
+                style={{ backgroundColor: globalColors.danger }}
+                name='exit-outline'
+                size={20}
+                color='black'
             />
 
         </View>
@@ -80,7 +108,6 @@ const style = StyleSheet.create({
     blueBox: {
         backgroundColor: globalColors.primary,
         borderRadius: 10,
-
         height: '19%',
         marginBottom: 5,
         padding: 15,

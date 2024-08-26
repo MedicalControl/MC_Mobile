@@ -5,10 +5,9 @@ import { globalStyles } from "../../theme/theme";
 //Interface
 interface Props {
     onPress: () => void;
-    label: string;
+    label: string;   
     
 }
-
 
 export const PrimaryButton = ({ onPress, label }: Props) => {
 
