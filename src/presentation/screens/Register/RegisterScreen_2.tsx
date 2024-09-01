@@ -4,7 +4,10 @@ import { globalStyles } from '../../theme/theme'
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
 import type { RootStack } from '../../routes/StackNavigator'
-import { TextInput } from 'react-native'
+import { TextInput,StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
+
+//poniendo nav de retroceso
 
 export const RegisterScreen_2 = () => {
   const navigation = useNavigation<NavigationProp<RootStack>>();
@@ -16,6 +19,8 @@ export const RegisterScreen_2 = () => {
   
   return (
     <View style={globalStyles.container2}>
+      <Icon name="chevron-back" size={25} color="black" style={styles.icon}
+        onPress={() => navigation.navigate('Register_1')} />
       <Text style={globalStyles.tittle}>Segundo Paso</Text>
       <Text style={globalStyles.label}>Municipio</Text>
 
@@ -58,3 +63,12 @@ export const RegisterScreen_2 = () => {
     </View>
   )
 }
+const styles = StyleSheet.create({
+  //icono de arriba con navegacion
+  icon: {
+    marginTop: 11,
+    position: 'absolute',
+    left: 0,
+    top: 14,
+  },
+});

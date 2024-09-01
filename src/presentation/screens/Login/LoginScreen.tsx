@@ -9,7 +9,7 @@ interface IFormInput {
   email: string;
   password: string;
 }
-//validacion de errores de login screen
+//validacion de errores de login screen con melanie code
 export const LoginScreen = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   input: {
  
-    paddingHorizontal: 35, 
+    paddingHorizontal: 40, 
     fontSize: 14,
     color: 'black',
     width: 250,
@@ -149,12 +149,12 @@ const styles = StyleSheet.create({
     height: 45,
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 18,
     paddingLeft: 38, 
     paddingRight: 10,
   },
   input2: {
-    paddingHorizontal: 40,
+    paddingHorizontal: 35,
     fontSize: 14,
     color: 'black',
     width: 250,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     height: 45,
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 18,
     paddingLeft: 40, 
     paddingRight: 10,
    
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     backgroundColor: '#26A699',
-    borderRadius: 20,
+    borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
     width: 170,
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
   
     marginTop: 7,
     position: 'absolute',
-    left: 105, // Alineación del ícono dentro del TextInput
+    left: 100, 
     top: 10,  
 
 
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   icon2: {
     marginTop: 3,
     position: 'absolute',
-    left: 103, // Alineación del ícono
+    left: 100, 
     top: 10,  
 
   },
