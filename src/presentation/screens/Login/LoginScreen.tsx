@@ -1,89 +1,175 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { RootStack } from '../../routes/StackNavigator';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {Controller, SubmitHandler, useForm} from 'react-hook-form';
 
-
-
-
-
+interface IFormInput {
+  email: string;
+  password: string;
+}
+//validacion de errores de login screen
 export const LoginScreen = () => {
 
+  const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
+  const onSubmit: SubmitHandler<IFormInput> = data => {
+    console.log('Datos del formulario:', data);
+    // Navegar a otra pantalla después del login
+    navigation.navigate('Home'); // Ajusta 'HomeScreen' al nombre de la pantalla a la que quieras navegar
+  };
 
   return (
     <View style={styles.container}>
 
-     <Image
-     source={require('../Login/logo.png')}
+      <Image
+        source={require('../Login/logo.png')}
         style={styles.logo}
         resizeMode='contain'
       />
 
-
       <Text style={styles.title}>Medical Control</Text>
 
 
-      <TextInput
-        style={styles.input}
-        placeholder="Correo"
-        placeholderTextColor="#888"
-        keyboardType="email-address"
-        autoCapitalize="none"
+      
+      <Controller
+        control={control}
+        name="email"
+        rules={{
+          required: 'El correo es obligatorio',
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: 'El formato del correo no es válido',
+          },
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={styles.inputContainer}>
+            <Icon name="person-outline" size={20} color="black" style={styles.icon2} />
+            <TextInput
+              style={styles.input}
+              placeholder="Correo"
+              placeholderTextColor="#888"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
+          </View>
+        )}
       />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        placeholderTextColor="#888"
-        secureTextEntry
+      
+
+
+      
+      <Controller
+        control={control}
+        name="password"
+        rules={{
+          required: 'La contraseña es obligatoria',
+          minLength: {
+            value: 8,
+            message: 'La contraseña debe tener al menos 8 caracteres',
+          },
+          maxLength: {
+            value: 16,
+            message: 'La contraseña no puede tener más de 16 caracteres',
+          },
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={styles.inputContainer}>
+            <Icon name="key-outline" size={20} color="black" style={styles.icon1} />
+            <TextInput
+              style={styles.input2}
+              placeholder="Contraseña"
+              placeholderTextColor="#888"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
+              maxLength={16}  // Limita la entrada a 16 caracteres
+            />
+            {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
+          </View>
+        )}
       />
 
-      <TouchableOpacity style={styles.button}>
-        <Text
-          style={styles.buttonText}
-          onPress={() => navigation.navigate("Home")}
-        >Acceder</Text>
-        <Text style={styles.sentences}>¿Olvidaste la contraseña?</Text>
-        <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
-        <Text
-          style={styles.link}
-          onPress={()=> navigation.navigate("Register_1")}
-          >
-          Registrate</Text>
+
+   
+
+      <TouchableOpacity style={styles.button}
+        onPress={handleSubmit(onSubmit)}>
+        <Text style={styles.buttonText}>Acceder</Text>
       </TouchableOpacity>
+
+      <Text style={styles.sentences}>¿Olvidaste la contraseña?</Text>
+      <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
+      <Text
+        style={styles.link}
+        onPress={() => navigation.navigate('Register_1')}
+      >
+        Regístrate
+      </Text>
     </View>
   );
 };
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
+    justifyContent: 'flex-start', // arriba
+    paddingTop: 160, // more space
     backgroundColor: '#fff',
+  },
+  logo: {
+    width: 270,
+    height: 270,
+    alignSelf: 'center',
+    marginBottom: -60,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 10,
     textAlign: 'center',
     color: '#333',
-
+    marginBottom: 10,
   },
   input: {
-    height: 50,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    fontSize: 12,
-    marginBottom: 15,
-    color: '#333',
+ 
+    paddingHorizontal: 35, //espacio con el icono
+    fontSize: 14,
+    color: 'black',
     width: 250,
     alignSelf: 'center',
+    marginTop: 5,
+    marginBottom: 5,
+    backgroundColor: '#d8d9ed',
+    height: 45,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingLeft: 38, // Asegúrate de tener suficiente espacio para el ícono
+    paddingRight: 10,
+  },
+  input2: {
+    paddingHorizontal: 40,
+    fontSize: 14,
+    color: 'black',
+    width: 250,
+    alignSelf: 'center',
+    marginTop: 5,
+    marginBottom: 10,
+    backgroundColor: '#d8d9ed',
+    height: 45,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingLeft: 40, // Espacio para el ícono
+    paddingRight: 10,
+    // Otros estilos específicos para el TextInput
   },
   button: {
     height: 45,
@@ -91,9 +177,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
-    width: 190,
+    width: 170,
     alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 15,
   },
   buttonText: {
     fontSize: 14,
@@ -101,44 +188,55 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   sentences: {
-    position: 'absolute',
-    top: 100,
-    left: 0,
-    right: 0,
-    fontSize: 12,
+    fontSize: 13,
     color: 'black',
-    marginBottom: 20,
     textAlign: 'center',
-
+    marginTop: 5,
   },
   sentences2: {
-    position: 'absolute',
-    top: 130,
-    left: -60,
-    right: 0,
-    fontSize: 12,
+    fontSize: 13,
     color: 'black',
-    marginBottom: 20,
     textAlign: 'center',
-
+    marginTop: 2,
+    left: -30,
   },
   link: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#26A699',
     textDecorationLine: 'underline',
-    position: 'absolute',
-    top: 130,
-    left: 120,
-    right: 0,
-    marginBottom: 20,
     textAlign: 'center',
+    marginTop: -17,
+    left: 68,
+  },
+  //iconos
+  icon1: {
+  
+    marginTop: 7,
+    position: 'absolute',
+    left: 105, // Alineación del ícono dentro del TextInput
+    top: 10,  // Alineación vertical del ícono dentro del TextInput
+
 
   },
-  logo: {
-    width: 230,
-    height: 230,
-    alignSelf: 'center',
-    marginBottom: 50,
+  icon2: {
+    marginTop: 3,
+    position: 'absolute',
+    left: 103, // Alineación del ícono
+    top: 10,  // Alineación vertical del ícono
+
+  },
+  errorText: { //cambiar posicion
+    color: 'red',
+    left: 100,
+    fontSize: 14,
+    marginTop: 5,
+  },
+  inputContainer:{
+    position: 'relative',
+    width: '100%',
+    justifyContent: 'center',
   }
 
 });
+
+
