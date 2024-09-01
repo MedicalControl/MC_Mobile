@@ -16,8 +16,7 @@ export const LoginScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStack>>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
     console.log('Datos del formulario:', data);
-    // Navegar a otra pantalla después del login
-    navigation.navigate('Home'); // Ajusta 'HomeScreen' al nombre de la pantalla a la que quieras navegar
+    navigation.navigate('Home'); 
   };
 
   return (
@@ -90,7 +89,7 @@ export const LoginScreen = () => {
               onChangeText={onChange}
               value={value}
               secureTextEntry
-              maxLength={16}  // Limita la entrada a 16 caracteres
+              maxLength={16}  
             />
             {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
           </View>
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
   },
   input: {
  
-    paddingHorizontal: 35, //espacio con el icono
+    paddingHorizontal: 35, 
     fontSize: 14,
     color: 'black',
     width: 250,
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 20,
-    paddingLeft: 38, // Asegúrate de tener suficiente espacio para el ícono
+    paddingLeft: 38, 
     paddingRight: 10,
   },
   input2: {
@@ -167,9 +166,9 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 20,
-    paddingLeft: 40, // Espacio para el ícono
+    paddingLeft: 40, 
     paddingRight: 10,
-    // Otros estilos específicos para el TextInput
+   
   },
   button: {
     height: 45,
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
     marginTop: 7,
     position: 'absolute',
     left: 105, // Alineación del ícono dentro del TextInput
-    top: 10,  // Alineación vertical del ícono dentro del TextInput
+    top: 10,  
 
 
   },
@@ -222,10 +221,10 @@ const styles = StyleSheet.create({
     marginTop: 3,
     position: 'absolute',
     left: 103, // Alineación del ícono
-    top: 10,  // Alineación vertical del ícono
+    top: 10,  
 
   },
-  errorText: { //cambiar posicion
+  errorText: { 
     color: 'red',
     left: 100,
     fontSize: 14,
