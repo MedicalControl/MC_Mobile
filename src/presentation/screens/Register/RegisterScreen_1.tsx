@@ -8,14 +8,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-//se añadio iconos hoy
-//listop
+//pendiente subir los componentes
 //validacion x hooks
 interface IFormInput {
     nombres: string;
     apellidos: string;
     cedula: string;
-    telefono:string;
+    telefono: string;
 }
 
 export const RegisterScreen_1 = () => {
@@ -28,7 +27,7 @@ export const RegisterScreen_1 = () => {
             navigation.navigate('Register_2');
         }
     };
-    //___________________________________________________________________
+    //__________________________________________________________________________________________________________________________________
     return (
         <View style={globalStyles.container2}>
             <Icon name="chevron-back" size={25} color="black" style={styles.icon}
@@ -42,11 +41,11 @@ export const RegisterScreen_1 = () => {
                 rules={{
                     required: 'El nombre es obligatorio',
                     pattern: {
-                        value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, // Solo letras y espacios
+                        value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
                         message: 'El nombre solo puede contener letras',
                     },
                     maxLength: {
-                        value: 17, // Limita el nombre a 17 caracteres
+                        value: 17,
                         message: 'El nombre no puede tener más de 17 caracteres',
                     },
                 }}
@@ -58,7 +57,6 @@ export const RegisterScreen_1 = () => {
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
-                                // Filtrar texto para que solo acepte letras y espacios
                                 const filteredText = text.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
                                 onChange(filteredText);
                             }}
@@ -80,11 +78,11 @@ export const RegisterScreen_1 = () => {
                 rules={{
                     required: 'El apellido es obligatorio',
                     pattern: {
-                        value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, // Solo letras y espacios
+                        value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
                         message: 'El apellido solo puede contener letras',
                     },
                     maxLength: {
-                        value: 25, // Limita el nombre a 17 caracteres
+                        value: 25,
                         message: 'El apellido no puede tener más de 25 caracteres',
                     },
                 }}
@@ -96,7 +94,6 @@ export const RegisterScreen_1 = () => {
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
-                                // Filtrar texto para que solo acepte letras y espacios
                                 const filteredText = text.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
                                 onChange(filteredText);
                             }}
@@ -117,11 +114,11 @@ export const RegisterScreen_1 = () => {
                 rules={{
                     required: 'El número de cédula es obligatorio',
                     pattern: {
-                        value: /^[A-Za-z0-9-]+$/, // Solo letras, números y guiones
+                        value: /^[A-Za-z0-9-]+$/,
                         message: 'La cédula solo puede contener letras, números y guiones',
                     },
                     maxLength: {
-                        value: 17, // Limita la cédula a 17 caracteres
+                        value: 17,
                         message: 'La cédula no puede tener más de 17 caracteres',
                     },
                 }}
@@ -133,12 +130,11 @@ export const RegisterScreen_1 = () => {
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
-                                // Filtrar texto para que solo acepte letras, números y guiones
                                 const filteredText = text.replace(/[^A-Za-z0-9-]/g, '');
                                 onChange(filteredText);
                             }}
                             value={value}
-                            maxLength={17} // Limita el campo a 17 caracteres
+                            maxLength={17}
                         />
                         {errors.cedula && (
                             <Text style={styles.errorText}>{errors.cedula.message}</Text>
@@ -157,7 +153,7 @@ export const RegisterScreen_1 = () => {
                 rules={{
                     required: 'El número de teléfono es obligatorio',
                     pattern: {
-                        value: /^[0-9]{8}$/, // Solo números y exactamente 8 dígitos
+                        value: /^[0-9]{8}$/,
                         message: 'El número de teléfono debe tener exactamente 8 dígitos',
                     },
                 }}
@@ -169,13 +165,12 @@ export const RegisterScreen_1 = () => {
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
-                                // Filtrar texto para que solo acepte números
                                 const filteredText = text.replace(/[^0-9]/g, '');
                                 onChange(filteredText);
                             }}
                             value={value}
-                            maxLength={8} // Limita el campo a 8 caracteres
-                            keyboardType="numeric" // Muestra teclado numérico
+                            maxLength={8}
+                            keyboardType="numeric"
                         />
                         {errors.telefono && (
                             <Text style={styles.errorText}>{errors.telefono.message}</Text>
@@ -191,6 +186,8 @@ export const RegisterScreen_1 = () => {
         </View>
     )
 }
+//______________________________________________________________________________________________________________________
+//RECORDA SUBIR ESTOS COMPONENTES!
 const styles = StyleSheet.create({
     //icono de arriba con navegacion
     icon: {
@@ -198,7 +195,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 0,
         top: 14,
-    },
+    }, //sms de error
     errorText: {
         color: 'red',
         left: 10,
