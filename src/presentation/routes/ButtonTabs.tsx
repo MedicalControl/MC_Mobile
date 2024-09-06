@@ -36,7 +36,7 @@ export function ButtonTabs_Navigator() {
         options={{ title: 'Casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
         component={HomeScreen} />
       <Tab.Screen name="Drugs"
-        options={{ title: 'Medicamentos', tabBarIcon: ({ color }) => (<IonIcon name="medkit-outline" size={20} color={color} />) }}
+        options={{ title: 'Medicinas', tabBarIcon: ({ color }) => (<IonIcon name="medkit-outline" size={20} color={color} />) }}
         component={DrugsScreen} />
       <Tab.Screen name="Medical_appointments"
         options={{ title: 'Citas Medicas', tabBarIcon: ({ color }) => (<IonIcon name="calendar-outline" size={20} color={color} />) }}

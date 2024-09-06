@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { RootStack } from '../../routes/StackNavigator'
 import { useWindowDimensions } from 'react-native'
 import { IonIcon } from '../../components/shared/Ionicon';
-import { SecondButton } from '../../components/SecondButton';
+import { SecondButton } from '../../components/shared/SecondButton';
 
 
 
