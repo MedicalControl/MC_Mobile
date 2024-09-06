@@ -7,25 +7,31 @@ import type { RootStack } from '../../routes/StackNavigator'
 import { TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
+import { Controller, useForm } from 'react-hook-form';
+
+
+
+interface IFormInput {
+    inss: string;
+    name: string;
+    tel: string;
+    paren: string;
+}
 
 //en este uso mis propios estilos debido a la diferencia!!!
 //añadimos iconos hoy
 export const RegisterScreen_3 = () => {
+    const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
     const navigation = useNavigation<NavigationProp<RootStack>>();
-    const [inss, setInss] = useState('');
     const [sangre, setSangre] = useState('');
     const [sexo, setSexo] = useState('');
-    const [name, setName] = useState('');
-    const [tel, setTel] = useState('');
-    const [par, setPar] = useState('');
-    const handleTelefonoChange = (text: string) => {
 
-        const formattedText = text.replace(/[^0-9]/g, '');
 
-        setTel(formattedText);
 
-        if (formattedText.length > 8) {
-            Alert.alert('Número demasiado largo', 'El número de teléfono debe tener 8 dígitos.');
+    const onSubmit = (_data: any) => {
+        // Navegar a register_2 solo si no hay errores
+        if (Object.keys(errors).length === 0) {
+            navigation.navigate('Register_4');
         }
     };
 
@@ -38,13 +44,55 @@ export const RegisterScreen_3 = () => {
             <Text style={styles.tittle}>Tercer Paso</Text>
             <Text style={styles.label}>Numero de Inss</Text>
 
-            <TextInput
-                style={styles.input}
-                placeholder="Ingresa tu numero de inss"
-                placeholderTextColor="#888"
-                value={inss}
-                onChangeText={text => setInss(text)}
+            <Controller
+                control={control}
+                name="inss"
+                rules={{
+                    required: 'El número INSS es obligatorio',
+                    pattern: {
+                        value: /^[0-9]{3}-[0-9]{5}-[0-9]{3}$/,
+                        message: 'El número INSS debe tener el formato XXX-XXXXX-XXX',
+                    },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <View style={styles.container}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Ingresa tu número INSS"
+                            placeholderTextColor="#888"
+                            onBlur={() => {
+                                onBlur();
+
+                                if (!/^[0-9]{3}-[0-9]{5}-[0-9]{3}$/.test(value)) {
+
+                                    onChange('');
+                                }
+                            }}
+                            onChangeText={(text) => {
+
+                                const filteredText = text.replace(/[^0-9]/g, '');
+
+
+                                if (filteredText.length <= 3) {
+                                    onChange(filteredText);
+                                } else if (filteredText.length <= 8) {
+                                    onChange(`${filteredText.slice(0, 3)}-${filteredText.slice(3)}`);
+                                } else if (filteredText.length <= 11) {
+                                    onChange(`${filteredText.slice(0, 3)}-${filteredText.slice(3, 8)}-${filteredText.slice(8)}`);
+                                }
+                            }}
+                            value={value}
+                            maxLength={13}
+                            keyboardType="numeric"
+                        />
+                        {errors.inss && (
+                            <Text style={styles.errorText}>{errors.inss.message}</Text>
+                        )}
+                    </View>
+                )}
             />
+
+
 
             <View style={styles.horizontalGroup}>
                 <View style={styles.fieldContainer}>
@@ -71,35 +119,118 @@ export const RegisterScreen_3 = () => {
 
             <Text style={styles.label4}>Contacto de emergencia</Text>
             <Text style={styles.contact}>Nombre completo:</Text>
-            <TextInput
-                style={styles.input4}
-                placeholder="Escribe nombre completo"
-                placeholderTextColor="#888"
-                value={name}
-                onChangeText={text => setName(text)}
+            <Controller
+                control={control}
+                name="name"
+                rules={{
+                    required: 'El nombre completo es obligatorio',
+                    pattern: {
+                        value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
+                        message: 'El nombre completo solo puede contener letras',
+                    },
+                    maxLength: {
+                        value: 30,
+                        message: 'El nombre no puede tener más de 17 caracteres',
+                    },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <View style={styles.container}>
+                        <TextInput
+                            style={styles.input4}
+                            placeholder="Ingresa tu nombre"
+                            placeholderTextColor="#888"
+                            onBlur={onBlur}
+                            onChangeText={(text) => {
+                                const filteredText = text.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
+                                onChange(filteredText);
+                            }}
+                            value={value}
+                            autoCapitalize="words"
+                            maxLength={30}
+                        />
+                        {errors.name && (
+                            <Text style={styles.errorText}>{errors.name.message}</Text>
+                        )}
+                    </View>
+                )}
             />
+
+
+
             <Text style={styles.tel}>Telefono</Text>
-            <TextInput
-                style={styles.input5}
-                placeholder="Escribe numero de telefono"
-                placeholderTextColor="#888"
-                value={tel}
-                onChangeText={handleTelefonoChange}
-                maxLength={8}
-                keyboardType="numeric"
+            <Controller
+                control={control}
+                name="tel"
+                rules={{
+                    required: 'El número de teléfono es obligatorio',
+                    pattern: {
+                        value: /^[0-9]{8}$/,
+                        message: 'El número de teléfono debe tener exactamente 8 dígitos',
+                    },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <View style={styles.container}>
+                        <TextInput
+                            style={styles.input5}
+                            placeholder="Ingresa tu número de teléfono"
+                            placeholderTextColor="#888"
+                            onBlur={onBlur}
+                            onChangeText={(text) => {
+                                const filteredText = text.replace(/[^0-9]/g, '');
+                                onChange(filteredText);
+                            }}
+                            value={value}
+                            maxLength={8}
+                            keyboardType="numeric"
+                        />
+                        {errors.tel && (
+                            <Text style={styles.errorText}>{errors.tel.message}</Text>
+                        )}
+                    </View>
+                )}
             />
+
+
             <Text style={styles.parentesco}>Parentesco</Text>
-            <TextInput
-                style={styles.input6}
-                placeholder="Escriba  el parentesco"
-                placeholderTextColor="#888"
-                value={par}
-                onChangeText={text => setPar(text)}
+            <Controller
+                control={control}
+                name="paren"
+                rules={{
+                    required: 'El parentesco es obligatorio',
+                    pattern: {
+                        value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
+                        message: 'El parentesco solo puede contener letras',
+                    },
+                    maxLength: {
+                        value: 10,
+                        message: 'El parentesco no puede tener más de 10 caracteres',
+                    },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <View style={styles.container}>
+                        <TextInput
+                            style={styles.input6}
+                            placeholder="Ingresa parentesco"
+                            placeholderTextColor="#888"
+                            onBlur={onBlur}
+                            onChangeText={(text) => {
+                                const filteredText = text.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
+                                onChange(filteredText);
+                            }}
+                            value={value}
+                            autoCapitalize="words"
+                            maxLength={10}
+                        />
+                        {errors.paren && (
+                            <Text style={styles.errorText}>{errors.paren.message}</Text>
+                        )}
+                    </View>
+                )}
             />
 
 
             <PrimaryButton
-                onPress={() => navigation.navigate("Register_4")}
+                onPress={handleSubmit(onSubmit)}
                 label='Siguiente'
             />
         </View>
@@ -233,5 +364,12 @@ const styles = StyleSheet.create({
         left: 6,
         top: -7,
     },
+    errorText: {
+        color: 'red',
+        left: -5,
+        fontSize: 14,
+        marginTop: -40,
+
+    }
 });
 
