@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Controller, SubmitHandler, useForm} from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 interface IFormInput {
   email: string;
@@ -16,7 +16,7 @@ export const LoginScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStack>>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
     console.log('Datos del formulario:', data);
-    navigation.navigate('Home'); 
+    navigation.navigate('Home');
   };
 
   return (
@@ -31,7 +31,7 @@ export const LoginScreen = () => {
       <Text style={styles.title}>Medical Control</Text>
 
 
-      
+
       <Controller
         control={control}
         name="email"
@@ -60,10 +60,10 @@ export const LoginScreen = () => {
         )}
       />
 
-      
 
 
-      
+
+
       <Controller
         control={control}
         name="password"
@@ -89,7 +89,7 @@ export const LoginScreen = () => {
               onChangeText={onChange}
               value={value}
               secureTextEntry
-              maxLength={16}  
+              maxLength={16}
             />
             {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
           </View>
@@ -97,7 +97,7 @@ export const LoginScreen = () => {
       />
 
 
-   
+
 
       <TouchableOpacity style={styles.button}
         onPress={handleSubmit(onSubmit)}>
@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
- 
-    paddingHorizontal: 40, 
+
+    paddingHorizontal: 40,
     fontSize: 14,
     color: 'black',
     width: 250,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 18,
-    paddingLeft: 38, 
+    paddingLeft: 38,
     paddingRight: 10,
   },
   input2: {
@@ -166,9 +166,9 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 18,
-    paddingLeft: 40, 
+    paddingLeft: 40,
     paddingRight: 10,
-   
+
   },
   button: {
     height: 45,
@@ -209,28 +209,28 @@ const styles = StyleSheet.create({
   },
   //iconos
   icon1: {
-  
+
     marginTop: 7,
     position: 'absolute',
-    left: 100, 
-    top: 10,  
+    left: 100,
+    top: 10,
 
 
   },
   icon2: {
     marginTop: 3,
     position: 'absolute',
-    left: 100, 
-    top: 10,  
+    left: 100,
+    top: 10,
 
   },
-  errorText: { 
+  errorText: {
     color: 'red',
     left: 100,
     fontSize: 14,
     marginTop: 5,
   },
-  inputContainer:{
+  inputContainer: {
     position: 'relative',
     width: '100%',
     justifyContent: 'center',

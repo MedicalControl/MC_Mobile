@@ -10,6 +10,10 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 //pendiente subir los componentes
 //validacion x hooks
+//cedula si o si son 17 caracteres
+//tambien corregir ortografia registro bien
+//componer componentes de largo tambien
+
 interface IFormInput {
     nombres: string;
     apellidos: string;
