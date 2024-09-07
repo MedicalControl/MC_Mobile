@@ -44,11 +44,10 @@ export const globalStyles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: 10,
-        height: '50%',
         width : '80%',
         backgroundColor: '#f5f5f5', // Color de fondo del cuadro
         borderRadius: 10,
-        marginVertical: 5,
+        marginVertical: 20,
     },
 
 })
