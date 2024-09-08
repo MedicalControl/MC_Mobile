@@ -6,7 +6,9 @@ import { type NavigationProp, useNavigation } from '@react-navigation/native'
 import type { RootStack } from '../../routes/StackNavigator'
 import { TextInput, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Controller, useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form';
+import { Picker } from '@react-native-picker/picker';
+
 
 //Haciendo validacion aca
 //recorda despues subir los componentes
@@ -40,13 +42,25 @@ export const RegisterScreen_2 = () => {
       <Text style={globalStyles.tittle}>Segundo Paso</Text>
       <Text style={globalStyles.label}>Municipio</Text>
 
-      <TextInput
-        style={globalStyles.input}
-        placeholder="Ingresa tu municipio"
-        placeholderTextColor="#888"
-        value={municipio}
-        onChangeText={text => setMunicipio(text)}
-      />
+      <Picker
+        selectedValue={municipio}
+        style={{ height: 50, width: '100%', color: '#000', fontSize: 16 }}
+        onValueChange={(itemValue) => setMunicipio(itemValue)}
+       >
+        <Picker.Item label="Seleccione su municipio" value="" />
+        <Picker.Item label="Municipio 1" value="municipio1" />
+        <Picker.Item label="Municipio 2" value="municipio2" />
+        <Picker.Item label="Municipio 3" value="municipio3" />
+        <Picker.Item label="Municipio 4" value="municipio4" />
+        <Picker.Item label="Municipio 5" value="municipio5" />
+        <Picker.Item label="Municipio 6" value="municipio6" />
+        <Picker.Item label="Municipio 7" value="municipio7" />
+        <Picker.Item label="Municipio 8" value="municipio8" />
+        <Picker.Item label="Municipio 9" value="municipio9" />
+        <Picker.Item label="Municipio 10" value="municipio10" />
+      </Picker>
+
+
       <Text style={globalStyles.label2}>Direccion</Text>
       <Controller
         control={control}
@@ -157,5 +171,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: -80,
 
-  }
+  },
+  picker: {
+    height: 50,
+    width: '100%',
+    color: '#888',
+  },
+  pickLabel:{
+  fontSize:10,
+  color:'pink',
+
+  },
 });

@@ -108,7 +108,7 @@ export const LoginScreen = () => {
       <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
       <Text
         style={styles.link}
-        onPress={() => navigation.navigate('Register_1')}
+        onPress={() => navigation.navigate('Register_2')}
       >
         Regístrate
       </Text>

@@ -8,8 +8,8 @@ import { TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
-
-
+import { Picker } from '@react-native-picker/picker';
+ //tengo que personalizar bien!!!!
 
 interface IFormInput {
     inss: string;
@@ -97,23 +97,33 @@ export const RegisterScreen_3 = () => {
             <View style={styles.horizontalGroup}>
                 <View style={styles.fieldContainer}>
                     <Text style={styles.label2}>Tipo de Sangre</Text>
-                    <TextInput
-                        style={styles.input2}
-                        placeholder="Ingresa tu tipo de sangre"
-                        placeholderTextColor="#888"
-                        value={sangre}
-                        onChangeText={text => setSangre(text)}
-                    />
+                    <Picker
+                        selectedValue={sangre}
+                        style={{ height: 50, width: '50%', color: '#000', fontSize: 16 }}
+                        onValueChange={(itemValue) => setSangre(itemValue)}
+                    >
+                        <Picker.Item label="Seleccione su tipo de sangre" value="" />
+                        <Picker.Item label="A+" value="a+" />
+                        <Picker.Item label="A-" value="a-" />
+                        <Picker.Item label="B+" value="b+" />
+                        <Picker.Item label="B-" value="b-" />
+                        <Picker.Item label="AB+" value="ab+" />
+                        <Picker.Item label="AB-" value="ab-" />
+                        <Picker.Item label="O+" value="o+" />
+                        <Picker.Item label="O-" value="o-" />
+                    </Picker>
                 </View>
                 <View style={styles.fieldContainer}>
                     <Text style={styles.label3}>Sexo</Text>
-                    <TextInput
-                        style={styles.input3}
-                        placeholder="Ingresa sexo"
-                        placeholderTextColor="#888"
-                        value={sexo}
-                        onChangeText={text => setSexo(text)}
-                    />
+                    <Picker
+                        selectedValue={sexo}
+                        style={{ height: 50, width: '50%', color: '#000', fontSize: 16 }}
+                        onValueChange={(itemValue) => setSexo(itemValue)}
+                    >
+                        <Picker.Item label="Femenino" value="femenino" />
+                        <Picker.Item label="Masculino" value="masculino" />
+                        <Picker.Item label="Otro" value="otro" />
+                    </Picker>
                 </View>
             </View>
 
