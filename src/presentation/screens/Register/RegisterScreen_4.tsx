@@ -7,6 +7,7 @@ import type { RootStack } from '../../routes/StackNavigator'
 import { TextInput, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Picker } from '@react-native-picker/picker';
 
 
 //poniendo icons navegacion
@@ -21,13 +22,17 @@ export const RegisterScreen_4 = () => {
                 onPress={() => navigation.navigate('Register_3')} />
             <Text style={globalStyles.tittle}>Cuarto Paso</Text>
             <Text style={globalStyles.label}>Sexualidad</Text>
-            <TextInput
-                style={globalStyles.input}
-                placeholder="Sexualidad..."
-                placeholderTextColor="#888"
-                value={sex}
-                onChangeText={text => setSex(text)}
-            />
+            <Picker
+                selectedValue={sex}
+                style={{ height: 50, width: '100%', color: '#000', fontSize: 16 }}
+                onValueChange={(itemValue) => setSex(itemValue)}
+            >
+              
+                <Picker.Item label="Heterosexual" value="heterosexual" />
+                <Picker.Item label="Homosexual" value="homosexual" />
+                <Picker.Item label="Bisexual" value="bisexual" />
+                
+            </Picker>
             <Text style={globalStyles.label2}>Imagen</Text>
             <TouchableOpacity style={globalStyles.opc}>
                 <Icon name="share-outline" size={27} color="white" style={styles.icon1} />
