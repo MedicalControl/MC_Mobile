@@ -7,9 +7,9 @@ import { IonIcon } from './Ionicon';
 //Interface
 interface Props {
 
-    label: string;
-    label_2: string;
-    label_3 : string
+    medication_name: string;
+    frecuency: number;
+    dose : string
     style?: StyleProp<ViewStyle>;
     name: string;
     size: number;
@@ -21,7 +21,7 @@ interface Props {
 
 }
 
-export const ThreeButton = ({ label, style, label_3, name, size, color, name_2, size_2, color_2, label_2 }: Props) => {
+export const ThreeButton = ({ medication_name, style, dose, name, size, color, name_2, size_2, color_2,frecuency }: Props) => {
 
     return (
 
@@ -35,10 +35,10 @@ export const ThreeButton = ({ label, style, label_3, name, size, color, name_2, 
                 />
             </View>
 
-            <View style={{ bottom : 10, right: 30 , flex:1}}>
-                <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{label}</Text>
-                <Text> {label_2}</Text>
-                <Text>{label_3} </Text>
+            <View style={{ bottom : 5, right: 30 , flex:1}}>
+                <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{medication_name}</Text>
+                <Text >Frecuencia: {frecuency}</Text>
+                <Text>Dosis restante: {dose} </Text>
             </View>
 
             <View style={{position: 'relative' , right :10}}>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     iconBox: {
         width: 70,
         height: 70,
-        backgroundColor: 'cyan',  // Color de fondo del cuadro
+        backgroundColor: globalColors.items,  // Color de fondo del cuadro
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',

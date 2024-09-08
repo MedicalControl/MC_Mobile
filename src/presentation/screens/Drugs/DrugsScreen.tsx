@@ -1,7 +1,72 @@
 import React from 'react'
-import { Pressable, ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { ThreeButton } from '../../components/shared/ThreeButton'
 
+
+
+
+const arr = [
+    {
+        name: "Acetominafen",
+        frecuency: 8,
+        dose: "5 dosis mg"
+    },
+    {
+        name: "Malta",
+        frecuency: 8,
+        dose: "10 dosis mg"
+    },
+    {
+        name: "Ibuprofeno",
+        frecuency: 6,
+        dose: "15 dosis mg"
+    },
+    {
+        name: "Paracetamol",
+        frecuency: 12,
+        dose: "20 dosis mg"
+    },
+    {
+        name: "Amoxicilina",
+        frecuency: 8,
+        dose: "500 mg"
+    },
+    {
+        name: "Loratadina",
+        frecuency: 24,
+        dose: "10 mg"
+    },
+    {
+        name: "Metformina",
+        frecuency: 12,
+        dose: "850 mg"
+    },
+    {
+        name: "Omeprazol",
+        frecuency: 24,
+        dose: "40 mg"
+    },
+    {
+        name: "Clorfenamina",
+        frecuency: 6,
+        dose: "4 mg"
+    },
+    {
+        name: "Prednisona",
+        frecuency: 12,
+        dose: "20 mg"
+    },
+    {
+        name: "Enalapril",
+        frecuency: 24,
+        dose: "10 mg"
+    },
+    {
+        name: "Losartan",
+        frecuency: 24,
+        dose: "50 mg"
+    }
+];
 
 
 
@@ -10,94 +75,31 @@ import { ThreeButton } from '../../components/shared/ThreeButton'
 export const DrugsScreen = () => {
     return (
         <ScrollView>
-            <View>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
+            {
+                arr.map((i, index) => (
+                    <View
+                        key={`${i.name}-${index}`}
+                        style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <ThreeButton
+                            medication_name={i.name}
+                            frecuency={i.frecuency}
+                            dose={i.dose}
+                            name='balloon-outline'
+                            size={20}
+                            color='black'
+                            name_2='alarm-outline'
+                            size_2={20}
+                            color_2='black'
 
-                    />
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
+                        />
 
-                    />
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
+                    </View>
 
-                    />
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
+                ))
 
-                    />
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
 
-                    />
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
+            }
 
-                    />
-                    <ThreeButton
-                        label='Acetaminofen'
-                        label_2='Frecuencia: Cada 8 horas'
-                        label_3='Dosis restantes: 5 dosis. mg'
-                        name='balloon-outline'
-                        size={20}
-                        color='black'
-                        name_2='alarm-outline'
-                        size_2={20}
-                        color_2='black'
-
-                    />
-                </View>
-            </View>
         </ScrollView>
     )
 }

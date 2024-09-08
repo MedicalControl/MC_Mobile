@@ -11,7 +11,8 @@ export const globalColors = {
     warning: '#fca311',
     danger: '#e71d36',
     dark: '#22223b',
-    background: '#fff'
+    background: '#fff',
+    items : '#BDBDBD'
 }
 
 export const globalStyles = StyleSheet.create({
@@ -45,7 +46,7 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
         width : '80%',
-        backgroundColor: '#f5f5f5', // Color de fondo del cuadro
+        backgroundColor: '#fff', // Color de fondo del cuadro
         borderRadius: 10,
         marginVertical: 20,
     },

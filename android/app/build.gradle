@@ -1,5 +1,5 @@
 project.ext.vectoricons = [
-    iconFontNames: [ 'Ionicons.ttf'] // Specify font files
+    iconFontNames: [ 'Ionicons.ttf', 'MaterialCommunityIcons.ttf'] // Specify font files
 ]
 
 
