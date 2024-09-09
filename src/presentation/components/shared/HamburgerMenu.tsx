@@ -5,33 +5,27 @@ import { IonIcon } from './Ionicon';
 import { globalColors } from '../../theme/theme';
 
 
-interface Props {
-    onPress: () => void;
-    IconName: string
 
-}
 
-export const HamburgerMenu = ({ onPress, IconName }: Props) => {
+export const HamburgerMenu = () => {
     const navigation = useNavigation();
+
     useEffect(() => {
         navigation.setOptions({
-            headerLeft: () =>
-            (
-                <Pressable
-                    style={{
-                        position: 'absolute',
-                        marginLeft: 360,
-                    }}
-                    onPress={() => onPress()}>
+            headerLeft: () => (
+                <Pressable 
+                style = {{marginLeft : 15}}
+                onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
                     <IonIcon
-                        name= {IconName}
+                        name='menu-outline'
+                        color= {globalColors.primary}
                         size={30}
-                        color={globalColors.primary}
                     />
                 </Pressable>
             )
-        });
-    }, []);
+        })
+
+    }, [])
 
 
     return (<></>);

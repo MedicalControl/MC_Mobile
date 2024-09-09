@@ -1,6 +1,8 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { ThreeButton } from '../../components/shared/ThreeButton'
+import { HamburgerMenu } from '../../components/shared/HamburgerMenu';
+import { Img_Picture } from '../../components/shared/img_Picture';
 
 
 
@@ -74,32 +76,27 @@ const arr = [
 
 export const DrugsScreen = () => {
     return (
+        
         <ScrollView>
+            <HamburgerMenu />
+            <Img_Picture />
             {
                 arr.map((i, index) => (
                     <View
+                    
                         key={`${i.name}-${index}`}
                         style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <ThreeButton
                             medication_name={i.name}
                             frecuency={i.frecuency}
                             dose={i.dose}
-                            name='balloon-outline'
-                            size={20}
-                            color='black'
                             name_2='alarm-outline'
-                            size_2={20}
+                            size_2={25}
                             color_2='black'
-
                         />
-
                     </View>
-
                 ))
-
-
             }
-
         </ScrollView>
     )
 }

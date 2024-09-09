@@ -12,7 +12,7 @@ export const globalColors = {
     danger: '#e71d36',
     dark: '#22223b',
     background: '#fff',
-    items : '#BDBDBD'
+    items : '#D3D3D3'
 }
 
 export const globalStyles = StyleSheet.create({
@@ -49,6 +49,7 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: '#fff', // Color de fondo del cuadro
         borderRadius: 10,
         marginVertical: 20,
+        elevation : 2
     },
 
 })
