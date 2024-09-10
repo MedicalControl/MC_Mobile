@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput } from 'react-native'
+import { Text, View, StyleSheet, TextInput, Image } from 'react-native'
 import { globalStyles } from '../../theme/theme';
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import { useNavigation, type NavigationProp } from '@react-navigation/native'
@@ -33,11 +33,16 @@ export const RegisterScreen_1 = () => {
     };
     //__________________________________________________________________________________________________________________________________
     return (
-        <View style={globalStyles.container2}>
+        <View style={styles.container}>
+            <Image
+                source={require('../Register/rectan.png')}
+                style={styles.logo}
+                resizeMode='contain'
+            />
             <Icon name="chevron-back" size={25} color="black" style={styles.icon}
                 onPress={() => navigation.navigate('Login')} />
             <Text style={globalStyles.tittle}>Primer Paso</Text>
-            <Text style={globalStyles.label}>Nombres</Text>
+            <Text style={styles.label}>Nombres</Text>
 
             <Controller
                 control={control}
@@ -54,9 +59,9 @@ export const RegisterScreen_1 = () => {
                     },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View style={globalStyles.container2}>
+                    <View style={styles.container}>
                         <TextInput
-                            style={globalStyles.input}
+                            style={styles.input}
                             placeholder="Ingresa tu nombre"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -75,7 +80,7 @@ export const RegisterScreen_1 = () => {
                 )}
             />
 
-            <Text style={globalStyles.label2}>Apellidos</Text>
+            <Text style={styles.label2}>Apellidos</Text>
             <Controller
                 control={control}
                 name="apellidos"
@@ -91,9 +96,9 @@ export const RegisterScreen_1 = () => {
                     },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View style={globalStyles.container2}>
+                    <View style={styles.container}>
                         <TextInput
-                            style={globalStyles.input2}
+                            style={styles.input2}
                             placeholder="Ingresa tus apellidos"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -111,7 +116,7 @@ export const RegisterScreen_1 = () => {
                     </View>
                 )}
             />
-            <Text style={globalStyles.label3}>Cedula</Text>
+            <Text style={styles.label3}>Cédula</Text>
             <Controller
                 control={control}
                 name="cedula"
@@ -127,9 +132,9 @@ export const RegisterScreen_1 = () => {
                     },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View style={globalStyles.container2}>
+                    <View style={styles.container}>
                         <TextInput
-                            style={globalStyles.input3}
+                            style={styles.input3}
                             placeholder="Ingresa tu número de cédula"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -149,7 +154,7 @@ export const RegisterScreen_1 = () => {
 
 
 
-            <Text style={globalStyles.label4}>Telefono</Text>
+            <Text style={styles.label4}>Teléfono</Text>
 
             <Controller
                 control={control}
@@ -162,9 +167,9 @@ export const RegisterScreen_1 = () => {
                     },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View style={globalStyles.container2}>
+                    <View style={styles.container}>
                         <TextInput
-                            style={globalStyles.input4}
+                            style={styles.input4}
                             placeholder="Ingresa tu número de teléfono"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -181,6 +186,12 @@ export const RegisterScreen_1 = () => {
                         )}
                     </View>
                 )}
+            />
+
+            <Image
+                source={require('../Register/rectan.png')}
+                style={styles.logo2}
+                resizeMode='contain'
             />
 
             <PrimaryButton
@@ -204,7 +215,93 @@ const styles = StyleSheet.create({
         color: 'red',
         left: 10,
         fontSize: 14,
-        marginTop: -80,
+        marginTop: -10,
 
+    },
+    logo: {
+        width: 500,
+        height: 500,
+        alignSelf: 'center',
+        position: 'absolute',
+        marginTop: -270,
+        top: 10,
+        transform: [{ rotate: '-11deg' }],
+    },
+    logo2: {
+
+        width: 500,
+        height: 530,
+        alignSelf: 'center',
+        position: 'absolute',
+        marginTop: 630,
+        top: 10,
+        transform: [{ rotate: '-10deg' }],
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        backgroundColor: '#fff',
+    },
+    label: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 20, 
+        left: 30,
+    },
+    label2: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 10, 
+        left: 28,
+    },
+    label3: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 5, 
+        left: 28,
+    },
+    label4: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 10, 
+        left: 30,
+    },
+    input: {
+        height: 40,
+        borderBottomWidth: 1,
+        borderBottomColor: '#000',
+        fontSize: 16,
+        paddingHorizontal: 0,
+        marginBottom: 20, 
+        width: 300,
+    },
+    input2: {
+        height: 40,
+        borderBottomWidth: 1,
+        borderBottomColor: '#000',
+        fontSize: 16,
+        marginBottom: 20, 
+        width: 300,
+        marginHorizontal: 5,
+    },
+    input3: {
+        height: 40,
+        borderBottomWidth: 1,
+        borderBottomColor: '#000',
+        fontSize: 16,
+        marginBottom: 20, 
+        width: 300,
+        marginHorizontal: 5,
+    },
+    input4: {
+        height: 40,
+        borderBottomWidth: 1,
+        borderBottomColor: '#000',
+        fontSize: 16,
+        paddingHorizontal: 0,
+        marginBottom: 20, 
+        width: 300,
     }
 });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image} from 'react-native';
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import { globalStyles } from '../../theme/theme'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
@@ -39,10 +39,16 @@ export const RegisterScreen_3 = () => {
 
     return (
         <View style={styles.container}>
+
+            <Image
+                source={require('../Register/rectan.png')}
+                style={styles.logo}
+                resizeMode='contain'
+            />
             <Icon name="chevron-back" size={25} color="black" style={styles.icon}
                 onPress={() => navigation.navigate('Register_2')} />
             <Text style={styles.tittle}>Tercer Paso</Text>
-            <Text style={styles.label}>Numero de Inss</Text>
+            <Text style={styles.label}>Número de Inss</Text>
 
             <Controller
                 control={control}
@@ -99,10 +105,9 @@ export const RegisterScreen_3 = () => {
                     <Text style={styles.label2}>Tipo de Sangre</Text>
                     <Picker
                         selectedValue={sangre}
-                        style={{ height: 50, width: '50%', color: '#000', fontSize: 16 }}
+                        style={{ height: 40, width: '80%', color: '#000', fontSize: 14 }}
                         onValueChange={(itemValue) => setSangre(itemValue)}
                     >
-                        <Picker.Item label="Seleccione su tipo de sangre" value="" />
                         <Picker.Item label="A+" value="a+" />
                         <Picker.Item label="A-" value="a-" />
                         <Picker.Item label="B+" value="b+" />
@@ -117,7 +122,7 @@ export const RegisterScreen_3 = () => {
                     <Text style={styles.label3}>Sexo</Text>
                     <Picker
                         selectedValue={sexo}
-                        style={{ height: 50, width: '50%', color: '#000', fontSize: 16 }}
+                        style={{ height: 40, width: '75%', color: '#000', fontSize: 14}}
                         onValueChange={(itemValue) => setSexo(itemValue)}
                     >
                         <Picker.Item label="Femenino" value="femenino" />
@@ -147,7 +152,7 @@ export const RegisterScreen_3 = () => {
                     <View style={styles.container}>
                         <TextInput
                             style={styles.input4}
-                            placeholder="Ingresa tu nombre"
+                            placeholder="Ingresa  nombre"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
@@ -167,7 +172,7 @@ export const RegisterScreen_3 = () => {
 
 
 
-            <Text style={styles.tel}>Telefono</Text>
+            <Text style={styles.tel}>Teléfono</Text>
             <Controller
                 control={control}
                 name="tel"
@@ -182,7 +187,7 @@ export const RegisterScreen_3 = () => {
                     <View style={styles.container}>
                         <TextInput
                             style={styles.input5}
-                            placeholder="Ingresa tu número de teléfono"
+                            placeholder="Ingresa  número de teléfono"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
@@ -224,12 +229,13 @@ export const RegisterScreen_3 = () => {
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
+                                
                                 const filteredText = text.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
-                                onChange(filteredText);
+                                onChange(filteredText); 
                             }}
                             value={value}
                             autoCapitalize="words"
-                            maxLength={10}
+                            maxLength={10} 
                         />
                         {errors.paren && (
                             <Text style={styles.errorText}>{errors.paren.message}</Text>
@@ -238,6 +244,11 @@ export const RegisterScreen_3 = () => {
                 )}
             />
 
+            <Image
+                source={require('../Register/rectan.png')}
+                style={styles.logo2}
+                resizeMode='contain'
+            />
 
             <PrimaryButton
                 onPress={handleSubmit(onSubmit)}
@@ -263,7 +274,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         maxWidth: 350,
-        marginVertical: 30, // Mayor separación vertical
+        marginVertical: 30, 
     },
     fieldContainer: {
         flex: 1,
@@ -274,41 +285,46 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 20,
         marginBottom: 15,
-        left: -110,
+        left: -90,
     },
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
+        
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
+        left:48
+        
+        
     },
     contact: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 10,
-        left: -100,
+        left: -80,
     },
     tel: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 10,
-        left: -120,
+        left: -110,
     },
     parentesco: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 15,
-        left: -120,
+        left: -100,
     },
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 60,
         marginBottom: 20, // Más cerca del último input
+        left:8
     },
     input: {
         height: 40,
@@ -317,7 +333,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingHorizontal: 10,
         marginBottom: 40,
-        width: 350,
+        width: 300,
     },
     input2: {
         height: 40,
@@ -342,7 +358,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingHorizontal: 10,
         marginBottom: 40,
-        width: 350,
+        width: 300,
     },
     input5: {
         height: 40,
@@ -351,7 +367,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingHorizontal: 10,
         marginBottom: 40,
-        width: 350,
+        width: 300,
     },
     input6: {
         height: 40,
@@ -360,7 +376,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingHorizontal: 10,
         marginBottom: 40,
-        width: 350,
+        width: 300,
+        zIndex: 1,
     },
     tittle: {
         fontSize: 25,
@@ -380,6 +397,27 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginTop: -40,
 
+    },
+    logo: {
+        width: 500,
+        height: 500,
+        alignSelf: 'center',
+        position: 'absolute',
+        marginTop: -270,
+        top: 10,
+        transform: [{ rotate: '-13deg' }],
+    },
+    logo2: {
+
+        width: 500,
+        height: 530,
+        alignSelf: 'center',
+        position: 'absolute',
+        marginTop: 630,
+        top: 10,
+        transform: [{ rotate: '-9deg' }],
+        zIndex: -1,
     }
+
 });
 

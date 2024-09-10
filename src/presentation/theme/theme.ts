@@ -40,7 +40,7 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         width: 150,
         alignSelf: 'center',
-        marginBottom: 20,
+        marginBottom: 70,
     },
     container2: {
         flex: 1,
@@ -57,22 +57,30 @@ export const globalStyles = StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginBottom: 15, // Aumenta el margen inferior para las etiquetas
+        marginTop:90,
+        left:30
+       
     },
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 30, // Aumenta el margen superior para label2
+        marginTop: 30, 
+        left: 28,
+        
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 30, // Aumenta el margen superior para label3
+        marginTop: 10,
+        left:28,
+       
     },
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 30, // Aumenta el margen superior para label4
+        marginTop: 28,
+        
+         left:30,
     },
     input: {
         height: 40,
@@ -80,25 +88,28 @@ export const globalStyles = StyleSheet.create({
         borderBottomColor: '#000',
         fontSize: 16,
         paddingHorizontal: 0,
-        marginBottom: 80, // Aumenta el margen inferior para el input
-        width: 350,
+        marginBottom: 80,
+        width: 370,
+
     },
     input2: {
         height: 40,
         borderBottomWidth: 1,
         borderBottomColor: '#000',
         fontSize: 16,
-        marginBottom: 80, // Aumenta el margen inferior para input2
-        width: 350,
+        marginBottom: 80, 
+        width: 300,
         marginHorizontal: 5,
+
+   
     },
     input3: {
         height: 40,
         borderBottomWidth: 1,
         borderBottomColor: '#000',
         fontSize: 16,
-        marginBottom: 80, // Aumenta el margen inferior para input3
-        width: 350,
+        marginBottom: 80, 
+        width: 300,
         marginHorizontal: 5,
     },
     input4: {
@@ -107,13 +118,13 @@ export const globalStyles = StyleSheet.create({
         borderBottomColor: '#000',
         fontSize: 16,
         paddingHorizontal: 0,
-        marginBottom: 80, // Aumenta el margen inferior para input4
-        width: 350,
+        marginBottom: 80, 
+        width: 300,
     },
     tittle: {
         fontSize: 25,
         fontWeight: 'bold',
-        marginBottom: 80, // Aumenta el margen inferior para el título
+        marginBottom: 80, 
     },
     opc: {
         height: 100,
@@ -123,7 +134,7 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         width: 350,
         alignSelf: 'center',
-        marginBottom: 40, // Aumenta el margen inferior para opc
+        marginBottom: 40, 
         marginTop: 30,
         borderColor: '#ccc',
     
