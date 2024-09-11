@@ -25,9 +25,9 @@ export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, colo
         <Pressable
             style={globalStyles.three_Button}>
             <View style={styles.iconBox}>
-                <Image 
-                source={require('../../assets/Pill.png')}
-                style = {{width: 40, height: 40}}
+                <Image
+                    source={require('../../assets/Pill.png')}
+                    style={{ width: 40, height: 40 }}
                 />
 
             </View>

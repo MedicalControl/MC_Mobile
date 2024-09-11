@@ -54,10 +54,10 @@ export const Stack_Navigator = () => {
                 options={{
                     headerShown: true,
                     title: 'Perfil',
-                    headerStyle : {
-                        shadowColor : globalColors.primary,
+                    headerStyle: {
+                        shadowColor: globalColors.primary,
                     },
-                    
+
 
                 }}
 
@@ -67,8 +67,15 @@ export const Stack_Navigator = () => {
             <Stack.Screen name="Report_problem" component={Report_problemScreen} />
             <Stack.Screen name="Notification" component={Notification} />
             <Stack.Screen name="Dark" component={DarkScreen} />
-            <Stack.Screen name="Device" component={DeviceScreen} />
-            
+            <Stack.Screen
+                options={{
+                    headerShown: true,
+                    headerStyle : {
+                        shadowColor: globalColors.primary
+                    }
+                }}
+                name="Device" component={DeviceScreen} />
+
 
 
         </Stack.Navigator>

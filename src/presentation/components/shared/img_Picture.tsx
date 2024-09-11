@@ -14,8 +14,8 @@ export const Img_Picture = () => {
         navigation.setOptions({
             headerRight: () => (
                 <Image
-                source={require('../../assets/Medi.jpeg')}
-                style = {{width: 90, height: 30, right: 30}}
+                source={require('..//../assets/Medical_Control.png')}
+                style = {{width: 100, height: 60, right: 20}}
                 />
             )
         })
