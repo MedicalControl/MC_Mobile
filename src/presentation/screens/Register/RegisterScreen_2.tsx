@@ -66,14 +66,14 @@ export const RegisterScreen_2 = () => {
           }}
           onValueChange={(itemValue) => setMunicipio(itemValue)}
         >  //pen: json para aca
-          <Picker.Item label="Managua" value="managua" />       
-          <Picker.Item label="El Crucero" value="el_crucero" />
-          <Picker.Item label="San Rafael del Sur" value="san_rafael_del_sur" />
-          <Picker.Item label="Ticuantepe" value="ticuantepe" />
-          <Picker.Item label="Villa El Carmen" value="villa_el_carmen" />
-          <Picker.Item label="Mateare" value="mateare" />
-          <Picker.Item label="Ciudad Sandino" value="ciudad_sandino" />
-          <Picker.Item label="Tipitapa" value="tipitapa" />
+          <Picker.Item label="Managua-Managua" value="managua" />       
+          <Picker.Item label="El Crucero-Managua" value="el_crucero" />
+          <Picker.Item label="San Rafael del Sur-Managua" value="san_rafael_del_sur" />
+          <Picker.Item label="Ticuantepe-Managua" value="ticuantepe" />
+          <Picker.Item label="Villa El Carmen-Managua" value="villa_el_carmen" />
+          <Picker.Item label="Mateare-Managua" value="mateare" />
+          <Picker.Item label="Ciudad Sandino-Managua" value="ciudad_sandino" />
+          <Picker.Item label="Tipitapa-Managua" value="tipitapa" />
         </Picker>
       </View>
 
