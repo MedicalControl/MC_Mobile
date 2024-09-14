@@ -4,7 +4,14 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } fro
 import { RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
- //cambiaremos screen fast
+//cambiaremos screen fast
+
+//cambios de hoy:
+//-poner departamento tabla  (pantalla2 ) $
+//añadir correo y contra (pantalla 4)
+//poner el .json con mel en los de seleccion
+//añadir finalmente el calendario en el apartado de fecha (pantalla 1)
+
 interface IFormInput {
   email: string;
   password: string;
@@ -108,7 +115,7 @@ export const LoginScreen = () => {
       <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
       <Text
         style={styles.link}
-        onPress={() => navigation.navigate('Register_1')}
+        onPress={() => navigation.navigate('Register_2')}
       >
         Regístrate
       </Text>

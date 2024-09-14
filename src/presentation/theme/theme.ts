@@ -44,43 +44,50 @@ export const globalStyles = StyleSheet.create({
     },
     container2: {
         flex: 1,
-        justifyContent: 'flex-start', 
+        justifyContent: 'flex-start',
         paddingHorizontal: 20,
         paddingTop: 20,
         backgroundColor: '#fff',
-       
+
     },
     inputContainer: {
-        marginTop: 10, 
+        marginTop: 10,
     },
     //de aca cambie
+    label0: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 70,
+        left: 30
+
+    },
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop:90,
-        left:30
-       
+        marginTop: 70,
+        left: 30
+
     },
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 30, 
+        marginTop: 30,
         left: 28,
-        
+
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 10,
-        left:28,
-       
+        left: 28,
+
     },
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 28,
-        
-         left:30,
+
+        left: 30,
     },
     input: {
         height: 40,
@@ -97,18 +104,18 @@ export const globalStyles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#000',
         fontSize: 16,
-        marginBottom: 80, 
+        marginBottom: 80,
         width: 300,
         marginHorizontal: 5,
 
-   
+
     },
     input3: {
         height: 40,
         borderBottomWidth: 1,
         borderBottomColor: '#000',
         fontSize: 16,
-        marginBottom: 80, 
+        marginBottom: 80,
         width: 300,
         marginHorizontal: 5,
     },
@@ -118,13 +125,13 @@ export const globalStyles = StyleSheet.create({
         borderBottomColor: '#000',
         fontSize: 16,
         paddingHorizontal: 0,
-        marginBottom: 80, 
+        marginBottom: 80,
         width: 300,
     },
     tittle: {
         fontSize: 25,
         fontWeight: 'bold',
-        marginBottom: 80, 
+        marginBottom: 80,
     },
     opc: {
         height: 100,
@@ -134,17 +141,17 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         width: 350,
         alignSelf: 'center',
-        marginBottom: 40, 
+        marginBottom: 40,
         marginTop: 30,
         borderColor: '#ccc',
-    
-    
+
+
     },
     opcText: {
         fontSize: 14,
         color: '#fff',
         fontWeight: 'bold',
-        top:10
+        top: 10
     },
 
 });

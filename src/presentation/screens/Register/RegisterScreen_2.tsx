@@ -25,6 +25,7 @@ export const RegisterScreen_2 = () => {
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
   const [municipio, setMunicipio] = useState('');
+  const [depar, setDepar] = useState('');
   //-------------------------------------------------
 
 
@@ -53,6 +54,39 @@ export const RegisterScreen_2 = () => {
       <Icon name="chevron-back" size={25} color="black" style={styles.icon}
         onPress={() => navigation.navigate('Register_1')} />
       <Text style={globalStyles.tittle}>Segundo Paso</Text>
+      <Text style={globalStyles.label0}>Departamento</Text>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Picker
+          selectedValue={depar}
+          style={{
+            height: 40,
+            width: 310,
+            color: '#000',
+            fontSize: 14,
+          }}
+          onValueChange={(itemValue) => setDepar(itemValue)}
+        >
+          <Picker.Item label="Boaco" value="boaco" />
+          <Picker.Item label="Carazo" value="carazo" />
+          <Picker.Item label="Chinandega" value="chinan" />
+          <Picker.Item label="Chontales" value="chon" />
+          <Picker.Item label="Costa Caribe Norte" value="costa1" />
+          <Picker.Item label="Costa Caribe Sur" value="costa2" />
+          <Picker.Item label="Estelí" value="este" />
+          <Picker.Item label="Granada" value="grana" />
+          <Picker.Item label="Jinotega" value="jino" />
+          <Picker.Item label="León" value="leon" />
+          <Picker.Item label="Madriz" value="madriz" />
+          <Picker.Item label="Managua" value="mana" />
+          <Picker.Item label="Masaya" value="masa" />
+          <Picker.Item label="Matagalpa" value="mata" />
+          <Picker.Item label="Nueva Segovia" value="sego" />
+          <Picker.Item label="Río San Juan" value="rio" />
+          <Picker.Item label="Rivas" value="rivas" />
+        </Picker>
+      </View>
+
+
       <Text style={globalStyles.label}>Municipio</Text>
 
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -66,14 +100,14 @@ export const RegisterScreen_2 = () => {
           }}
           onValueChange={(itemValue) => setMunicipio(itemValue)}
         >  //pen: json para aca
-          <Picker.Item label="Managua-Managua" value="managua" />       
-          <Picker.Item label="El Crucero-Managua" value="el_crucero" />
-          <Picker.Item label="San Rafael del Sur-Managua" value="san_rafael_del_sur" />
-          <Picker.Item label="Ticuantepe-Managua" value="ticuantepe" />
-          <Picker.Item label="Villa El Carmen-Managua" value="villa_el_carmen" />
-          <Picker.Item label="Mateare-Managua" value="mateare" />
-          <Picker.Item label="Ciudad Sandino-Managua" value="ciudad_sandino" />
-          <Picker.Item label="Tipitapa-Managua" value="tipitapa" />
+          <Picker.Item label="Managua" value="managua" />
+          <Picker.Item label="El Crucero" value="el_crucero" />
+          <Picker.Item label="San Rafael del Sur" value="san_rafael_del_sur" />
+          <Picker.Item label="Ticuantepe" value="ticuantepe" />
+          <Picker.Item label="Villa El Carmen" value="villa_el_carmen" />
+          <Picker.Item label="Mateare" value="mateare" />
+          <Picker.Item label="Ciudad Sandino" value="ciudad_sandino" />
+          <Picker.Item label="Tipitapa" value="tipitapa" />
         </Picker>
       </View>
 
