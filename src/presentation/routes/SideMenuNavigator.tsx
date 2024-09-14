@@ -87,7 +87,7 @@ export const SideMenu = () => {
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Dispositivos', drawerIcon: ({ color }) => (<IonIcon name='tv-outline' size={20} color={color} />),
+                    title: 'Dispositivos', drawerIcon: ({ color }) => (<IonIcon name='watch-sharp' size={20} color={color} />),
                     drawerItemStyle: {
                         paddingHorizontal: 20,
                         borderRadius: 10,
@@ -100,7 +100,7 @@ export const SideMenu = () => {
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Modo oscuro', drawerIcon: ({ color }) => (<IonIcon name='moon-outline' size={20} color={color} />),
+                    title: 'Modo oscuro', drawerIcon: ({ color }) => (<IonIcon name='moon' size={20} color={color} />),
                     drawerItemStyle: {
                         paddingHorizontal: 20,
                         borderRadius: 10,
@@ -112,7 +112,7 @@ export const SideMenu = () => {
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Configuracion', drawerIcon: ({ color }) => (<IonIcon name='settings-outline' size={20} color={color} />),
+                    title: 'Configuracion', drawerIcon: ({ color }) => (<IonIcon name='settings-sharp' size={20} color={color} />),
                     drawerItemStyle: {
                         paddingHorizontal: 20,
                         borderRadius: 10,
