@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, Image} from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import { globalStyles } from '../../theme/theme'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
- //tengo que personalizar bien!!!!
+//tengo que personalizar bien!!!!
 
 interface IFormInput {
     inss: string;
@@ -122,7 +122,7 @@ export const RegisterScreen_3 = () => {
                     <Text style={styles.label3}>Sexo</Text>
                     <Picker
                         selectedValue={sexo}
-                        style={{ height: 40, width: '75%', color: '#000', fontSize: 14}}
+                        style={{ height: 40, width: '75%', color: '#000', fontSize: 14 }}
                         onValueChange={(itemValue) => setSexo(itemValue)}
                     >
                         <Picker.Item label="Femenino" value="femenino" />
@@ -229,13 +229,13 @@ export const RegisterScreen_3 = () => {
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
-                                
+
                                 const filteredText = text.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
-                                onChange(filteredText); 
+                                onChange(filteredText);
                             }}
                             value={value}
                             autoCapitalize="words"
-                            maxLength={10} 
+                            maxLength={10}
                         />
                         {errors.paren && (
                             <Text style={styles.errorText}>{errors.paren.message}</Text>
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         maxWidth: 350,
-        marginVertical: 30, 
+        marginVertical: 30,
     },
     fieldContainer: {
         flex: 1,
@@ -291,15 +291,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
-        
+
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
-        left:48
-        
-        
+        left: 48
+
+
     },
     contact: {
         fontSize: 16,
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 60,
         marginBottom: 20, // Más cerca del último input
-        left:8
+        left: 8
     },
     input: {
         height: 40,
