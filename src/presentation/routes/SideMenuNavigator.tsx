@@ -23,9 +23,9 @@ export const SideMenu = () => {
                 headerShown: false,
                 drawerType: 'front',
 
-                drawerActiveBackgroundColor: globalColors.success,
-                drawerActiveTintColor: 'white',
-                drawerInactiveTintColor: globalColors.success,
+                drawerActiveBackgroundColor: globalColors.primary,
+                drawerActiveTintColor: globalColors.tertiary,
+                drawerInactiveTintColor: globalColors.List_item,
                 drawerItemStyle: {
                     borderRadius: 10,
                     paddingHorizontal: 20,
@@ -34,56 +34,97 @@ export const SideMenu = () => {
             }}
         >
             <Drawer.Screen
-                options={{ title: 'Inicio', drawerIcon: ({ color }) => (<IonIcon name='home-outline' size={20} color={color} />) }}
+                options={{ title: 'Inicio', drawerIcon: ({ color }) => (<IonIcon name='home' size={20} color={color} />) }}
                 name="Stack" component={Stack_Navigator} />
-           
-           
+
+
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Notificaciones', drawerIcon: ({ color }) => (<IonIcon name='notifications-outline' size={20} color={color} />)
+                    title: 'Notificaciones', drawerIcon: ({ color }) => (<IonIcon name='notifications-sharp' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        marginVertical: 70
+
+                    }
                 }}
                 name="Notification" component={Notification} />
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Mensajes', drawerIcon: ({ color }) => (<IonIcon name='mail-unread-outline' size={20} color={color} />)
+                    title: 'Mensajes', drawerIcon: ({ color }) => (<IonIcon name='chatbubble-ellipses-sharp' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        bottom: 65
+                    }
                 }}
                 name="Message" component={MessageScreen} />
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Resultados de laboratorio', drawerIcon: ({ color }) => (<IonIcon name='home-outline' size={20} color={color} />)
+                    title: 'Resultados de laboratorio', drawerIcon: ({ color }) => (<IonIcon name='flask' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        bottom: 62
+                    }
                 }}
                 name="Lab" component={LabScreen} />
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Idioma', drawerIcon: ({ color }) => (<IonIcon name='language-outline' size={20} color={color} />)
+                    title: 'Idioma', drawerIcon: ({ color }) => (<IonIcon name='language' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        bottom: 10
+                    }
+
                 }}
                 name="Language" component={LanguageScreen} />
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Dispositivos', drawerIcon: ({ color }) => (<IonIcon name='tv-outline' size={20} color={color} />)
+                    title: 'Dispositivos', drawerIcon: ({ color }) => (<IonIcon name='tv-outline' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        bottom: 8
+
+                    }
                 }}
                 name="Device" component={DeviceScreen} />
+
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Modo oscuro', drawerIcon: ({ color }) => (<IonIcon name='moon-outline' size={20} color={color} />)
+                    title: 'Modo oscuro', drawerIcon: ({ color }) => (<IonIcon name='moon-outline' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        bottom: 6
+                    }
                 }}
                 name="Dark" component={DarkScreen} />
+
             <Drawer.Screen
                 options={{
                     headerShown: true,
-                    title: 'Configuracion', drawerIcon: ({ color }) => (<IonIcon name='settings-outline' size={20} color={color} />)
+                    title: 'Configuracion', drawerIcon: ({ color }) => (<IonIcon name='settings-outline' size={20} color={color} />),
+                    drawerItemStyle: {
+                        paddingHorizontal: 20,
+                        borderRadius: 10,
+                        bottom: 4
+
+                    }
                 }}
                 name="Setting" component={SettingScreen} />
+
         </Drawer.Navigator>
     );
 }
-
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => {
     return (
@@ -91,9 +132,9 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
         <DrawerContentScrollView>
 
             <View style={{
-                height: 80,
-                width: 80,
-                backgroundColor: globalColors.primary,
+                height: 60,
+                width: 60,
+                backgroundColor: globalColors.success,
                 margin: 30,
                 borderRadius: 50
             }}>
@@ -101,8 +142,10 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
 
             </View>
             <DrawerItemList {...props} />
-            <Text style={{ borderBottomColor: '#ccc', borderBottomWidth: 2, marginVertical: 10, bottom: 375, marginHorizontal: 10 }}></Text>
-
+            <Text style={{ borderBottomColor: '#ccc', borderBottomWidth: 2, bottom: 495, marginHorizontal: 18 }}></Text>
+            <Text style={{ color: globalColors.tertiary, position: 'absolute', top: 230, fontWeight: 'bold', fontSize: 20, marginHorizontal: 40 }}>Comunicaciones</Text>
+            <Text style={{ borderBottomColor: '#ccc', borderBottomWidth: 2, bottom: 292, marginHorizontal: 18 }}></Text>
+            <Text style={{ color: globalColors.tertiary, position: 'absolute', bottom: 255, fontWeight: 'bold', fontSize: 20, marginHorizontal: 40 }}>Configuraciones</Text>
         </DrawerContentScrollView>
     )
 }

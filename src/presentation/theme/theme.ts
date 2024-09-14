@@ -4,11 +4,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 
 export const globalColors = {
-    primary: '#2AB9B7',
-    secondary: '#f72585',
-    tertiary: '#3a0ca3',
+    primary: '#A0E7E5',
+    secondary: '#2AB9B7',
+    tertiary: '#0094B6',
     success: '#4cc9f0',
-    warning: '#fca311',
+    List_item: '#818181',
+    letter : '#C0C0C0',
     danger: '#e71d36',
     dark: '#22223b',
     background: '#fff',
