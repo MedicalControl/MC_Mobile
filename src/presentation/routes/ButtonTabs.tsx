@@ -12,6 +12,8 @@ import { Vaccine_card } from '../screens/Vaccine_card/Vaccine_card';
 
 const Tab = createBottomTabNavigator();
 
+
+
 export function ButtonTabs_Navigator() {
   return (
     <Tab.Navigator
@@ -33,7 +35,7 @@ export function ButtonTabs_Navigator() {
       }}
     >
       <Tab.Screen name="home"
-        options={{ title: 'Casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
+        options={{ title: 'Inicio', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
         component={HomeScreen} />
       <Tab.Screen name="Drugs"
         options={{ title: 'Medicamentos', tabBarIcon: ({ color }) => (<IonIcon name="medkit-outline" size={20} color={color} />) }}

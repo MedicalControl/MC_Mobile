@@ -53,4 +53,10 @@ export const globalStyles = StyleSheet.create({
         elevation : 2
     },
 
+    Text_Style : {
+        color : 'black',
+        fontWeight : 'bold',
+        fontSize : 45
+    }
+
 })
