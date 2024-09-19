@@ -1,8 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-
-import { Stack_Navigator } from './presentation/routes/StackNavigator';
 import { useState } from 'react'
-import { ButtonTabs_Navigator } from './presentation/routes/ButtonTabs';
 import { SideMenu } from './presentation/routes/SideMenuNavigator';
 
 

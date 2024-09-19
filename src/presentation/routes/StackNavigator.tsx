@@ -5,7 +5,7 @@ import { HomeScreen } from '../screens/Home/HomeScreen';
 import { RegisterScreen_2 } from '../screens/Register/RegisterScreen_2';
 import { RegisterScreen_3 } from '../screens/Register/RegisterScreen_3';
 import { SettingScreen } from '../screens/Setting/SettingScreen';
-import { ButtonTabs_Navigator } from './ButtonTabs';
+import { ButtonTabs_Navigator } from './ButtonTabs'
 import { Report_problemScreen } from '../screens/Report_problem/Report_problemScreen';
 import { Help_DeskScreen } from '../screens/Help_Desk/Help_DeskScreen';
 import { AboutScreen } from '../screens/About/AboutScreen';
