@@ -37,7 +37,7 @@ export const RegisterScreen_2 = () => {
   const onSubmit = (_data: any) => {
     // Navegar a register_2 solo si no hay errores
     if (Object.keys(errors).length === 0) {
-      navigation.navigate('Register_3');
+      navigation.navigate('Home');
     }
   };
 

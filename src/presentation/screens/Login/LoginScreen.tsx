@@ -6,6 +6,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 
+//editar registro 1 y registro 2
+//cambiar login
+//quitar logo (listo)
+//quitar titulo(listo)
+//poner img 1 (listo)
+//poner img 2  (listo)
+//poner img3   (listo)
 interface IFormInput {
   email: string;
   password: string;
@@ -22,16 +29,22 @@ export const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-
+      
       <Image
-        source={require('../Login/logo.png')}
-        style={styles.logo}
+        source={require('../Login/medical.jpg')}
+        style={styles.photo}
         resizeMode='contain'
       />
-
-      <Text style={styles.title}>Medical Control</Text>
-
-
+      <Image
+        source={require('../Login/med.png')}
+        style={styles.photo1}
+        resizeMode='contain'
+      />
+      <Image
+        source={require('../Login/logo.png')}
+        style={styles.photo2}
+        resizeMode='contain'
+      />
 
       <Controller
         control={control}
@@ -109,7 +122,7 @@ export const LoginScreen = () => {
       <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
       <Text
         style={styles.link}
-        onPress={() => navigation.navigate('Register_4')}
+        onPress={() => navigation.navigate('Register_1')}
       >
         Regístrate
       </Text>
@@ -124,57 +137,44 @@ const styles = StyleSheet.create({
     paddingTop: 160, // more space
     backgroundColor: '#fff',
   },
-  logo: {
-    width: 270,
-    height: 270,
-    alignSelf: 'center',
-    marginBottom: -60,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#333',
-    marginBottom: 10,
-  },
   input: {
-
     paddingHorizontal: 40,
-    fontSize: 14,
+    fontSize: 15,
     color: 'black',
-    width: 250,
+    width: 300,
     alignSelf: 'center',
-    marginTop: 5,
-    marginBottom: 5,
-    backgroundColor: '#d8d9ed',
-    height: 45,
+    marginTop: 250, 
+    marginBottom: 0, 
+    height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 18,
+    borderRadius: 12,
     paddingLeft: 38,
     paddingRight: 10,
+   
   },
   input2: {
     paddingHorizontal: 35,
-    fontSize: 14,
+    fontSize: 15,
     color: 'black',
-    width: 250,
+    width: 300,
     alignSelf: 'center',
-    marginTop: 5,
-    marginBottom: 10,
-    backgroundColor: '#d8d9ed',
-    height: 45,
+    marginTop: 5, 
+    marginBottom: 5,
+    height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 18,
+    borderRadius: 12,
     paddingLeft: 40,
     paddingRight: 10,
-
+    
   },
+
+
   button: {
-    height: 45,
-    backgroundColor: '#26A699',
-    borderRadius: 18,
+    height: 48,
+    backgroundColor: '#2AB9B7',
+    borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
     width: 170,
@@ -183,47 +183,44 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   buttonText: {
-    fontSize: 14,
+    fontSize: 15,
     color: '#fff',
     fontWeight: 'bold',
   },
   sentences: {
-    fontSize: 13,
+    fontSize: 14,
     color: 'black',
     textAlign: 'center',
     marginTop: 5,
   },
   sentences2: {
-    fontSize: 13,
+    fontSize: 14,
     color: 'black',
     textAlign: 'center',
     marginTop: 2,
     left: -30,
   },
   link: {
-    fontSize: 13,
-    color: '#26A699',
+    fontSize: 14,
+    color: '#2AB9B7',
     textDecorationLine: 'underline',
     textAlign: 'center',
-    marginTop: -17,
-    left: 68,
+    marginTop: -20,
+    left: 75,
   },
   //iconos
-  icon1: {
-
-    marginTop: 7,
+  icon1: { //contraseña
+    marginTop: 0,
     position: 'absolute',
-    left: 100,
-    top: 10,
-
-
+    left: 70, // horizontal
+    top: 20, //  alineado con el primer input
   },
-  icon2: {
-    marginTop: 3,
-    position: 'absolute',
-    left: 100,
-    top: 10,
 
+  icon2: { //correo
+    marginTop: 0,
+    position: 'absolute',
+    left: 70, 
+    top: 265, 
   },
   errorText: {
     color: 'red',
@@ -235,8 +232,31 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '100%',
     justifyContent: 'center',
+  },
+  photo: { // mujer y hombre
+    width: 500,
+    height: 450,
+    alignSelf: 'center',
+    position: 'absolute',
+    marginTop: 0, 
+    top: -80, 
+  },
+  photo1: { //elipse
+    alignSelf: 'center',
+    position: 'absolute',
+    marginTop: 0, 
+    top: 150, 
+    width: 320,  
+    height: 260, 
+  },
+  photo2: { // logo
+    alignSelf: 'center',
+    position: 'absolute',
+    marginTop: 0, 
+    top: 170, 
+    width: 320, 
+    height: 220, 
   }
-
 });
 
 

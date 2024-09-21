@@ -29,11 +29,11 @@ export function ButtonTabs_Navigator() {
         headerStyle: {
           elevation: 0,
           borderTopWidth: 0,
-          borderBottomWidth: 0,  
+          borderBottomWidth: 0,
           shadowColor: 'transparent', //adios linea 
 
         },
-}}>
+      }}>
       <Tab.Screen name="home"
         options={{ title: 'casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
         component={HomeScreen} />
