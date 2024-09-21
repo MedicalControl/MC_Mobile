@@ -17,6 +17,7 @@ import { Picker } from '@react-native-picker/picker';
 interface IFormInput {
   address: string;
   place: string;
+  date: string;
 
 
 }
@@ -99,7 +100,7 @@ export const RegisterScreen_2 = () => {
             fontSize: 14,
           }}
           onValueChange={(itemValue) => setMunicipio(itemValue)}
-        >  //pen: json para aca
+        >
           <Picker.Item label="Managua" value="managua" />
           <Picker.Item label="El Crucero" value="el_crucero" />
           <Picker.Item label="San Rafael del Sur" value="san_rafael_del_sur" />
@@ -149,6 +150,51 @@ export const RegisterScreen_2 = () => {
       />
 
       <Text style={globalStyles.label3}>Fecha de nacimiento</Text>
+      <Controller
+        control={control}
+        name="date"
+        rules={{
+          required: 'La fecha de nacimiento es obligatoria',
+          pattern: {
+            value: /^\d{2}\/\d{2}\/\d{4}$/,
+            message: 'La fecha debe estar en el formato dd/mm/aa',
+          },
+          maxLength: {
+            value: 10, 
+            message: 'La fecha no puede tener más de 10 caracteres',
+          },
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={globalStyles.container2}>
+            <TextInput
+              style={globalStyles.input4}
+              placeholder="  Dia/Mes/Año"
+              placeholderTextColor="#888"
+              keyboardType="numeric"
+              onBlur={onBlur}
+              onChangeText={(text) => {
+                
+                const filteredText = text.replace(/[^0-9]/g, '');
+                let formattedText = filteredText;
+                if (filteredText.length > 2) {
+                  formattedText = `${filteredText.slice(0, 2)}/${filteredText.slice(2)}`;
+                }
+                if (filteredText.length > 4) {
+                  formattedText = `${formattedText.slice(0, 5)}/${filteredText.slice(4, 8)}`;
+                }
+
+                onChange(formattedText);
+              }}
+              value={value}
+              maxLength={10} 
+            />
+            {errors.date && (
+              <Text style={styles.errorText1}>{errors.date.message}</Text>
+            )}
+          </View>
+        )}
+      />
+
 
 
 

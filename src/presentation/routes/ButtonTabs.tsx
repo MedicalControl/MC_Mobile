@@ -7,6 +7,7 @@ import { DrugsScreen } from '../screens/Drugs/DrugsScreen';
 import { Medical_appointments } from '../screens/Medical appointments/Medical_appointments';
 import { LocationScreen } from '../screens/Location/LocationScreen';
 import { Vaccine_card } from '../screens/Vaccine_card/Vaccine_card';
+import { View, Text, StyleSheet } from 'react-native';
 
 
 
@@ -26,11 +27,13 @@ export function ButtonTabs_Navigator() {
 
         },
         headerStyle: {
-          elevation: 0
-        }
+          elevation: 0,
+          borderTopWidth: 0,
+          borderBottomWidth: 0,  
+          shadowColor: 'transparent', //adios linea 
 
-      }}
-    >
+        },
+}}>
       <Tab.Screen name="home"
         options={{ title: 'casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
         component={HomeScreen} />
@@ -43,22 +46,25 @@ export function ButtonTabs_Navigator() {
       <Tab.Screen name="Location"
         options={{ title: 'Mapa', tabBarIcon: ({ color }) => (<IonIcon name="location-outline" size={20} color={color} />) }}
         component={LocationScreen} />
-      <Tab.Screen name="Vaccine_card"
-        options={{ title: 'Tarjeta de Vacuna', tabBarIcon: ({ color }) => (<IonIcon name="reader-outline" size={20} color={color} />) }}
-        component={Vaccine_card} />
+      <Tab.Screen
+        name="Vaccine_card"
+        component={Vaccine_card}
+        options={{
+          headerTitle: () => (
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Tarjeta de Vacunación</Text>
+            </View>
+          ),
+          tabBarIcon: ({ color }) => (
+            <IonIcon name="reader-outline" size={20} color={color} />
+          ),
+        }}
+      />
       <Tab.Screen name="About"
         options={{ title: 'Perfil', tabBarIcon: ({ color }) => (<IonIcon name="person-circle-outline" size={20} color={color} />) }}
         component={AboutScreen} />
-
-
-
-
 
     </Tab.Navigator>
   );
 }
 
-
-/*      <Tab.Screen name="Home"
-        options={{ title: 'casa', tabBarIcon: ({ color }) => (<IonIcon name="home-outline" size={20} color={color} />) }}
-        component={HomeScreen} /> */

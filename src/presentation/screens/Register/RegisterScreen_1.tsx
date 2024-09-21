@@ -247,25 +247,25 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 20, 
+        marginTop: 20,
         left: 30,
     },
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 10, 
+        marginTop: 10,
         left: 28,
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 5, 
+        marginTop: 5,
         left: 28,
     },
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 10, 
+        marginTop: 10,
         left: 30,
     },
     input: {
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#000',
         fontSize: 16,
         paddingHorizontal: 0,
-        marginBottom: 20, 
+        marginBottom: 20,
         width: 300,
     },
     input2: {
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#000',
         fontSize: 16,
-        marginBottom: 20, 
+        marginBottom: 20,
         width: 300,
         marginHorizontal: 5,
     },
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#000',
         fontSize: 16,
-        marginBottom: 20, 
+        marginBottom: 20,
         width: 300,
         marginHorizontal: 5,
     },
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#000',
         fontSize: 16,
         paddingHorizontal: 0,
-        marginBottom: 20, 
+        marginBottom: 20,
         width: 300,
     }
 });

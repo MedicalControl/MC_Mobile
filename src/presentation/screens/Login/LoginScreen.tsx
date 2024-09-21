@@ -4,13 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } fro
 import { RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-//cambiaremos screen fast
 
-//cambios de hoy:
-//-poner departamento tabla  (pantalla2 ) $
-//añadir correo y contra (pantalla 4)
-//poner el .json con mel en los de seleccion
-//añadir finalmente el calendario en el apartado de fecha (pantalla 1)
 
 interface IFormInput {
   email: string;

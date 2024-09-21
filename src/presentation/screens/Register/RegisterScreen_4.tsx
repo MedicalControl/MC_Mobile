@@ -120,7 +120,7 @@ export const RegisterScreen_4 = () => {
                             secureTextEntry
                         />
                         {errors.password && (
-                            <Text style={styles.errorText}>{errors.password.message}</Text>
+                            <Text style={styles.error2}>{errors.password.message}</Text>
                         )}
                     </View>
                 )}
@@ -203,6 +203,13 @@ const styles = StyleSheet.create({
         marginTop: 3,
         left: 10,
     },
+    error2:{
+        
+            color: 'red',
+            fontSize: 14,
+            marginTop:-75,
+            left: 10,
+    },
     correo: {
         height: 40,
         borderBottomWidth: 1,
@@ -215,10 +222,12 @@ const styles = StyleSheet.create({
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 5,
         marginBottom: 3,
-        left: 38,
+        left: 55,
+        position: 'absolute', 
+        top:350, 
     },
+
     password: {
         height: 40,
         borderBottomWidth: 1,
@@ -227,12 +236,17 @@ const styles = StyleSheet.create({
         width: 300,
         marginHorizontal: 5,
         marginBottom: 5,
+        position: 'absolute', 
+        top: -110, 
     },
+
+
     labelopc: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 5,
-        left: 28,
+        position: 'absolute', 
+        top: 520, 
+        left: 55,
     },
     boton: {
         height: 100,
@@ -242,8 +256,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 350,
         alignSelf: 'center',
-        marginBottom: 5,
-        marginTop: 0,
+        position: 'absolute', 
+        top: 570, 
         borderColor: '#ccc',
     },
     guardarButton: {

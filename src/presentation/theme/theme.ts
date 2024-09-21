@@ -57,14 +57,14 @@ export const globalStyles = StyleSheet.create({
     label0: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 70,
+        marginTop: 60,
         left: 30
 
     },
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 70,
+        marginTop:25,
         left: 30
 
     },
@@ -85,7 +85,7 @@ export const globalStyles = StyleSheet.create({
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 28,
+        marginTop: 10,
 
         left: 30,
     },
