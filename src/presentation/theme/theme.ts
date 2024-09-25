@@ -19,14 +19,6 @@ export const globalStyles = StyleSheet.create({
         padding: 20,
         backgroundColor: globalColors.background,
     },
-    primary_Button: {
-        backgroundColor: globalColors.primary,
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 10,
-        width: '100%',
-        alignItems: 'center',
-    },
     button_Text: {
         fontSize: 15,
         color: '#fff',
@@ -40,7 +32,8 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         width: 150,
         alignSelf: 'center',
-        marginBottom: 80,
+        marginBottom: 95,
+        marginTop: 15, // space
     },
     container2: {
         flex: 1,
@@ -53,7 +46,7 @@ export const globalStyles = StyleSheet.create({
     inputContainer: {
         marginTop: 10,
     },
-    //de aca cambie
+   
     label0: {
         fontSize: 16,
         fontWeight: 'bold',
@@ -99,8 +92,8 @@ export const globalStyles = StyleSheet.create({
         borderBottomColor: '#000',
         fontSize: 16,
         paddingHorizontal: 0,
-        marginBottom: 0, // Mantener en 0 o ajustar si es necesario
-        marginTop: -30,  // Ajusta este valor para subir el input
+        marginBottom: 0, 
+        marginTop: -30,  
         width: 370,
     },
     input2: {
@@ -131,66 +124,51 @@ export const globalStyles = StyleSheet.create({
         paddingHorizontal: 0,
         marginBottom: 80,
         width: 300,
-    },
+    },//ddel registro 1
     tittle: {
         fontSize: 27,
         fontWeight: 'bold',
-        marginBottom: 0, // Disminuye este valor para bajarlo menos
+        marginBottom: 0,
         left: 20,
-        marginTop: 25, // Añadir este valor para bajarlo aún más
+        marginTop: 15, 
         color: "#AABCDF"
     },
     tittle2: {
         fontSize: 34,
         fontWeight: 'bold',
-        marginBottom: 0, // Disminuye este valor para bajarlo menos
+        marginBottom: 0, 
         left: 20,
-        marginTop: -12, // Añadir este valor para bajarlo aún más
+        marginTop: -12, 
         color: "#6FA8DC"
     },
     tittle3: {
         fontSize: 16,
 
-        marginBottom: 0, // Disminuye este valor para bajarlo menos
+        marginBottom: 0,
         left: 20,
-        marginTop: -9, // Añadir este valor para bajarlo aún más
+        marginTop: -9,
         color: "#474747"
     },
     tittle4: {
         fontSize: 16,
 
-        marginBottom: -1, // Disminuye este valor para bajarlo menos
+        marginBottom: -1, 
         left: 20,
-        marginTop: -7, // Añadir este valor para bajarlo aún más
+        marginTop: -7,
         color: "#474747"
     },
     tittle5: {
         fontSize: 16,
-        marginBottom: -1, // Disminuye este valor para bajarlo menos
+        marginBottom: -1, 
         left: 20,
-        marginTop: -3, // Añadir este valor para bajarlo aún más
+        marginTop: -3, 
         color: "#474747"
     },
 
-    opc: {
-        height: 100,
-        backgroundColor: '#00B7EB',
-        borderRadius: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 350,
-        alignSelf: 'center',
-        marginBottom: -10,
-        marginTop: -10,
-        borderColor: '#ccc',
-
-
-    },
-    opcText: {
-        fontSize: 14,
-        color: '#fff',
-        fontWeight: 'bold',
-        top: 10
-    },
-
+   
 });
+//ESTOS ESTILOS MEL, LOS USO, EL PRIMARY BUTTON IGUAL, EL PRIMARY BUTTON LO USO EN EL 
+//REGISTRO Y 2
+//EL BOTON DEL LOGIN ES DIFERENTE
+//LAS NAVEGACIONES POR STACK SE QUEDAN
+//LA NAVEGACION POR BUTTOMS SE TIENE QUE CAMBIAR CON LO TUYO, POR ENDE LAS SCREENS

@@ -5,12 +5,7 @@ import { RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-//clean codigo carpetas
-//navegaciones
-//screens
-//formato dar
-//realizar copias de seguridad del cdigo
-//realizar commits de cambios en el login
+
 
 interface IFormInput {
   email: string;
@@ -121,7 +116,7 @@ export const LoginScreen = () => {
       <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
       <Text
         style={styles.link}
-        onPress={() => navigation.navigate('Register_2')}
+        onPress={() => navigation.navigate('Register_1')}
       >
         Regístrate
       </Text>
@@ -212,7 +207,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
     position: 'absolute',
     left: 70, // horizontal
-    top: 20, //  alineado con el primer input
+    top: 30, //  alineado con el primer input
   },
 
   icon2: { //correo
@@ -256,7 +251,7 @@ const styles = StyleSheet.create({
     top: 165,
     width: 332,
     height: 222,
-    left:52
+    left: 52
   }
 });
 

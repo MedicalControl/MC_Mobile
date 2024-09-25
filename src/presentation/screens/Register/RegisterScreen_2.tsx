@@ -20,7 +20,7 @@ interface IFormInput {
   address: string;
   cedula: string;
   date: string;
-  telefono:string;
+  telefono: string;
 
 
 }
@@ -31,6 +31,9 @@ export const RegisterScreen_2 = () => {
   const [municipio, setMunicipio] = useState('');
   const [depar, setDepar] = useState('');
   const [estado, setEstado] = useState('');
+  const [sexo, setSexo] = useState('');
+  const [ocupa, setOcupa] = useState('');
+  const [sangre, setSangre] = useState('');
 
 
   //-------------------------------------------------
@@ -197,13 +200,13 @@ export const RegisterScreen_2 = () => {
               placeholderTextColor="#888"
               onBlur={onBlur}
               onChangeText={(text) => {
-               
+
                 const filteredText = text.replace(/[^A-Za-z0-9-]/g, '');
                 onChange(filteredText);
               }}
               value={value}
-              autoCapitalize="characters" 
-              maxLength={17} 
+              autoCapitalize="characters"
+              maxLength={17}
             />
             {errors.cedula && (
               <Text style={styles.errorText1}>{errors.cedula.message}</Text>
@@ -218,7 +221,7 @@ export const RegisterScreen_2 = () => {
         rules={{
           required: 'El número de teléfono es obligatorio',
           pattern: {
-            value: /^[0-9]{8}$/, 
+            value: /^[0-9]{8}$/,
             message: 'El número debe contener exactamente 8 dígitos',
           },
           minLength: {
@@ -238,12 +241,12 @@ export const RegisterScreen_2 = () => {
               placeholderTextColor="#888"
               onBlur={onBlur}
               onChangeText={(text) => {
-                const filteredText = text.replace(/[^0-9]/g, ''); 
+                const filteredText = text.replace(/[^0-9]/g, '');
                 onChange(filteredText);
               }}
               value={value}
-              keyboardType="numeric" 
-              maxLength={8} 
+              keyboardType="numeric"
+              maxLength={8}
             />
             {errors.telefono && (
               <Text style={styles.errorText1}>{errors.telefono.message}</Text>
@@ -251,28 +254,98 @@ export const RegisterScreen_2 = () => {
           </View>
         )}
       />
-      <Text style={styles.label5}>Estado civil</Text>
-      <View style={{ flex: 1, alignItems: 'flex-start', left:20 }}> 
-        <Picker
-          selectedValue={estado}
-          style={{
-            height: 40,  //el flex end es der
-            width: 150,  //el flex start es izq
-            color: '#66696E',
-            fontSize: 14,
-            marginTop: 13//funciona al reves de los otros
-          }}
-          onValueChange={(itemValue) => setEstado(itemValue)}
-        >
-          <Picker.Item label="  " value="  " />
-          <Picker.Item label="Soltero" value="soltero" />
-          <Picker.Item label="Casado" value="casado" />
-        </Picker>
+
+      <View>
+        {/* Primer Grupo: Estado Civil y Sexo */}
+        <View style={[styles.horizontalGroup, { marginTop: 20 }]}> 
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label5}>Estado Civil</Text>
+            <Picker
+              selectedValue={estado}
+              style={{
+                height: 40,
+                width: '70%',
+                color: '#66696E',
+                fontSize: 14,
+                marginLeft: 22
+              }}
+              onValueChange={(itemValue) => setEstado(itemValue)}
+            >
+              <Picker.Item label=" " value="" />
+              <Picker.Item label="Soltero" value="soltero" />
+              <Picker.Item label="Casado" value="casado" />
+            </Picker>
+          </View>
+
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label6}>Sexo</Text>
+            <View style={styles.genderContainer}>
+              <TouchableOpacity
+                style={[styles.circleButton, sexo === 'masculino' && styles.selectedButton]}
+                onPress={() => setSexo('masculino')}
+              >
+              </TouchableOpacity>
+              <Text style={styles.labelText}>M</Text>
+              <TouchableOpacity
+                style={[styles.circleButton, sexo === 'femenino' && styles.selectedButton]}
+                onPress={() => setSexo('femenino')}
+              >
+              </TouchableOpacity>
+              <Text style={styles.labelText}>F</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Segundo Grupo: Ocupación y Tipo de Sangre */}
+        <View style={styles.horizontalGroup}>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label7}>Ocupación</Text>
+            <Picker
+              selectedValue={ocupa}
+              style={{
+                height: 40,
+                width: '70%',
+                color: '#66696E',
+                fontSize: 14,
+                marginLeft: 22
+              }}
+              onValueChange={(itemValue) => setOcupa(itemValue)}
+            >
+              <Picker.Item label=" " value="" />
+              <Picker.Item label="Conductor" value="opc1" />
+              <Picker.Item label="Abogada" value="opc2" />
+              <Picker.Item label="Comerciante" value="opc3" />
+              <Picker.Item label="Distribuidor" value="opc4" />
+              <Picker.Item label="Maestro" value="opc5" />
+            </Picker>
+          </View>
+
+          <View style={styles.fieldContainer}>
+            <Text style={styles.label8}>Tipo de Sangre</Text>
+            <Picker
+              selectedValue={sangre}
+              style={{
+                height: 40,
+                width: '70%',
+                color: '#66696E',
+                fontSize: 14,
+                marginLeft: 5
+              }}
+              onValueChange={(itemValue) => setSangre(itemValue)}
+            >
+              <Picker.Item label=" " value="" />
+              <Picker.Item label="A+" value="a+" />
+              <Picker.Item label="A-" value="a-" />
+              <Picker.Item label="B+" value="b+" />
+              <Picker.Item label="B-" value="b-" />
+              <Picker.Item label="AB+" value="ab+" />
+              <Picker.Item label="AB-" value="ab-" />
+              <Picker.Item label="O+" value="o+" />
+              <Picker.Item label="O-" value="o-" />
+            </Picker>
+          </View>
+        </View>
       </View>
-
-
-
-
 
       <PrimaryButton
         onPress={handleSubmit(onSubmit)}
@@ -342,7 +415,7 @@ const styles = StyleSheet.create({
     width: 315,
     marginHorizontal: 5,
   },
-  input5:{
+  input5: {
     height: 40,
     borderWidth: 1,
     borderColor: '#66696E',
@@ -376,17 +449,78 @@ const styles = StyleSheet.create({
     left: 28,
     color: '#66696E',
   },
-  label5: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: -95, //funciona dif too
-    left: 28,
-    color: '#66696E',
-  },
   icon2: {
     position: 'absolute',
     left: 300,
     top: 26,
+  },
+ 
+  genderContainer: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+  },
+  circleButton: {
+    width: 20, 
+    height: 20, 
+    borderRadius: 15, 
+    borderWidth: 1, 
+    borderColor: '#66696E', 
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5, 
+    backgroundColor: 'transparent', 
+  },
+  selectedButton: {
+    backgroundColor: '#2AB9B7', 
+  },
+  labelText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#66696E', 
+    marginHorizontal: 5, 
+  }, //los ultimos
+ 
+  //nueva inserccion
+  horizontalGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginVertical: 0, // Reducimos aún más el espaciado vertical
+  },
+  fieldContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginHorizontal: 3, // Reducimos más el espaciado horizontal
+    marginBottom: 0, // Reducimos más el margen inferior
+  },
+
+  label5: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -130, 
+    left: 19,
+    color: '#66696E',
+  },
+  label6: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -125, 
+    left: 8,
+    color: '#66696E',
+  },
+  label7: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -30, // Ajuste para el segundo grupo
+    left: 19,
+    color: '#66696E',
+  },
+  label8: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -30, // Ajuste para el segundo grupo
+    left: 8,
+    color: '#66696E',
   },
 
 });

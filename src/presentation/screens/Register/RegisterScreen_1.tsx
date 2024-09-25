@@ -293,28 +293,28 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 20,
+        marginTop: 15,
         left: 30,
         color: '#66696E'
     },
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 10,
+        marginTop: 9,
         left: 28,
         color: '#66696E'
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 5,
+        marginTop: 4,
         left: 28,
         color: '#66696E'
     },
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 10,
+        marginTop: 9,
         left: 30,
         color: '#66696E'
     },
