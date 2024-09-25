@@ -257,7 +257,7 @@ export const RegisterScreen_2 = () => {
 
       <View>
         {/* Primer Grupo: Estado Civil y Sexo */}
-        <View style={[styles.horizontalGroup, { marginTop: 20 }]}> 
+        <View style={[styles.horizontalGroup, { marginTop: 20 }]}>
           <View style={styles.fieldContainer}>
             <Text style={styles.label5}>Estado Civil</Text>
             <Picker
@@ -454,32 +454,32 @@ const styles = StyleSheet.create({
     left: 300,
     top: 26,
   },
- 
+
   genderContainer: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   circleButton: {
-    width: 20, 
-    height: 20, 
-    borderRadius: 15, 
-    borderWidth: 1, 
-    borderColor: '#66696E', 
+    width: 20,
+    height: 20,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: '#66696E',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 5, 
-    backgroundColor: 'transparent', 
+    marginHorizontal: 5,
+    backgroundColor: 'transparent',
   },
   selectedButton: {
-    backgroundColor: '#2AB9B7', 
+    backgroundColor: '#2AB9B7',
   },
   labelText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#66696E', 
-    marginHorizontal: 5, 
+    color: '#66696E',
+    marginHorizontal: 5,
   }, //los ultimos
- 
+
   //nueva inserccion
   horizontalGroup: {
     flexDirection: 'row',
@@ -497,14 +497,14 @@ const styles = StyleSheet.create({
   label5: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: -130, 
+    marginTop: -130,
     left: 19,
     color: '#66696E',
   },
   label6: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: -125, 
+    marginTop: -125,
     left: 8,
     color: '#66696E',
   },
