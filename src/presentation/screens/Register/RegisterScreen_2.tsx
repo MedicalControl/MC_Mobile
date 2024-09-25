@@ -30,6 +30,7 @@ export const RegisterScreen_2 = () => {
   const navigation = useNavigation<NavigationProp<RootStack>>();
   const [municipio, setMunicipio] = useState('');
   const [depar, setDepar] = useState('');
+  const [estado, setEstado] = useState('');
 
 
   //-------------------------------------------------
@@ -250,6 +251,25 @@ export const RegisterScreen_2 = () => {
           </View>
         )}
       />
+      <Text style={styles.label5}>Estado civil</Text>
+      <View style={{ flex: 1, alignItems: 'flex-start', left:20 }}> 
+        <Picker
+          selectedValue={estado}
+          style={{
+            height: 40,  //el flex end es der
+            width: 150,  //el flex start es izq
+            color: '#66696E',
+            fontSize: 14,
+            marginTop: 13//funciona al reves de los otros
+          }}
+          onValueChange={(itemValue) => setEstado(itemValue)}
+        >
+          <Picker.Item label="  " value="  " />
+          <Picker.Item label="Soltero" value="soltero" />
+          <Picker.Item label="Casado" value="casado" />
+        </Picker>
+      </View>
+
 
 
 
@@ -353,6 +373,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: -110,
+    left: 28,
+    color: '#66696E',
+  },
+  label5: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -95, //funciona dif too
     left: 28,
     color: '#66696E',
   },
