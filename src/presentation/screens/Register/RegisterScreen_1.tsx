@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, Image } from 'react-native'
+import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../theme/theme';
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import { useNavigation, type NavigationProp } from '@react-navigation/native'
@@ -8,17 +8,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-//pendiente subir los componentes
-//validacion x hooks
-//cedula si o si son 17 caracteres
-//tambien corregir ortografia registro bien
-//componer componentes de largo tambien
+//quitar titulo y logos (listo)
+//cambiar icono de atras (listo)
+//cambiar estilo inputs 
+//cambiar estructura en si de los inputs
+//añadir texto arribaa (listo)
+//poner espacio de foto en borde punteado(listo)
+//modificar boton(listo)
 
 interface IFormInput {
     nombres: string;
     apellidos: string;
-    cedula: string;
-    telefono: string;
+    password: string;
+    gmail: string;
+    inss: string;
 }
 
 export const RegisterScreen_1 = () => {
@@ -34,14 +37,21 @@ export const RegisterScreen_1 = () => {
     //__________________________________________________________________________________________________________________________________
     return (
         <View style={styles.container}>
-            <Image
-                source={require('../Register/rectan.png')}
-                style={styles.logo}
-                resizeMode='contain'
-            />
-            <Icon name="chevron-back" size={25} color="black" style={styles.icon}
+
+
+            <Icon name="arrow-back-circle-sharp" size={25} color="#616161" style={styles.icon}
                 onPress={() => navigation.navigate('Login')} />
-            <Text style={globalStyles.tittle}>Primer Paso</Text>
+            <Text style={globalStyles.tittle}>¡Bienvenido a</Text>
+            <Text style={globalStyles.tittle2}>Medical control!</Text>
+            <Text style={globalStyles.tittle3}>Por favor, proporcióna algunos datos</Text>
+            <Text style={globalStyles.tittle4}>personales para empezar a cuidar de tu </Text>
+            <Text style={globalStyles.tittle5}>salud.</Text>
+
+            <TouchableOpacity style={styles.button}>
+                <Icon name="images-outline" size={29} color="#545454" style={styles.icon2} />
+                <Text style={styles.buttonText}>Agregar foto de perfil</Text>
+            </TouchableOpacity>
+
             <Text style={styles.label}>Nombres</Text>
 
             <Controller
@@ -60,6 +70,7 @@ export const RegisterScreen_1 = () => {
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
+
                         <TextInput
                             style={styles.input}
                             placeholder="Ingresa tu nombre"
@@ -79,6 +90,8 @@ export const RegisterScreen_1 = () => {
                     </View>
                 )}
             />
+
+
 
             <Text style={styles.label2}>Apellidos</Text>
             <Controller
@@ -116,37 +129,35 @@ export const RegisterScreen_1 = () => {
                     </View>
                 )}
             />
-            <Text style={styles.label3}>Cédula</Text>
+            <Text style={styles.label3}>Email</Text>
             <Controller
                 control={control}
-                name="cedula"
+                name="gmail"
                 rules={{
-                    required: 'El número de cédula es obligatorio',
+                    required: 'El gmail es obligatorio',
                     pattern: {
-                        value: /^[A-Za-z0-9-]+$/,
-                        message: 'La cédula solo puede contener letras, números y guiones',
+                        value: /^[A-Za-z0-9._-]+@gmail\.com$/,
+                        message: 'El gmail debe ser un correo válido de Gmail.',
                     },
                     maxLength: {
-                        value: 17,
-                        message: 'La cédula no puede tener más de 17 caracteres',
+                        value: 30,
+                        message: 'El gmail no puede tener más de 25 caracteres.',
                     },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
                         <TextInput
                             style={styles.input3}
-                            placeholder="Ingresa tu número de cédula"
+                            placeholder="Ingresa tu correo"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
-                            onChangeText={(text) => {
-                                const filteredText = text.replace(/[^A-Za-z0-9-]/g, '');
-                                onChange(filteredText);
-                            }}
+                            onChangeText={onChange}
                             value={value}
-                            maxLength={17}
+                            autoCapitalize="none"
+                            maxLength={30}
                         />
-                        {errors.cedula && (
-                            <Text style={styles.errorText}>{errors.cedula.message}</Text>
+                        {errors.gmail && (
+                            <Text style={styles.errorText}>{errors.gmail.message}</Text>
                         )}
                     </View>
                 )}
@@ -154,45 +165,99 @@ export const RegisterScreen_1 = () => {
 
 
 
-            <Text style={styles.label4}>Teléfono</Text>
+
+            <Text style={styles.label4}>Contraseña</Text>
 
             <Controller
                 control={control}
-                name="telefono"
+                name="password"
                 rules={{
-                    required: 'El número de teléfono es obligatorio',
+                    required: 'La contraseña es obligatoria',
                     pattern: {
-                        value: /^[0-9]{8}$/,
-                        message: 'El número de teléfono debe tener exactamente 8 dígitos',
+                        value: /^[A-Za-z0-9]+$/,
+                        message: 'La contraseña solo puede tener letras y números, sin espacios',
+                    },
+                    minLength: {
+                        value: 8,
+                        message: 'La contraseña debe tener al menos 8 caracteres',
+                    },
+                    maxLength: {
+                        value: 16,
+                        message: 'La contraseña no puede tener más de 16 caracteres',
                     },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
                         <TextInput
                             style={styles.input4}
-                            placeholder="Ingresa tu número de teléfono"
+                            placeholder="Ingresa tu contraseña"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
                             onChangeText={(text) => {
-                                const filteredText = text.replace(/[^0-9]/g, '');
-                                onChange(filteredText);
+                                const sanitizedText = text.replace(/\s/g, '');
+                                onChange(sanitizedText);
                             }}
                             value={value}
-                            maxLength={8}
+                            autoCapitalize="none"
+                            maxLength={16}
+                            secureTextEntry
+                        />
+                        {errors.password && (
+                            <Text style={styles.errorText}>{errors.password.message}</Text>
+                        )}
+                    </View>
+                )}
+            />
+            <Text style={styles.label5}>No.Inss</Text>
+            <Controller
+                control={control}
+                name="inss"
+                rules={{
+                    required: 'El número INSS es obligatorio',
+                    pattern: {
+                        value: /^[0-9]{3}-[0-9]{5}-[0-9]{3}$/,
+                        message: 'El número INSS debe tener el formato XXX-XXXXX-XXX',
+                    },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <View style={styles.container}>
+                        <TextInput
+                            style={styles.input5}
+                            placeholder="Ingresa tu número INSS"
+                            placeholderTextColor="#888"
+                            onBlur={() => {
+                                onBlur();
+
+                                if (!/^[0-9]{3}-[0-9]{5}-[0-9]{3}$/.test(value)) {
+
+                                    onChange('');
+                                }
+                            }}
+                            onChangeText={(text) => {
+
+                                const filteredText = text.replace(/[^0-9]/g, '');
+
+
+                                if (filteredText.length <= 3) {
+                                    onChange(filteredText);
+                                } else if (filteredText.length <= 8) {
+                                    onChange(`${filteredText.slice(0, 3)}-${filteredText.slice(3)}`);
+                                } else if (filteredText.length <= 11) {
+                                    onChange(`${filteredText.slice(0, 3)}-${filteredText.slice(3, 8)}-${filteredText.slice(8)}`);
+                                }
+                            }}
+                            value={value}
+                            maxLength={13}
                             keyboardType="numeric"
                         />
-                        {errors.telefono && (
-                            <Text style={styles.errorText}>{errors.telefono.message}</Text>
+                        {errors.inss && (
+                            <Text style={styles.errorText}>{errors.inss.message}</Text>
                         )}
                     </View>
                 )}
             />
 
-            <Image
-                source={require('../Register/rectan.png')}
-                style={styles.logo2}
-                resizeMode='contain'
-            />
+
 
             <PrimaryButton
                 onPress={handleSubmit(onSubmit)}
@@ -206,36 +271,17 @@ export const RegisterScreen_1 = () => {
 const styles = StyleSheet.create({
     //icono de arriba con navegacion
     icon: {
-        marginTop: 11,
+        marginTop: 10,
         position: 'absolute',
-        left: 0,
-        top: 14,
+        left: 20,
+        top: 12,
     }, //sms de error
     errorText: {
         color: 'red',
         left: 10,
         fontSize: 14,
-        marginTop: -10,
+        marginTop: 0,
 
-    },
-    logo: {
-        width: 500,
-        height: 500,
-        alignSelf: 'center',
-        position: 'absolute',
-        marginTop: -270,
-        top: 10,
-        transform: [{ rotate: '-11deg' }],
-    },
-    logo2: {
-
-        width: 500,
-        height: 530,
-        alignSelf: 'center',
-        position: 'absolute',
-        marginTop: 630,
-        top: 10,
-        transform: [{ rotate: '-10deg' }],
     },
     container: {
         flex: 1,
@@ -249,59 +295,113 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 20,
         left: 30,
+        color: '#66696E'
     },
     label2: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 10,
         left: 28,
+        color: '#66696E'
     },
     label3: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 5,
         left: 28,
+        color: '#66696E'
     },
     label4: {
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 10,
         left: 30,
+        color: '#66696E'
+    },
+    label5: { //inss
+
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 5,
+        left: 30,
+        color: '#66696E'
+
     },
     input: {
         height: 40,
-        borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        borderWidth: 1,
+        borderColor: '#66696E',
+        borderRadius: 8,
         fontSize: 16,
-        paddingHorizontal: 0,
-        marginBottom: 20,
-        width: 300,
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
+        marginHorizontal: 5,
+        width: 316,
     },
     input2: {
         height: 40,
-        borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        borderWidth: 1,
+        borderColor: '#66696E',
+        borderRadius: 8,
         fontSize: 16,
-        marginBottom: 20,
-        width: 300,
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
         marginHorizontal: 5,
+        width: 316,
     },
     input3: {
         height: 40,
-        borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        borderWidth: 1,
+        borderColor: '#66696E',
+        borderRadius: 8,
         fontSize: 16,
-        marginBottom: 20,
-        width: 300,
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
         marginHorizontal: 5,
+        width: 316,
     },
     input4: {
         height: 40,
-        borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        borderWidth: 1,
+        borderColor: '#66696E',
+        borderRadius: 8,
         fontSize: 16,
-        paddingHorizontal: 0,
-        marginBottom: 20,
-        width: 300,
-    }
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
+        marginHorizontal: 5,
+        width: 316,
+    },
+    input5: { //inss
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#66696E',
+        borderRadius: 8,
+        fontSize: 16,
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
+        marginHorizontal: 5,
+        width: 316,
+    },
+    button: {
+
+        width: 325,
+        height: 135,
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: 'gray',
+        borderStyle: 'dotted',
+        justifyContent: 'center',
+        alignItems: 'center',
+        left: 20
+    },
+    icon2: {
+        marginRight: 10,
+    },
+    buttonText: {
+        color: '#2AB9B7',
+        fontSize: 15,
+        fontWeight: 'bold',
+        marginLeft: 10,
+        left: 0
+    },
 });

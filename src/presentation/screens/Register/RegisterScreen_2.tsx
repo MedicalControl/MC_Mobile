@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Text, View, Image } from 'react-native'
+import { Button, Text, View, Image, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../theme/theme'
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
@@ -11,13 +11,16 @@ import { Picker } from '@react-native-picker/picker';
 
 
 
-//Haciendo validacion aca
-//recorda despues subir los componentes
+//quitar logos(listo)
+//cambiar icono (listo)
+//componer inputs y pickers (listo)
+//usar los inputs del tercero aca
 
 interface IFormInput {
   address: string;
-  place: string;
+  cedula: string;
   date: string;
+  telefono:string;
 
 
 }
@@ -27,6 +30,8 @@ export const RegisterScreen_2 = () => {
   const navigation = useNavigation<NavigationProp<RootStack>>();
   const [municipio, setMunicipio] = useState('');
   const [depar, setDepar] = useState('');
+
+
   //-------------------------------------------------
 
 
@@ -45,28 +50,25 @@ export const RegisterScreen_2 = () => {
   return (
     <View style={globalStyles.container2}>
 
-      <Image
-        source={require('../Register/rectan.png')}
-        style={styles.logo}
-        resizeMode='contain'
-      />
 
 
-      <Icon name="chevron-back" size={25} color="black" style={styles.icon}
+
+      <Icon name="arrow-back-circle-sharp" size={25} color="#616161" style={styles.icon}
         onPress={() => navigation.navigate('Register_1')} />
-      <Text style={globalStyles.tittle}>Segundo Paso</Text>
-      <Text style={globalStyles.label0}>Departamento</Text>
+      <Text style={styles.label0}>Departamento de nacimiento</Text>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Picker
           selectedValue={depar}
           style={{
             height: 40,
             width: 310,
-            color: '#000',
+            color: '#66696E',
             fontSize: 14,
+            marginTop: -70 // Ajusta este valor para subir el Picker
           }}
           onValueChange={(itemValue) => setDepar(itemValue)}
         >
+          <Picker.Item label="  " value="  " />
           <Picker.Item label="Boaco" value="boaco" />
           <Picker.Item label="Carazo" value="carazo" />
           <Picker.Item label="Chinandega" value="chinan" />
@@ -85,10 +87,11 @@ export const RegisterScreen_2 = () => {
           <Picker.Item label="Río San Juan" value="rio" />
           <Picker.Item label="Rivas" value="rivas" />
         </Picker>
+
       </View>
 
 
-      <Text style={globalStyles.label}>Municipio</Text>
+      <Text style={styles.label}>Municipio de nacimiento</Text>
 
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Picker
@@ -96,11 +99,13 @@ export const RegisterScreen_2 = () => {
           style={{
             height: 40,
             width: 310,
-            color: '#000',
+            color: '#66696E',
             fontSize: 14,
+            marginTop: -110
           }}
           onValueChange={(itemValue) => setMunicipio(itemValue)}
         >
+          <Picker.Item label="  " value="  " />
           <Picker.Item label="Managua" value="managua" />
           <Picker.Item label="El Crucero" value="el_crucero" />
           <Picker.Item label="San Rafael del Sur" value="san_rafael_del_sur" />
@@ -112,44 +117,8 @@ export const RegisterScreen_2 = () => {
         </Picker>
       </View>
 
-      <Text style={globalStyles.label2}>Dirección</Text>
-      <Controller
-        control={control}
-        name="address"
-        rules={{
-          required: 'La dirección es obligatoria',
-          pattern: {
-            value: /^[A-Za-z0-9\s]+$/,
-            message: 'La dirección solo puede contener letras, números y espacios',
-          },
-          maxLength: {
-            value: 30,
-            message: 'La dirección no puede tener más de 30 caracteres',
-          },
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={globalStyles.container2}>
-            <TextInput
-              style={globalStyles.input2}
-              placeholder="Ingresa tu dirección"
-              placeholderTextColor="#888"
-              onBlur={onBlur}
-              onChangeText={(text) => {
-                const filteredText = text.replace(/[^A-Za-z0-9\s]/g, '');
-                onChange(filteredText);
-              }}
-              value={value}
-              autoCapitalize="words"
-              maxLength={30}
-            />
-            {errors.address && (
-              <Text style={styles.errorText1}>{errors.address.message}</Text>
-            )}
-          </View>
-        )}
-      />
+      <Text style={styles.label2}>Fecha de nacimiento</Text>
 
-      <Text style={globalStyles.label3}>Fecha de nacimiento</Text>
       <Controller
         control={control}
         name="date"
@@ -157,23 +126,24 @@ export const RegisterScreen_2 = () => {
           required: 'La fecha de nacimiento es obligatoria',
           pattern: {
             value: /^\d{2}\/\d{2}\/\d{4}$/,
-            message: 'La fecha debe estar en el formato dd/mm/aa',
+            message: 'La fecha debe estar en el formato dd/mm/yyyy',
           },
           maxLength: {
-            value: 10, 
+            value: 10,
             message: 'La fecha no puede tener más de 10 caracteres',
           },
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={globalStyles.container2}>
+            <Icon name="calendar-clear-outline" size={20} color="#545454" style={styles.icon2} />
             <TextInput
-              style={globalStyles.input4}
-              placeholder="  Dia/Mes/Año"
+              style={styles.input2}
+              placeholder="  dd/mm/yyyy"
               placeholderTextColor="#888"
               keyboardType="numeric"
               onBlur={onBlur}
               onChangeText={(text) => {
-                
+
                 const filteredText = text.replace(/[^0-9]/g, '');
                 let formattedText = filteredText;
                 if (filteredText.length > 2) {
@@ -186,7 +156,7 @@ export const RegisterScreen_2 = () => {
                 onChange(formattedText);
               }}
               value={value}
-              maxLength={10} 
+              maxLength={10}
             />
             {errors.date && (
               <Text style={styles.errorText1}>{errors.date.message}</Text>
@@ -198,35 +168,84 @@ export const RegisterScreen_2 = () => {
 
 
 
-      <Text style={globalStyles.label4}>Lugar de nacimiento</Text>
+
+      <Text style={styles.label3}>No. de cédula</Text>
       <Controller
         control={control}
-        name="place"
+        name="cedula"
         rules={{
-          required: 'El lugar es obligatorio',
+          required: 'El número de cédula es obligatorio',
           pattern: {
-            value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
-            message: 'El lugar solo puede contener letras y espacios',
+            value: /^[0-9]{3}-[0-9]{6}-[0-9]{4}[A-Z]$/,
+            message: 'El formato debe ser 000-000000-0000T',
+          },
+          minLength: {
+            value: 17,
+            message: 'La cédula debe tener exactamente 17 caracteres',
           },
           maxLength: {
-            value: 10,
-            message: 'El lugar no puede tener más de 10 caracteres',
+            value: 17,
+            message: 'La cédula debe tener exactamente 17 caracteres',
           },
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={globalStyles.container2}>
             <TextInput
               style={styles.input4}
-              placeholder="Ingresa tu lugar de nacimiento"
+              placeholder="000-000000-0000T"
               placeholderTextColor="#888"
               onBlur={onBlur}
-              onChangeText={onChange}
+              onChangeText={(text) => {
+               
+                const filteredText = text.replace(/[^A-Za-z0-9-]/g, '');
+                onChange(filteredText);
+              }}
               value={value}
-              autoCapitalize="words"
-              maxLength={10}
+              autoCapitalize="characters" 
+              maxLength={17} 
             />
-            {errors.place && (
-              <Text style={styles.errorText}>{errors.place.message}</Text>
+            {errors.cedula && (
+              <Text style={styles.errorText1}>{errors.cedula.message}</Text>
+            )}
+          </View>
+        )}
+      />
+      <Text style={styles.label4}>Teléfono</Text>
+      <Controller
+        control={control}
+        name="telefono"
+        rules={{
+          required: 'El número de teléfono es obligatorio',
+          pattern: {
+            value: /^[0-9]{8}$/, 
+            message: 'El número debe contener exactamente 8 dígitos',
+          },
+          minLength: {
+            value: 8,
+            message: 'El número debe tener exactamente 8 dígitos',
+          },
+          maxLength: {
+            value: 8,
+            message: 'El número debe tener exactamente 8 dígitos',
+          },
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={globalStyles.container2}>
+            <TextInput
+              style={styles.input4}
+              placeholder="Ingrese su número de teléfono"
+              placeholderTextColor="#888"
+              onBlur={onBlur}
+              onChangeText={(text) => {
+                const filteredText = text.replace(/[^0-9]/g, ''); 
+                onChange(filteredText);
+              }}
+              value={value}
+              keyboardType="numeric" 
+              maxLength={8} 
+            />
+            {errors.telefono && (
+              <Text style={styles.errorText1}>{errors.telefono.message}</Text>
             )}
           </View>
         )}
@@ -234,11 +253,7 @@ export const RegisterScreen_2 = () => {
 
 
 
-      <Image
-        source={require('../Register/rectan.png')}
-        style={styles.logo2}
-        resizeMode='contain'
-      />
+
       <PrimaryButton
         onPress={handleSubmit(onSubmit)}
         label='Siguiente'
@@ -251,63 +266,101 @@ const styles = StyleSheet.create({
   icon: {
     marginTop: 11,
     position: 'absolute',
-    left: 0,
+    left: 20,
     top: 14,
   },
   errorText: {
     color: 'red',
     left: 10,
     fontSize: 14,
-    marginTop: -20,
+    marginTop: -10,
 
   },
   errorText1: {
     color: 'red',
     left: 10,
     fontSize: 14,
-    marginTop: -80,
+    marginTop: -10,
 
   },
-  picker: {
-    height: 50,
-    width: '100%',
-    color: '#888',
+  // Estilos
+  label0: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 25,
+    left: 30,
+    color: '#66696E',
   },
-  pickLabel: {
-    fontSize: 10,
-    color: 'pink',
+  input2: {
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#66696E',
+    borderRadius: 5,
+    fontSize: 16,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    width: 315,
+    marginHorizontal: 5,
+  },
 
-  },
-  logo: {
-    width: 500,
-    height: 450,
-    alignSelf: 'center',
-    position: 'absolute',
-    marginTop: -235,
-    top: 10,
-    transform: [{ rotate: '-13deg' }],
-  },
-  logo2: {
 
-    width: 500,
-    height: 530,
-    alignSelf: 'center',
-    position: 'absolute',
-    marginTop: 630,
-    top: 10,
-    transform: [{ rotate: '-10deg' }],
-    zIndex: -1,
+  label2: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -90,
+    left: 28,
+    color: '#66696E',
   },
   input4: {
     height: 40,
-    borderBottomWidth: 1,
-    borderBottomColor: '#000',
+    borderWidth: 1,
+    borderColor: '#66696E',
+    borderRadius: 5,
     fontSize: 16,
-    paddingHorizontal: 0,
-    marginBottom: 20,
-    width: 300,
-    zIndex: 1,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    width: 315,
+    marginHorizontal: 5,
+  },
+  input5:{
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#66696E',
+    borderRadius: 5,
+    fontSize: 16,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    width: 315,
+    marginHorizontal: 5,
+  },
 
-  }
+
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -70,
+    left: 30,
+    color: '#66696E',
+  },
+  label3: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -110,
+    left: 28,
+    color: '#66696E',
+  },
+  label4: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -110,
+    left: 28,
+    color: '#66696E',
+  },
+  icon2: {
+    position: 'absolute',
+    left: 300,
+    top: 26,
+  },
+
 });
 

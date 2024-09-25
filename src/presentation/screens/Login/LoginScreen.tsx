@@ -5,14 +5,13 @@ import { RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
+//clean codigo carpetas
+//navegaciones
+//screens
+//formato dar
+//realizar copias de seguridad del cdigo
+//realizar commits de cambios en el login
 
-//editar registro 1 y registro 2
-//cambiar login
-//quitar logo (listo)
-//quitar titulo(listo)
-//poner img 1 (listo)
-//poner img 2  (listo)
-//poner img3   (listo)
 interface IFormInput {
   email: string;
   password: string;
@@ -29,7 +28,7 @@ export const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      
+
       <Image
         source={require('../Login/medical.jpg')}
         style={styles.photo}
@@ -122,7 +121,7 @@ export const LoginScreen = () => {
       <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
       <Text
         style={styles.link}
-        onPress={() => navigation.navigate('Register_1')}
+        onPress={() => navigation.navigate('Register_2')}
       >
         Regístrate
       </Text>
@@ -143,15 +142,15 @@ const styles = StyleSheet.create({
     color: 'black',
     width: 300,
     alignSelf: 'center',
-    marginTop: 250, 
-    marginBottom: 0, 
+    marginTop: 250,
+    marginBottom: 0,
     height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 12,
     paddingLeft: 38,
     paddingRight: 10,
-   
+
   },
   input2: {
     paddingHorizontal: 35,
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
     color: 'black',
     width: 300,
     alignSelf: 'center',
-    marginTop: 5, 
+    marginTop: 15, //bajarlo subirlo 
     marginBottom: 5,
     height: 50,
     borderColor: '#ccc',
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingLeft: 40,
     paddingRight: 10,
-    
+
   },
 
 
@@ -219,8 +218,8 @@ const styles = StyleSheet.create({
   icon2: { //correo
     marginTop: 0,
     position: 'absolute',
-    left: 70, 
-    top: 265, 
+    left: 70,
+    top: 265,
   },
   errorText: {
     color: 'red',
@@ -238,24 +237,26 @@ const styles = StyleSheet.create({
     height: 450,
     alignSelf: 'center',
     position: 'absolute',
-    marginTop: 0, 
-    top: -80, 
+    marginTop: 0,
+    top: -90,
   },
   photo1: { //elipse
     alignSelf: 'center',
     position: 'absolute',
-    marginTop: 0, 
-    top: 150, 
-    width: 320,  
-    height: 260, 
+    marginTop: 0,
+    top: 147,
+    width: 330,
+    height: 260,
+    left: 57
   },
   photo2: { // logo
     alignSelf: 'center',
     position: 'absolute',
-    marginTop: 0, 
-    top: 170, 
-    width: 320, 
-    height: 220, 
+    marginTop: 0,
+    top: 165,
+    width: 332,
+    height: 222,
+    left:52
   }
 });
 
