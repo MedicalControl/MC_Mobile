@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Pressable, StyleSheet, Text } from 'react-native'
 import { icon } from '../../../constants/icon';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Icon from '@mdi/react';
 
 
 const TabbarButton = ({ onPress, onLongPress, isFocused, routeName, color, label }:
@@ -48,9 +49,7 @@ const TabbarButton = ({ onPress, onLongPress, isFocused, routeName, color, label
             style={styles.tabbarItem}
         >
             <Animated.View style={animatedIconStyle}>
-                {icon[routeName]({
-                    color: isFocused ? '#0094B6' : '#545454',
-                })}
+    
             </Animated.View>
 
             <Animated.Text
