@@ -3,7 +3,7 @@ import { globalColors, globalStyles } from '../../theme/theme';
 import { useNavigation, NavigationProp, DrawerActions } from '@react-navigation/native';
 import { RootStack } from '../../routes/StackNavigator'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { HamburgerMenu } from '../../components/shared/HamburgerMenu';
+import { Header } from '../../components/shared/Header';
 import { useEffect } from 'react';
 import { Img_Picture } from '../../components/shared/img_Picture';
 import { PrimaryButton } from '../../components/shared/PrimaryButton';
@@ -22,7 +22,7 @@ export const HomeScreen = () => {
 
     return (
         <View style={globalStyles.container}>
-            <HamburgerMenu />
+            <Header />
             <Img_Picture />
             <Text style={globalStyles.Text_Style}>Bienvenido,</Text>
             <Text style={globalStyles.Text_Style}>{name}</Text>

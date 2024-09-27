@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
+import { Header } from '../../components/shared/Header'
 import { Img_Picture } from '../../components/shared/img_Picture'
 
 export const Vaccine_card = () => {
     return (
         <View>
-          <HamburgerMenu />
+          <Header />
           <Img_Picture />
         </View>
     )

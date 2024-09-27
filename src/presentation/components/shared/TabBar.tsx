@@ -4,38 +4,44 @@ import TabbarButton from './TabbarButton';
 import { useState } from 'react';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
-
 export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-    const [dimensions, setDimensions] = useState({ height: 20, width: 100 })
+    const [dimensions, setDimensions] = useState({ height: 20, width: 100 });
 
     const buttonWidth = dimensions.width / state.routes.length;
 
     const onTabbarLayout = (e: LayoutChangeEvent) => {
-
         setDimensions({
             height: e.nativeEvent.layout.height,
             width: e.nativeEvent.layout.width
-        })
-    }
+        });
+    };
 
     const tabPositionX = useSharedValue(0);
 
     const animatedStyle = useAnimatedStyle(() => {
         return { 
-            transform : [{translateX: tabPositionX.value}]
-        }
+            transform: [{ translateX: tabPositionX.value }]
+        };
     });
+
+    // Array of icons for each tab
+    const icons = [
+        'home-outline',     
+        'calendar-outline', 
+        'notifications-outline',
+        'layers-outline' 
+    ];
 
     return (
         <View onLayout={onTabbarLayout} style={styles.tabbar}>
-            <Animated.View  style = {[animatedStyle, {
-                position : 'absolute',
-                backgroundColor: '#723FEB',
+            <Animated.View style={[animatedStyle, {
+                position: 'absolute',
+                backgroundColor: '#0094B6',
                 borderRadius: 30,
                 marginHorizontal: 12,
-                height : dimensions.height - 15,
-                width : buttonWidth - 25
-            }]}/>
+                height: dimensions.height - 20,
+                width: buttonWidth - 20
+            }]} />
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =
@@ -68,6 +74,7 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
                         target: route.key,
                     });
                 };
+
                 return (
                     <TabbarButton
                         key={route.name}
@@ -77,7 +84,7 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
                         routeName={route.name}
                         color={isFocused ? '#0094B6' : '#545454'}
                         label={label}
-
+                        nameIcon={icons[index]} // Use the icon based on the index
                     />
                 );
             })}
@@ -85,30 +92,7 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
     );
 }
 
-
-/*
-
- <TouchableOpacity
-                        key={route.name}
-                        accessibilityRole="button"
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
-                        onPress={onPress}
-                        onLongPress={onLongPress}
-                        style={styles.tabbarItem}
-                    >
-                        {icon[route.name]({
-                            color: isFocused ? '#0094B6' : '#545454',
-                        })}
-                        <Text style={{ color: isFocused ? '#0094B6' : '#545454' }}>
-                            {label}
-                        </Text>
-                    </TouchableOpacity>
- */
-
 const styles = StyleSheet.create({
-
     tabbar: {
         position: 'absolute',
         bottom: 50,
@@ -125,4 +109,4 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         shadowOpacity: 0.1
     },
-})
+});

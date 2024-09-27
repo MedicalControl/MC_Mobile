@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
+import { HamburgerMenu } from '../../components/shared/Header'
 import { globalColors, globalStyles } from '../../theme/theme'
 
 export const DeviceScreen = () => {

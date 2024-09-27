@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
+import { HamburgerMenu } from '../../components/shared/Header'
 import { Img_Picture } from '../../components/shared/img_Picture'
 
 export const LocationScreen = () => {

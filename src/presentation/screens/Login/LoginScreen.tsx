@@ -4,7 +4,7 @@ import { globalStyles } from '../../theme/theme'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { PrimaryButton } from '../../components/shared/PrimaryButton'
 import type { RootStack } from '../../routes/StackNavigator'
-import { HamburgerMenu } from '../../components/shared/HamburgerMenu'
+import { HamburgerMenu } from '../../components/shared/Header'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export const LoginScreen = () => {
