@@ -1,8 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
-
-import { Stack_Navigator } from './presentation/routes/StackNavigator';
 import { useState } from 'react'
-import { ButtonTabs_Navigator } from './presentation/routes/ButtonTabs';
+import { SideMenu } from './presentation/routes/SideMenuNavigator';
 
 
 export default function App() {
@@ -12,8 +10,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack_Navigator />
+      {/*<Stack_Navigator />*/}
       {/*<ButtonTabs_Navigator />*/}
+      <SideMenu />
     </NavigationContainer>
   )
 }
