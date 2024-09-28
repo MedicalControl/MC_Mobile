@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '../screens/Home/HomeScreen';
 import { globalColors } from '../theme/theme';
 import { DrugsScreen } from '../screens/Drugs/DrugsScreen';
@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 export function ButtonTabs_Navigator() {
   return (
     <Tab.Navigator
-      tabBar={props => <MyTabBar {...props} />}
+      tabBar={(props: BottomTabBarProps) => <MyTabBar {...props} />}
       
       sceneContainerStyle={{
         backgroundColor: globalColors.background
