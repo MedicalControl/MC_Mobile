@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 //hay que poner botones en la parte de arriba
 //poner busqueda debajo
 //y la flatlist
-// a la flatlist poner navegacion
+// a la flatlist poner navegacinon
 //hay que poner el .json en el login
 //en la parte de la fecha poner un  formato dia, fecha valido, menos del 2010
 export const Vaccine_card = () => {
