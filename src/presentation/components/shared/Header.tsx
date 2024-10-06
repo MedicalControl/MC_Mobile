@@ -8,6 +8,7 @@ import {
   Pressable,
   View,
   StyleSheet,
+  Image
 } from "react-native";
 import { IonIcon } from "./Ionicon";
 import { globalColors } from "../../theme/theme";
@@ -17,6 +18,7 @@ export const Header = () => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
+
         <View>
           <Pressable
             style={{ marginLeft: 20 }}
@@ -39,20 +41,30 @@ export const HeaderLeftOptions = () => {
     navigation.setOptions({
       headerRight: () => (
         <View style={styles.header}>
-          <Pressable style={styles.headerOption} onPress={() => navigation.navigate("Notification")}>
-            <IonIcon
-              name={"notifications-outline"}
-              color={globalColors.dark}
-              size={25}
-            />
-          </Pressable>
-          <Pressable style={styles.headerOption} onPress={() => navigation.navigate("Message")}>
-            <IonIcon
-              name={"chatbubble-outline"}
-              color={globalColors.dark}
-              size={25}
-            />
-          </Pressable>
+          <Image
+            source={require('../../assets/Medical_Control.png')}
+            style={styles.logo}
+          />
+          <View style={styles.iconsContainer}>
+            <Pressable style={styles.headerOption} onPress={() => navigation.navigate("Notification")}>
+              <IonIcon
+                name={"notifications-outline"}
+                color={globalColors.dark}
+                size={25}
+
+              />
+            </Pressable>
+          </View>
+          <View style={styles.iconsContainer}>
+            <Pressable style={styles.headerOption} onPress={() => navigation.navigate("Message")}>
+              <IonIcon
+                name={"chatbubble-outline"}
+                color={globalColors.dark}
+                size={25}
+              />
+            </Pressable>
+          </View>
+
         </View>
       ),
     });
@@ -70,4 +82,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     gap: 5,
   },
+  logo: {
+    width: 100,
+    height: 60,
+  },
+  iconsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
 });

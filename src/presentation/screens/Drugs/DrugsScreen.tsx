@@ -2,8 +2,6 @@ import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { ThreeButton } from '../../components/shared/ThreeButton'
 import { Header } from '../../components/shared/Header';
-import { Img_Picture } from '../../components/shared/img_Picture';
-
 
 
 
@@ -79,7 +77,7 @@ export const DrugsScreen = () => {
         
         <ScrollView>
             <Header />
-            <Img_Picture />
+            
             {
                 arr.map((i, index) => (
                     <View
