@@ -12,6 +12,7 @@ import { DarkScreen } from '../screens/Dark/DarkScreen';
 import { Notification } from '../screens/Notification/Notification';
 import { DeviceScreen } from '../screens/Device/DeviceScreen';
 import { globalColors } from '../theme/theme';
+import { MessageScreen } from '../screens/Message/MessageScreen';
 
 
 //Type of router_Navigation object
@@ -27,7 +28,8 @@ export type RootStack = {
     Report_problem: undefined,
     Notification: undefined,
     Dark: undefined,
-    Device: undefined
+    Device: undefined,
+    Message: undefined
 
 }
 
@@ -73,6 +75,7 @@ export const Stack_Navigator = () => {
                     }
                 }}
                 name="Device" component={DeviceScreen} />
+            <Stack.Screen name='Message' component = {MessageScreen} />
 
 
 

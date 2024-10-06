@@ -4,12 +4,7 @@ import { useNavigation, NavigationProp, DrawerActions } from '@react-navigation/
 import { RootStack } from '../../routes/StackNavigator'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Header } from '../../components/shared/Header';
-import { useEffect } from 'react';
-import { Img_Picture } from '../../components/shared/img_Picture';
-import { PrimaryButton } from '../../components/shared/PrimaryButton';
 import { SecondButton, SecondButton_home } from '../../components/shared/SecondButton';
-import { IonIcon } from '../../components/shared/Ionicon';
-
 
 
 
@@ -23,7 +18,6 @@ export const HomeScreen = () => {
     return (
         <View style={globalStyles.container}>
             <Header />
-            <Img_Picture />
             <Text style={globalStyles.Text_Style}>Bienvenido,</Text>
             <Text style={globalStyles.Text_Style}>{name}</Text>
             <Text style={{ marginVertical: 30, fontSize: 30, color: globalColors.tertiary, fontWeight: 'bold', marginHorizontal: 5 }}>Actividad Diaria</Text>

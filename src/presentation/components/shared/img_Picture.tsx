@@ -15,7 +15,7 @@ export const Img_Picture = () => {
             headerRight: () => (
                 <Image
                 source={require('..//../assets/Medical_Control.png')}
-                style = {{width: 100, height: 60, right: 20}}
+                style = {{width: 100, height: 60, right: 50}}
                 />
             )
         })

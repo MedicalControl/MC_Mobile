@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Header } from '../../components/shared/Header';
 //esta es la de vacunas a editar
 //hay que poner botones en la parte de arriba
 //poner busqueda debajo
@@ -11,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 export const Vaccine_card = () => {
     return (
         <View style={styles.container}>
+            <Header />
 
         </View>
     )

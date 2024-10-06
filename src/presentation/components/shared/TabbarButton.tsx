@@ -21,7 +21,7 @@ const TabbarButton = ({ onPress, onLongPress, isFocused, routeName, color, label
 
     const animatedIconStyle = useAnimatedStyle(() => {
         const scaleValue = interpolate(scale.value, [0, 1], [1, 1.2]);
-        const top = interpolate(scale.value, [0, 1], [0, -5]);
+        const top = interpolate(scale.value, [5, 10], [0, -5]);
 
         return {
             transform: [{ scale: scaleValue }],
@@ -47,11 +47,14 @@ const TabbarButton = ({ onPress, onLongPress, isFocused, routeName, color, label
                     name={nameIcon}
                     size={24}
                     color={isFocused ? '#ffffff' : '#777'}
+                    style={{
+                        top:2
+                    }}
                 />
             </Animated.View>
 
             <Animated.Text
-                style={[{ color: isFocused ? '#0094B6' : '#777' }, animatedTextStyle]}>
+                style={[{ color: isFocused ? '#0094B6' : '#777', top:5 }, animatedTextStyle]}>
                 {label}
             </Animated.Text>
         </Pressable>

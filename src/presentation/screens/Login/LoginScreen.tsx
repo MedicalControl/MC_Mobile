@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } fro
 import { RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { PrimaryButton } from '../../components/shared/PrimaryButton';
 
 
 
@@ -103,10 +104,6 @@ export const LoginScreen = () => {
           </View>
         )}
       />
-
-
-
-
       <TouchableOpacity style={styles.button}
         onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Acceder</Text>
@@ -120,6 +117,12 @@ export const LoginScreen = () => {
       >
         Regístrate
       </Text>
+
+      <PrimaryButton
+        onPress={() => navigation.navigate("Home")}
+        label='home'
+      />
+
     </View>
   );
 };
