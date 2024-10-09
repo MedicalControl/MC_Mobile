@@ -1,16 +1,15 @@
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { Stack_Navigator } from './StackNavigator';
-import { AboutScreen } from '../screens/About/AboutScreen';
 import { globalColors } from '../theme/theme';
-import { View, Image, Text } from 'react-native';
+import { View,  Text } from 'react-native';
 import { IonIcon } from '../components/shared/Ionicon';
-import { DeviceScreen } from '../screens/Device/DeviceScreen';
-import { MessageScreen } from '../screens/Message/MessageScreen';
-import { LabScreen } from '../screens/Result_Lab/LabScreen';
-import { Notification } from '../screens/Notification/Notification';
-import { LanguageScreen } from '../screens/Language/LanguageScreen';
-import { DarkScreen } from '../screens/Dark/DarkScreen';
-import { SettingScreen } from '../screens/Setting/SettingScreen';
+import { MessageScreen } from '../screens/SideBarMenu/Notification/Message/MessageScreen';
+import { LabScreen } from '../screens/SideBarMenu/Result_Lab/LabScreen';
+import { Notification } from '../screens/SideBarMenu/Notification/Notification';
+import { LanguageScreen } from '../screens/SideBarMenu/Language/LanguageScreen';
+import { DarkScreen } from '../screens/SideBarMenu/Dark/DarkScreen';
+import { SettingScreen } from '../screens/SideBarMenu/Setting/SettingScreen';
+import { DeviceScreen } from '../screens/SideBarMenu/Device/DeviceScreen';
 
 const Drawer = createDrawerNavigator();
 

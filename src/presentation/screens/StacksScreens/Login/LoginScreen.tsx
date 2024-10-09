@@ -1,10 +1,12 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
-import { RootStack } from '../../routes/StackNavigator';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { PrimaryButton } from '../../components/shared/PrimaryButton';
+import { PrimaryButton } from '../../../components/shared/PrimaryButton';
+import { RootStack } from '../../../routes/StackNavigator';
+
 
 
 

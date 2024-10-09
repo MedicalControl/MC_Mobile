@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native'
-import { globalStyles } from '../../theme/theme';
-import { PrimaryButton } from '../../components/shared/PrimaryButton'
+import { globalStyles } from '../../../theme/theme';
+import { PrimaryButton } from '../../../components/shared/PrimaryButton'
 import { useNavigation, type NavigationProp } from '@react-navigation/native'
-import { type RootStack } from '../../routes/StackNavigator';
+import { type RootStack } from '../../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { CameraAdapter } from '../../setting/adapters/camera-adapters';
+import { CameraAdapter } from '../../../setting/adapters/camera-adapters';
 
 //quitar titulo y logos (listo)
 //cambiar icono de atras (listo)

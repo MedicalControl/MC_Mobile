@@ -1,9 +1,9 @@
 import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '../screens/Home/HomeScreen';
 import { globalColors } from '../theme/theme';
-import { DrugsScreen } from '../screens/Drugs/DrugsScreen';
-import { Medical_appointments } from '../screens/Medical appointments/Medical_appointments';
-import { Vaccine_card } from '../screens/Vaccine_card/Vaccine_card';
+
+import { Medical_appointments } from '../screens/tabsScreens/Medical appointments/Medical_appointments';
+import { Vaccine_card } from '../screens/tabsScreens/Vaccine_card/Vaccine_card';
 import { MyTabBar } from '../components/shared/TabBar';
 import { TopTabsNavigator } from './TopTabsNavigator';
 

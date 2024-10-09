@@ -1,11 +1,11 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { DrugsScreen } from '../screens/Drugs/DrugsScreen';
 import React from 'react';
 import { Header } from '../components/shared/Header';
-import { BuyScreen } from '../screens/Buy_Drug/BuyScreen';
-import { SearchScreen } from '../screens/Search_Drug/SearchScreen';
+import { BuyScreen } from '../screens/MaterialBottom/Buy_Drug/BuyScreen';
+import { SearchScreen } from '../screens/MaterialBottom/Search_Drug/SearchScreen';
 import { globalColors } from '../theme/theme';
 import { IonIcon } from '../components/shared/Ionicon';
+import { DrugsScreen } from '../screens/MaterialBottom/Drugs/DrugsScreen';
 
 
 const Tab = createMaterialTopTabNavigator();

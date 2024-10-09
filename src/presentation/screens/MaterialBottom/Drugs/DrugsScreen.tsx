@@ -1,8 +1,7 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
-import { ThreeButton } from '../../components/shared/ThreeButton'
-import { Header } from '../../components/shared/Header';
-
+import { Header } from '../../../components/shared/Header';
+import { ThreeButton } from '../../../components/shared/ThreeButton';
 
 
 const arr = [

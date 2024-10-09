@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { Header } from '../../components/shared/Header'
+import { Header } from '../../../components/shared/Header'
 
 export const Medical_appointments = () => {
-    return (
-        <View>
+  return (
+    <View>
       <Header />
-
-        </View>
-    )
+      <Text>Hola</Text>
+    </View>
+  )
 }
