@@ -7,6 +7,7 @@ import { type RootStack } from '../../routes/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { CameraAdapter } from '../../setting/adapters/camera-adapters';
 
 //quitar titulo y logos (listo)
 //cambiar icono de atras (listo)
@@ -27,6 +28,7 @@ interface IFormInput {
 export const RegisterScreen_1 = () => {
     const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
     const navigation = useNavigation<NavigationProp<RootStack>>();
+    const [photoUri, setPhotoUri] = useState<string | null>(null);
 
     const onSubmit = (_data: any) => {
         // Navegar a register_2 solo si no hay errores
@@ -47,13 +49,28 @@ export const RegisterScreen_1 = () => {
             <Text style={globalStyles.tittle4}>personales para empezar a cuidar de tu </Text>
             <Text style={globalStyles.tittle5}>salud.</Text>
 
-            <TouchableOpacity style={styles.button}>
-                <Icon name="images-outline" size={29} color="#545454" style={styles.icon2} />
-                <Text style={styles.buttonText}>Agregar foto de perfil</Text>
+            <TouchableOpacity style={styles.button}
+                onPress={async () => {
+                    const photos = await CameraAdapter.takePicture();
+                    if (photos.length > 0) {
+                        setPhotoUri(photos[0]);
+                        console.log('Foto tomada:', photos[0]);
+                        { photoUri && <Image source={{ uri: photoUri }} style={styles.image} /> }
+                    } else {
+                        Alert.alert('Error', 'No se pudo tomar la foto.');
+                    }
+                }}
+            >
+                {!photoUri ? (
+                    <>
+                        <Icon name='images-outline' size={29} color={"#545454"} style={styles.icon2} />
+                        <Text style={styles.buttonText}>Agregar foto de perfil </Text>
+                    </>
+                ) : (
+                    <Image source={{ uri: photoUri }} style={styles.image} />
+                )}
             </TouchableOpacity>
-
             <Text style={styles.label}>Nombres</Text>
-
             <Controller
                 control={control}
                 name="nombres"
@@ -90,9 +107,6 @@ export const RegisterScreen_1 = () => {
                     </View>
                 )}
             />
-
-
-
             <Text style={styles.label2}>Apellidos</Text>
             <Controller
                 control={control}
@@ -162,12 +176,7 @@ export const RegisterScreen_1 = () => {
                     </View>
                 )}
             />
-
-
-
-
             <Text style={styles.label4}>Contraseña</Text>
-
             <Controller
                 control={control}
                 name="password"
@@ -227,17 +236,12 @@ export const RegisterScreen_1 = () => {
                             placeholderTextColor="#888"
                             onBlur={() => {
                                 onBlur();
-
                                 if (!/^[0-9]{3}-[0-9]{5}-[0-9]{3}$/.test(value)) {
-
                                     onChange('');
                                 }
                             }}
                             onChangeText={(text) => {
-
                                 const filteredText = text.replace(/[^0-9]/g, '');
-
-
                                 if (filteredText.length <= 3) {
                                     onChange(filteredText);
                                 } else if (filteredText.length <= 8) {
@@ -256,9 +260,6 @@ export const RegisterScreen_1 = () => {
                     </View>
                 )}
             />
-
-
-
             <PrimaryButton
                 onPress={handleSubmit(onSubmit)}
                 label='Siguiente'
@@ -404,4 +405,10 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         left: 0
     },
+    image: {
+        width: 320,
+        height: 130,
+
+        borderRadius: 8
+    }
 });
