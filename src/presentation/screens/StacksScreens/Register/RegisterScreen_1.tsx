@@ -30,6 +30,45 @@ export const RegisterScreen_1 = () => {
     const navigation = useNavigation<NavigationProp<RootStack>>();
     const [photoUri, setPhotoUri] = useState<string | null>(null);
 
+    const moreOptionAlert = () => {
+        Alert.alert(
+
+            'Imagen Medical Control',
+            "Seleccione una accion",
+            [
+                {
+                    text: "Galeria",
+                    onPress: async () => {
+                        const photos = await CameraAdapter.pickImage();
+                        if (photos.length > 0) {
+                            setPhotoUri(photos[0]);
+                            console.log('Foto tomada:', photos[0]);
+                            { photoUri && <Image source={{ uri: photoUri }} style={styles.image} /> }
+                        } else {
+                            Alert.alert('Error', 'Foto no seleccionada');
+                        }
+                    }
+                }
+                ,
+                {
+                    text: "Camara",
+                    onPress: async () => {
+                        const photos = await CameraAdapter.takePicture();
+                        if (photos.length > 0) {
+                            setPhotoUri(photos[0]);
+                            console.log('Foto tomada:', photos[0]);
+                            { photoUri && <Image source={{ uri: photoUri }} style={styles.image} /> }
+                        } else {
+                            Alert.alert('Error', 'Foto no tomada');
+                        }
+                    }
+                }
+            ]
+        )
+    }
+
+
+
     const onSubmit = (_data: any) => {
         // Navegar a register_2 solo si no hay errores
         if (Object.keys(errors).length === 0) {
@@ -50,16 +89,8 @@ export const RegisterScreen_1 = () => {
             <Text style={globalStyles.tittle5}>salud.</Text>
 
             <TouchableOpacity style={styles.button}
-                onPress={async () => {
-                    const photos = await CameraAdapter.takePicture();
-                    if (photos.length > 0) {
-                        setPhotoUri(photos[0]);
-                        console.log('Foto tomada:', photos[0]);
-                        { photoUri && <Image source={{ uri: photoUri }} style={styles.image} /> }
-                    } else {
-                        Alert.alert('Error', 'No se pudo tomar la foto.');
-                    }
-                }}
+                onPress={moreOptionAlert}
+
             >
                 {!photoUri ? (
                     <>
@@ -69,6 +100,7 @@ export const RegisterScreen_1 = () => {
                 ) : (
                     <Image source={{ uri: photoUri }} style={styles.image} />
                 )}
+
             </TouchableOpacity>
             <Text style={styles.label}>Nombres</Text>
             <Controller
