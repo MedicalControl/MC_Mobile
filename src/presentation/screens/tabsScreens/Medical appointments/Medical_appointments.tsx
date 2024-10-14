@@ -4,6 +4,7 @@ import { Header } from '../../../components/shared/Header';
 import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from 'react-native-modern-datepicker';
 import { IonIcon } from '../../../components/shared/Ionicon';
+import { Calendar } from '../../../components/shared/Calendar';
 
 const today: Date = new Date();
 today.setDate(today.getDate() + 1);
@@ -62,36 +63,12 @@ export const Medical_appointments = () => {
           <Pressable onPress={handleOnPress} style={styles.calendarButton}>
             <Text style={styles.calendarButtonText}>Calendario</Text>
             <IonIcon name='chevron-down-sharp' size={20} color='#545454' />
-            <Modal
-              animationType='fade'
-              transparent={true}
-              visible={open}
-            >
-              <View style={styles.modalContainer}>
-                <View style={styles.datePickerContainer}>
-                  <DatePicker
-                    mode="calendar"
-                    minimumDate={startDate}
-                    selected={date}
-                    onDateChange={handleDateChange}
-                    onSelectedChange={(date: string) => setDate(date)}
-                    options={{
-                      backgroundColor: '#FFFFFF',
-                      textHeaderColor: '#469ab6',
-                      textDefaultColor: 'black',
-                      selectedTextColor: '#FFF',
-                      mainColor: '#2AB9B7',
-                      textSecondaryColor: '#2AB9B7',
-                      borderColor: 'rgba(122,146,165,0.1)',
-                    }}
-                  />
-                  {/* Botón para cerrar el DatePicker */}
-                  <TouchableOpacity onPress={handleOnPress}>
-                    <Text>Close</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Modal>
+          <Calendar 
+          handleDateChange={handleDateChange}
+          handleOnPress={handleOnPress}
+          open = {open}
+          startDate={startDate}
+          />
           </Pressable>
         </View>
 
