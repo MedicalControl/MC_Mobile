@@ -1,7 +1,7 @@
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { Stack_Navigator } from './StackNavigator';
 import { globalColors } from '../theme/theme';
-import { View,  Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { IonIcon } from '../components/shared/Ionicon';
 import { MessageScreen } from '../screens/SideBarMenu/Notification/Message/MessageScreen';
 import { LabScreen } from '../screens/SideBarMenu/Result_Lab/LabScreen';
@@ -136,9 +136,14 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
                 backgroundColor: globalColors.success,
                 margin: 30,
                 borderRadius: 50
+
             }}>
 
-
+                <Image
+                    source={require('../assets/Melanie.jpeg')}
+                    style={{width:60, height: 60, borderRadius: 50}}
+                
+                />
             </View>
             <DrawerItemList {...props} />
             <Text style={{ borderBottomColor: '#ccc', borderBottomWidth: 2, bottom: 495, marginHorizontal: 18 }}></Text>

@@ -28,9 +28,9 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
     // Array of icons for each tab
     const icons = [
         'home-outline',     
+        'heart-circle-outline',
         'calendar-outline', 
-        'notifications-outline',
-        'layers-outline' 
+        'stats-chart'
     ];
 
     return (

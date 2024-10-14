@@ -3,7 +3,7 @@ import { HomeScreen } from '../screens/Home/HomeScreen';
 import { globalColors } from '../theme/theme';
 
 import { Medical_appointments } from '../screens/tabsScreens/Medical appointments/Medical_appointments';
-import { Vaccine_card } from '../screens/tabsScreens/Vaccine_card/Vaccine_card';
+import { Control_Parental } from '../screens/tabsScreens/Control_Parental/Control_Parental';
 import { MyTabBar } from '../components/shared/TabBar';
 import { TopTabsNavigator } from './TopTabsNavigator';
 
@@ -24,7 +24,7 @@ export function ButtonTabs_Navigator() {
       <Tab.Screen name="home" options={{ title: 'Inicio'}} component={HomeScreen} />
       <Tab.Screen name="Drugs" options={{ title: 'Medicamentos' }} component={TopTabsNavigator} />
       <Tab.Screen name="Medical_appointments" options={{ title: 'Citas Medicas' }} component={Medical_appointments} />
-      <Tab.Screen name="Vaccine_card" options={{ title: 'Tarjeta de Vacuna' }} component={Vaccine_card} />
+      <Tab.Screen name="ControlParental" options={{ title: 'Control Parental' }} component={Control_Parental} />
     </Tab.Navigator>
   );
 }

@@ -12,13 +12,13 @@ export const HomeScreen = () => {
 
     const navigation = useNavigation<NavigationProp<RootStack>>();
     const { top } = useSafeAreaInsets();
-    const name = 'Cristopher';
+    const name = 'Melanie Arias';
 
 
     return (
         <View style={globalStyles.container}>
             <Header />
-            <Text style={globalStyles.Text_Style}>Bienvenido,</Text>
+            <Text style={globalStyles.Text_Style}>Bienvenida,</Text>
             <Text style={globalStyles.Text_Style}>{name}</Text>
             <Text style={{ marginVertical: 30, fontSize: 30, color: globalColors.tertiary, fontWeight: 'bold', marginHorizontal: 5 }}>Actividad Diaria</Text>
             <View style={{ flexDirection: 'row', alignItems: 'stretch', marginHorizontal: 5, justifyContent: 'space-between' }}>

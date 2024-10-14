@@ -9,7 +9,7 @@ import { Header } from '../../../components/shared/Header';
 // a la flatlist poner navegacinon
 //hay que poner el .json en el login
 //en la parte de la fecha poner un  formato dia, fecha valido, menos del 2010
-export const Vaccine_card = () => {
+export const Control_Parental = () => {
     return (
         <View style={styles.container}>
             <Header />
