@@ -81,9 +81,6 @@ export const Medical_appointments = () => {
       time: "10:00 AM",
     },
   ]
-
-
-
   return (
     <View style={{ flex: 1 }}>
       <Header />
@@ -100,20 +97,28 @@ export const Medical_appointments = () => {
             />
           </Pressable>
         </View>
-        {
-          arr.map((i, index) => (
-            <View
-              key={`${i.hospital}-${index}`}
-              style={{ padding: 20, marginTop: calendarOpen ? 300 : 2 }}>
-              <DateTimeCita
-                asunto={i.hospital}
-                Hospital={i.hospital}
-                fecha={i.date}
-                hora={i.time}
-              />
-            </View>
-          ))
-        }
+
+        {!calendarOpen ? (
+          <>
+            {
+              arr.map((i, index) => (
+                <View
+                  key={`${i.hospital}-${index}`}
+                  style={{ padding: 20 }}>
+                  <DateTimeCita
+                    asunto={i.hospital}
+                    Hospital={i.hospital}
+                    fecha={i.date}
+                    hora={i.time}
+                  />
+                </View>
+              ))
+            }
+          </>
+        ):(
+          <Text></Text>
+        )}
+
       </ScrollView>
 
 
