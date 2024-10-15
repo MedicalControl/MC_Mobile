@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Text, View, Modal, TouchableOpacity, ScrollView, Pressable, StyleSheet } from 'react-native';
 import { Header } from '../../../components/shared/Header';
-import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from 'react-native-modern-datepicker';
 import { IonIcon } from '../../../components/shared/Ionicon';
 import { Calendar } from '../../../components/shared/Calendar';
+import { DateTimeCita } from '../../../components/shared/DateTimeCita';
 
 const today: Date = new Date();
 today.setDate(today.getDate() + 1);
@@ -55,6 +55,35 @@ export const Medical_appointments = () => {
     '03:00 PM', '04:00 PM'
   ];
 
+  const arr = [
+    {
+      title: "Cita médica",
+      hospital: "Hospital Roberto Huembe",
+      date: "Miércoles 17 de Enero",
+      time: "10:00 AM",
+    },
+    {
+      title: "Consulta odontológica",
+      hospital: "Clínica Dental Central",
+      date: "Viernes 20 de Enero",
+      time: "10:00 AM",
+    },
+    {
+      title: "Chequeo general",
+      hospital: "Hospital Metropolitano",
+      date: "Lunes 22 de Enero",
+      time: "10:00 AM",
+    },
+    {
+      title: "Cita de oftalmología",
+      hospital: "Centro Médico Visión Clara",
+      date: "Jueves 25 de Enero",
+      time: "10:00 AM",
+    },
+  ]
+
+
+
   return (
     <View style={{ flex: 1 }}>
       <Header />
@@ -63,49 +92,30 @@ export const Medical_appointments = () => {
           <Pressable onPress={handleOnPress} style={styles.calendarButton}>
             <Text style={styles.calendarButtonText}>Calendario</Text>
             <IonIcon name='chevron-down-sharp' size={20} color='#545454' />
-          <Calendar 
-          handleDateChange={handleDateChange}
-          handleOnPress={handleOnPress}
-          open = {open}
-          startDate={startDate}
-          />
+            <Calendar
+              handleDateChange={handleDateChange}
+              handleOnPress={handleOnPress}
+              open={open}
+              startDate={startDate}
+            />
           </Pressable>
         </View>
-
-        <View style={{ padding: 20, marginTop: calendarOpen ? 320 : 10 }}>
-          <View style={styles.appointmentContainer}>
-            <View style={styles.iconContainer}>
-              <IonIcon name="calendar-outline" size={20} color="#545454" />
-              <IonIcon name="time-outline" size={20} color="#545454" />
+        {
+          arr.map((i, index) => (
+            <View
+              key={`${i.hospital}-${index}`}
+              style={{ padding: 20, marginTop: calendarOpen ? 300 : 2 }}>
+              <DateTimeCita
+                asunto={i.hospital}
+                Hospital={i.hospital}
+                fecha={i.date}
+                hora={i.time}
+              />
             </View>
-            <View style={{ marginLeft: 10 }}>
-              <Text style={styles.titleText}>Cita médica</Text>
-              <Text style={styles.descriptionText}>Hospital Roberto Huembe</Text>
-              <Text style={styles.descriptionText}>Miércoles 17 de Enero</Text>
-              <Text style={styles.descriptionText}>8:00 AM - 10:00 AM</Text>
-            </View>
-            <View style={styles.forwardIcon}>
-              <IonIcon name="chevron-forward-outline" size={17} color="#545454" />
-            </View>
-          </View>
-
-          <View style={styles.appointmentContainer}>
-            <View style={styles.iconContainer}>
-              <IonIcon name="calendar-outline" size={20} color="#545454" />
-              <IonIcon name="time-outline" size={20} color="#545454" />
-            </View>
-            <View style={{ marginLeft: 10 }}>
-              <Text style={styles.titleText}>Retiro de medicamentos</Text>
-              <Text style={styles.descriptionText}>Hospital Roberto Huembe</Text>
-              <Text style={styles.descriptionText}>Miércoles 28 de Enero</Text>
-              <Text style={styles.descriptionText}>8:00 AM - 4:00 PM</Text>
-            </View>
-            <View style={styles.forwardIcon}>
-              <IonIcon name="chevron-forward-outline" size={17} color="#545454" />
-            </View>
-          </View>
-        </View>
+          ))
+        }
       </ScrollView>
+
 
       <Modal visible={menuVisible} animationType="slide" transparent={true}>
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
@@ -124,7 +134,6 @@ export const Medical_appointments = () => {
                 </TouchableOpacity>
               ))}
             </View>
-
             <ScrollView style={styles.hourScrollContainer}>
               {hourOptions.map((hour, index) => (
                 <TouchableOpacity
@@ -197,50 +206,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  datePickerContainer: {
-    position: 'relative',
-    bottom: 150,
-    margin: 10,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 20,
-    width: '60%',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 1,
-  },
-  appointmentContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#f8f8f8',
-    padding: 20,
-    borderRadius: 10,
-    marginVertical: 10,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-  },
-  iconContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  titleText: {
-    fontSize: 18,
-    fontWeight: 'bold', //los de las citas texto grande
-    color: '#545454'
-  },
-  descriptionText: {
-    fontSize: 14, //los de las citas
-    color: '#545454',
-  },
-  forwardIcon: {
-    marginLeft: 'auto',  //los iconos que van a otra cosa
-  },
+
   menuContainer: {
     backgroundColor: 'white',
     borderTopLeftRadius: 20,

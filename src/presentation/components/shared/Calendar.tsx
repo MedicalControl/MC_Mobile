@@ -1,8 +1,9 @@
-import { View, Pressable, Modal, Text, StyleSheet } from "react-native"
+import { View, Pressable, Modal, Text, StyleSheet, Button } from 'react-native';
 import { IonIcon } from "./Ionicon"
 import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from "react-native-modern-datepicker";
 import { useState } from "react";
+import { globalColors } from "../../theme/theme";
 
 const today: Date = new Date();
 today.setDate(today.getDate() + 1);
@@ -16,8 +17,8 @@ interface PropsPicker {
     handleDateChange: (date: string) => void;
 }
 
-export const Calendar = ({open,  startDate, handleDateChange, handleOnPress}:PropsPicker) => {
-    const [date,setDate] = useState<string>('13/10/2024');
+export const Calendar = ({ open, startDate, handleDateChange, handleOnPress }: PropsPicker) => {
+    const [date, setDate] = useState<string>('13/10/2024');
     return (
         <Modal
             animationType='fade'
@@ -34,17 +35,16 @@ export const Calendar = ({open,  startDate, handleDateChange, handleOnPress}:Pro
                         onSelectedChange={(date: string) => setDate(date)}
                         options={{
                             backgroundColor: '#FFFFFF',
-                            textHeaderColor: '#469ab6',
+                            textHeaderColor: globalColors.tertiary,
                             textDefaultColor: 'black',
                             selectedTextColor: '#FFF',
-                            mainColor: '#2AB9B7',
-                            textSecondaryColor: '#2AB9B7',
-                            borderColor: 'rgba(122,146,165,0.1)',
+                            mainColor: globalColors.tertiary,
+                            textSecondaryColor: globalColors.tertiary,
+                            borderColor: 'rgba(120,146,165,0.1)',
                         }}
                     />
-                    {/* Botón para cerrar el DatePicker */}
-                    <Pressable onPress={handleOnPress}>
-                        <Text>Close</Text>
+                    <Pressable onPress={handleOnPress} style={{position:'relative', bottom:20}}>
+                        <Text>Cerrar</Text>
                     </Pressable>
                 </View>
             </View>
@@ -55,12 +55,6 @@ export const Calendar = ({open,  startDate, handleDateChange, handleOnPress}:Pro
 
 
 const styles = StyleSheet.create({
-
-    calendarButtonText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#545454'
-    },
     modalContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -68,12 +62,14 @@ const styles = StyleSheet.create({
     },
     datePickerContainer: {
         position: 'relative',
-        bottom: 150,
+        bottom: 125,
         margin: 10,
         backgroundColor: 'white',
         borderRadius: 8,
         padding: 20,
-        width: '60%',
+        width: 320,
+        height:320,
+        justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
