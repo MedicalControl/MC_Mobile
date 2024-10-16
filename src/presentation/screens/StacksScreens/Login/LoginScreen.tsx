@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } fro
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { RootStack }  from '../../../routes/StackNavigator';
+import { PrimaryButton } from '../../../components/shared/PrimaryButton';
 
 
 
@@ -121,6 +122,10 @@ export const LoginScreen = () => {
       >
         Regístrate
       </Text>
+      <PrimaryButton
+        onPress={() => navigation.navigate("Home")}
+        label='home'
+      />
     </View>
   );
 };
