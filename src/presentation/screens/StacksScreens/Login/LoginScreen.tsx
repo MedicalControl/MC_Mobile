@@ -1,13 +1,14 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions} from 'react-native';
-import { RootStack } from '../../routes/StackNavigator';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { RootStack }  from '../../../routes/StackNavigator';
 
 
 
-interface IFormInput {
+interface IFormInput
+ {
   email: string;
   password: string;
 }
@@ -17,7 +18,6 @@ export const LoginScreen = () => {
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
-  
     console.log('Datos del formulario:', data);
     navigation.navigate('Home');
   };
@@ -53,7 +53,7 @@ export const LoginScreen = () => {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={styles.inputContainer}>
-            <Icon name="person-outline" size={20} color="black" style={styles.icon} />
+            <Icon name="person-outline" size={20} color="black" style={styles.icon2} />
             <TextInput
               style={styles.input}
               placeholder="Correo"
@@ -89,9 +89,9 @@ export const LoginScreen = () => {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={styles.inputContainer}>
-            <Icon name="key-outline" size={20} color="black" style={styles.icon} />
+            <Icon name="key-outline" size={20} color="black" style={styles.icon1} />
             <TextInput
-              style={styles.input}
+              style={styles.input2}
               placeholder="Contraseña"
               placeholderTextColor="#888"
               onBlur={onBlur}
@@ -124,38 +124,35 @@ export const LoginScreen = () => {
     </View>
   );
 };
-const { width, height } = Dimensions.get('window');
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start', 
-    marginTop: 400, //bajar los inputs
-
-    alignItems: 'center',
-    
+    justifyContent: 'flex-start', // arriba
+    paddingTop: 160, // more space
+    backgroundColor: '#fff',
   },
-  input: { //el unico que estoy usando
+  input: {
     paddingHorizontal: 40,
     fontSize: 15,
     color: 'black',
-    width: '100%', 
+    width: 300,
+    alignSelf: 'center',
+    marginTop: 250,
+    marginBottom: 0,
     height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 12,
-    paddingLeft: 38, 
+    paddingLeft: 38,
     paddingRight: 10,
-   
-    
 
   },
   input2: {
     paddingHorizontal: 35,
     fontSize: 15,
     color: 'black',
-    width: '80%',
+    width: 300,
     alignSelf: 'center',
     marginTop: 15, //bajarlo subirlo 
     marginBottom: 5,
@@ -207,13 +204,19 @@ const styles = StyleSheet.create({
     left: 75,
   },
   //iconos
-  //el unico que estoy usando
-  icon: {
+  icon1: { //contraseña
+    marginTop: 0,
     position: 'absolute',
-    left: 10, 
-    top: 13, 
+    left: 70, // horizontal
+    top: 30, //  alineado con el primer input
   },
 
+  icon2: { //correo
+    marginTop: 0,
+    position: 'absolute',
+    left: 70,
+    top: 265,
+  },
   errorText: {
     color: 'red',
     left: 100,
@@ -221,38 +224,36 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   inputContainer: {
-    position: 'relative', 
-    width: 300, 
-    marginBottom: 15,
-   
-    
+    position: 'relative',
+    width: '100%',
+    justifyContent: 'center',
   },
-  photo: {
-    width: '100%', 
+  photo: { // mujer y hombre
+    width: 500,
     height: 450,
     alignSelf: 'center',
     position: 'absolute',
-    top: -520, 
-    // marginTop: -20, 
+    marginTop: 0,
+    top: -90,
   },
   photo1: { //elipse
-    width: '60%',
-    height: 450,
     alignSelf: 'center',
     position: 'absolute',
-    top: -370, 
+    marginTop: 0,
+    top: 147,
+    width: 330,
+    height: 260,
+    left: 57
   },
-  photo2: {
-    width: 332, 
-    height: 222,
+  photo2: { // logo
+    alignSelf: 'center',
     position: 'absolute',
-    top: -165, 
-    left: '49%',
-    transform: [{ translateX: -166 }, { translateY: -111 }], 
-    
-  },
-
-  
+    marginTop: 0,
+    top: 165,
+    width: 332,
+    height: 222,
+    left: 52
+  }
 });
 
 

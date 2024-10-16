@@ -1,11 +1,11 @@
 import React from 'react'
-import { ScrollView, Text, View } from 'react-native'
-import { ThreeButton } from '../../components/shared/ThreeButton'
-import { Header } from '../../components/shared/Header';
-import { Img_Picture } from '../../components/shared/img_Picture';
+import { ScrollView, Text, View, Dimensions } from 'react-native'
+import { Header } from '../../../components/shared/Header';
+import { ThreeButton } from '../../../components/shared/ThreeButton';
+import { StyleSheet } from 'react-native';
 
 
-
+const {width, height} = Dimensions.get('window');
 
 const arr = [
     {
@@ -70,20 +70,13 @@ const arr = [
     }
 ];
 
-
-
-
-
 export const DrugsScreen = () => {
     return (
-        
         <ScrollView>
             <Header />
-            <Img_Picture />
             {
                 arr.map((i, index) => (
                     <View
-                    
                         key={`${i.name}-${index}`}
                         style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <ThreeButton

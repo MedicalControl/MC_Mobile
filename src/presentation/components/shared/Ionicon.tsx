@@ -19,7 +19,6 @@ export const IonIcon = ({ name, size, color }: Props) => {
             color={color}
             style = {{
                 marginRight :5
-
             }}
         />
     )

@@ -1,17 +1,17 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginScreen } from '../screens/Login/LoginScreen';
-import { RegisterScreen_1 } from '../screens/Register/RegisterScreen_1';
-import { HomeScreen } from '../screens/Home/HomeScreen';
-import { RegisterScreen_2 } from '../screens/Register/RegisterScreen_2';
-import { SettingScreen } from '../screens/Setting/SettingScreen';
+import { RegisterScreen_1 } from '../screens/StacksScreens/Register/RegisterScreen_1';
+import { RegisterScreen_2 } from '../screens/StacksScreens/Register/RegisterScreen_2';
 import { ButtonTabs_Navigator } from './ButtonTabs'
 import { Report_problemScreen } from '../screens/Report_problem/Report_problemScreen';
 import { Help_DeskScreen } from '../screens/Help_Desk/Help_DeskScreen';
 import { AboutScreen } from '../screens/About/AboutScreen';
-import { DarkScreen } from '../screens/Dark/DarkScreen';
-import { Notification } from '../screens/Notification/Notification';
-import { DeviceScreen } from '../screens/Device/DeviceScreen';
+import { DarkScreen } from '../screens/SideBarMenu/Dark/DarkScreen';
+import { Notification } from '../screens/SideBarMenu/Notification/Notification';
+
 import { globalColors } from '../theme/theme';
+import { MessageScreen } from '../screens/SideBarMenu/Notification/Message/MessageScreen';
+import { LoginScreen } from '../screens/StacksScreens/Login/LoginScreen';
+import { DeviceScreen } from '../screens/SideBarMenu/Device/DeviceScreen';
 
 
 //Type of router_Navigation object
@@ -27,7 +27,8 @@ export type RootStack = {
     Report_problem: undefined,
     Notification: undefined,
     Dark: undefined,
-    Device: undefined
+    Device: undefined,
+    Message: undefined
 
 }
 
@@ -73,6 +74,7 @@ export const Stack_Navigator = () => {
                     }
                 }}
                 name="Device" component={DeviceScreen} />
+            <Stack.Screen name='Message' component = {MessageScreen} />
 
 
 

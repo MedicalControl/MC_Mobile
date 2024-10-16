@@ -3,6 +3,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import TabbarButton from './TabbarButton';
 import { useState } from 'react';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { globalColors } from '../../theme/theme';
 
 export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
     const [dimensions, setDimensions] = useState({ height: 20, width: 100 });
@@ -27,20 +28,22 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
     // Array of icons for each tab
     const icons = [
         'home-outline',     
+        'heart-circle-outline',
         'calendar-outline', 
-        'notifications-outline',
-        'layers-outline' 
+        'stats-chart'
     ];
 
     return (
         <View onLayout={onTabbarLayout} style={styles.tabbar}>
             <Animated.View style={[animatedStyle, {
                 position: 'absolute',
-                backgroundColor: '#0094B6',
-                borderRadius: 30,
-                marginHorizontal: 12,
+                backgroundColor: globalColors.tertiary,
+                borderRadius: 50,
+                marginHorizontal: 15,
                 height: dimensions.height - 20,
-                width: buttonWidth - 20
+                width: buttonWidth -30,
+                justifyContent:'center',
+                alignItems:'center'
             }]} />
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
@@ -82,7 +85,7 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
                         onLongPress={onLongPress}
                         isFocused={isFocused}
                         routeName={route.name}
-                        color={isFocused ? '#0094B6' : '#545454'}
+                        color={isFocused ? globalColors.tertiary : '#545454'}
                         label={label}
                         nameIcon={icons[index]} // Use the icon based on the index
                     />
@@ -95,10 +98,10 @@ export function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) 
 const styles = StyleSheet.create({
     tabbar: {
         position: 'absolute',
-        bottom: 50,
+        bottom: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems:'center',
         backgroundColor: '#fff',
         marginHorizontal: 15,
         paddingVertical: 15,

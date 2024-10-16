@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Header } from '../../../components/shared/Header';
 //esta es la de vacunas a editar
 //hay que poner botones en la parte de arriba
 //poner busqueda debajo
@@ -8,9 +9,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // a la flatlist poner navegacinon
 //hay que poner el .json en el login
 //en la parte de la fecha poner un  formato dia, fecha valido, menos del 2010
-export const Vaccine_card = () => {
+export const Control_Parental = () => {
     return (
         <View style={styles.container}>
+            <Header />
 
         </View>
     )

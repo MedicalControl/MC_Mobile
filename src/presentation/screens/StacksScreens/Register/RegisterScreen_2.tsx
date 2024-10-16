@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Button, Text, View, Image, TouchableOpacity } from 'react-native'
-import { globalStyles } from '../../theme/theme'
-import { PrimaryButton } from '../../components/shared/PrimaryButton'
+import { globalStyles } from '../../../theme/theme'
+import { PrimaryButton } from '../../../components/shared/PrimaryButton'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
-import type { RootStack } from '../../routes/StackNavigator'
+import type { RootStack } from '../../../routes/StackNavigator'
 import { TextInput, StyleSheet, Platform } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, useForm } from 'react-hook-form';
