@@ -78,7 +78,7 @@ export const Medical_appointments = () => {
       title: "Cita de oftalmología",
       hospital: "Centro Médico Visión Clara",
       date: "Jueves 25 de Enero",
-      time: "10:00 AM",
+      time: "5:00 AM",
     },
   ]
   return (
