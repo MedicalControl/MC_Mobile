@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
   },
   floatingButton: {
     position: 'absolute', //menu flotante azul
-    bottom: 130,
+    bottom: 100,
     right: 30,
     backgroundColor: '#0094B6',
     width: 55,
