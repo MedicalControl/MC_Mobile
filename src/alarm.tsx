@@ -4,88 +4,69 @@ import * as Notifications from "expo-notifications";
 import { useEffect, useState, useRef } from "react";
 import { LogBox } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Speech from 'expo-speech'; // Importar expo-speech
 
 // Ignorar advertencias específicas
 LogBox.ignoreLogs(["new NativeEventEmitter"]);
 LogBox.ignoreAllLogs();
 
-// Configuración de manejo de notificaciones
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldPlaySound: false,
-    shouldShowAlert: true,
-    shouldSetBadge: false,
-  }),
-});
-
 // Definición del componente AlarmClock con TypeScript
 export default function AlarmClock(): JSX.Element {
-  const notificationListener = useRef<Notifications.Subscription | null>(null);
-  const [notification, setNotification] = useState<Notifications.Notification | boolean>(false);
+  const [notificationId, setNotificationId] = useState<string>("none");
   const [hourr, setHour] = useState<string>("");
   const [minutee, setMinute] = useState<string>("");
   const [ampm, setAmpm] = useState<string>("");
-  const [notificationId, setNotificationId] = useState<string>("none");
 
   useEffect(() => {
     getData();
-    notificationListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
-      setNotification(response.notification);
-    });
     return () => {
-      if (notificationListener.current) {
-        Notifications.removeNotificationSubscription(notificationListener.current);
-      }
+      Notifications.cancelAllScheduledNotificationsAsync();
     };
   }, []);
 
-  let date = new Date();
-  date.setSeconds(date.getSeconds() + 5);
+  async function speak(text: string) {
+    Speech.speak(text, {
+      language: 'es', // Cambiar al idioma deseado
+      rate: 1.0, // Velocidad de la voz
+      pitch: 1.0, // Tono de la voz
+    });
+  }
 
-  async function scheduleNotificationsHandler(): Promise<void> {
-    console.log(notificationId);
-    if (notificationId === "none") {
-      let newHourr = parseInt(hourr);
-      if (ampm === "pm") {
-        newHourr = newHourr + 12;
-      }
+  async function scheduleAlarm(): Promise<void> {
+    const newHour = parseInt(hourr) + (ampm === "pm" && parseInt(hourr) < 12 ? 12 : 0);
+    const newMinute = parseInt(minutee);
+    
+    const triggerDate = new Date();
+    triggerDate.setHours(newHour);
+    triggerDate.setMinutes(newMinute);
+    triggerDate.setSeconds(0);
+    
+    if (triggerDate > new Date()) {
       const identifier = await Notifications.scheduleNotificationAsync({
         content: {
           title: "Alarm",
-          body: "It is time to wake up!",
-          data: { data: "Your morning alarm data" },
+          body: "It's time to wake up!",
         },
         trigger: {
-          seconds: 5,
+          seconds: Math.floor((triggerDate.getTime() - Date.now()) / 1000),
         },
       });
-      setAmpm("");
-      setHour("");
-      setMinute("");
-      console.log(date);
-      console.log(identifier);
       setNotificationId(identifier);
       storeData(identifier);
+      // Esperar hasta que la notificación se dispare para reproducir el sonido
+      setTimeout(() => speak("Recuerda que tienes una cita a las 8 de la mañana el martes"), Math.floor((triggerDate.getTime() - Date.now()))); // Reproduce el sonido a la hora programada
     } else {
-      alert("Turn off alarm before starting a new one");
-      setAmpm("");
-      setHour("");
-      setMinute("");
-      console.log(notificationId);
-      console.log("not working");
+      alert("Please set a future time.");
     }
   }
 
   async function turnOffAlarm(): Promise<void> {
-    console.log(notificationId);
     if (notificationId !== "none") {
       await Notifications.cancelAllScheduledNotificationsAsync();
-      const resetValue = "none";
-      setNotificationId(resetValue);
-      storeData(resetValue);
+      setNotificationId("none");
+      storeData("none");
     } else {
       alert("Alarm already turned off");
-      console.log(notificationId);
     }
   }
 
@@ -114,14 +95,14 @@ export default function AlarmClock(): JSX.Element {
       <Text style={styles.header}>Alarm App</Text>
       <TextInput
         style={styles.textInput}
-        placeholder="Enter hour"
+        placeholder="Enter hour (1-12)"
         value={hourr}
         onChangeText={(text) => setHour(text)}
         keyboardType="numeric"
       />
       <TextInput
         style={styles.textInput}
-        placeholder="Enter minute"
+        placeholder="Enter minute (0-59)"
         value={minutee}
         onChangeText={(text) => setMinute(text)}
         keyboardType="numeric"
@@ -132,7 +113,7 @@ export default function AlarmClock(): JSX.Element {
         value={ampm}
         onChangeText={(text) => setAmpm(text.toLowerCase())}
       />
-      <Pressable style={styles.button} onPress={scheduleNotificationsHandler}>
+      <Pressable style={styles.button} onPress={scheduleAlarm}>
         <Text style={styles.buttonText}>Turn on Alarm</Text>
       </Pressable>
       <Pressable style={styles.button} onPress={turnOffAlarm}>
