@@ -6,7 +6,6 @@ Medical Control es una aplicación móvil que complementa el sistema de gestión
 
 - ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB): Framework de desarrollo móvil para crear aplicaciones nativas en iOS y Android usando React.
 - ![TypeScript](https://img.shields.io/badge/TypeScript-007acc?style=for-the-badge&logo=typescript&logoColor=white): Superset de JavaScript con tipos estáticos que mejora la robustez del código.
-- ![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white): Biblioteca de manejo de estado predecible para aplicaciones JavaScript.
 - ![Expo](https://img.shields.io/badge/Expo-1C1E24?style=for-the-badge&logo=expo&logoColor=white): Plataforma y entorno de herramientas para simplificar el desarrollo de React Native.
 
 ## **Requisitos Previos** ✅
