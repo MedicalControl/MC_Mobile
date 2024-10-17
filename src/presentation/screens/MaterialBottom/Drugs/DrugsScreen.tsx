@@ -3,7 +3,8 @@ import { ScrollView, Text, View, Dimensions } from 'react-native'
 import { Header } from '../../../components/shared/Header';
 import { ThreeButton } from '../../../components/shared/ThreeButton';
 import { StyleSheet } from 'react-native';
-
+import { Notification } from '../../SideBarMenu/Notification/Notification';
+import * as Notifications from 'expo-notifications'
 
 const {width, height} = Dimensions.get('window');
 
@@ -71,6 +72,10 @@ const arr = [
 ];
 
 export const DrugsScreen = () => {
+
+    
+
+
     return (
         <ScrollView>
             <Header />

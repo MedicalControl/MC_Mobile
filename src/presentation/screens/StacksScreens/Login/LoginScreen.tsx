@@ -1,13 +1,13 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
 import { RootStack } from '../../../routes/StackNavigator';
 import * as Notifications from 'expo-notifications';
-import Constants from 'expo-constants';
+import axios from 'axios'
+import { API_URL } from '../../../../config';
 
 
 interface IFormInput {
@@ -26,81 +26,31 @@ Notifications.setNotificationHandler({
 
 //validacion de errores de login screen con melanie code
 export const LoginScreen = () => {
-
-  const [expoPushToken, setExpoPushToken] = useState<string | null>(null);
-  const [notification, setNotification] = useState<any>(false);
-  const notificationListener = useRef<any>();
-  const responseListener = useRef<any>();
-
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
     console.log('Datos del formulario:', data);
     navigation.navigate('Home');
+
+    axios.post(
+      API_URL + "/auth/login", { 
+      correo: data.email,
+      contrasena: data.password
+    }
+    ).then((res) => {
+      console.log(res.data.token);
+      navigation.navigate('Home')
+    }).catch((err)=> {
+      console.log(err);
+    })//me da eeor el expop:'dc
+
+    console.log(process.env.API_URL)
   };
 
-  useEffect(() => {
-    const registerNotificationAsync = async () => {
-      if (Constants.isDevice) {
-        const { status: existingStatus } = await Notifications.getPermissionsAsync();
-        let finalStatus = existingStatus;
-
-        if (existingStatus !== 'granted') {
-          const { status } = await Notifications.requestPermissionsAsync();
-          finalStatus = status;
-        }
-
-        if (finalStatus !== 'granted') {
-          Alert.alert("Permiso denegado", "No puedes recibir notificaciones sin permisos.");
-          return;
-        }
-
-        const projectId = "your-expo-project-id"; // Reemplaza con tu projectId
-        const token = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
-        setExpoPushToken(token);
-        console.log('Token de notificaciones: ', token);
-      } else {
-        Alert.alert('Error', 'Las notificaciones no están disponibles en simuladores.');
-      }
-    };
-
-    if (Platform.OS === 'android') {
-      Notifications.setNotificationChannelAsync('default', {
-        name: 'default',
-        importance: Notifications.AndroidImportance.MAX,
-        vibrationPattern: [0, 250, 250, 250],
-        lightColor: '#FF231F7C',
-      });
-    }
-
-    registerNotificationAsync();
-
-    // Listener para notificaciones en primer plano
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification);
-      console.log('Notificación recibida:', notification);
-    });
-
-    // Listener para la interacción con la notificación
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log('Interacción con la notificación:', response);
-    });
-
-    return () => {
-      // Limpieza de listeners al desmontar el componente
-      if (notificationListener.current) {
-        Notifications.removeNotificationSubscription(notificationListener.current);
-      }
-      if (responseListener.current) {
-        Notifications.removeNotificationSubscription(responseListener.current);
-      }
-    };
-  }, []);
 
   return (
     <View style={styles.container}>
-
       <Image
         source={require('../Login/medical.jpg')}
         style={styles.photo}
@@ -191,10 +141,10 @@ export const LoginScreen = () => {
       </Text>
 
       <PrimaryButton
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => onSubmit}
         label='home'
       />
-
+      
     </View>
   );
 };
