@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start', // arriba
         paddingTop: 160, // more space
-        backgroundColor: '#fff',
+        backgroundColor: 'red',
     },
 
 
