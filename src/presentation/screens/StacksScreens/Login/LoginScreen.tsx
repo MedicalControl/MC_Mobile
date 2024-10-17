@@ -42,19 +42,17 @@ export const LoginScreen = () => {
       console.log(res.data.token);
       navigation.navigate('Home')
     }).catch((err)=> {
-      console.log(err);
-    })//me da eeor el expop:'dc
-
-    console.log(process.env.API_URL)
+      console.log(err); //haha ya entendi
+    })
   };
-
+//ahora
 
   return (
     <View style={styles.container}>
       <Image
         source={require('../Login/medical.jpg')}
         style={styles.photo}
-        resizeMode='contain'
+        resizeMode='contain' 
       />
       <Image
         source={require('../Login/med.png')}
