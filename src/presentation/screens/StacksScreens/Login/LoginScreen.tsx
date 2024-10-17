@@ -46,7 +46,7 @@ export const LoginScreen = () => {
     })
   };
 //ahora
-
+ 
   return (
     <View style={styles.container}>
       <Image
