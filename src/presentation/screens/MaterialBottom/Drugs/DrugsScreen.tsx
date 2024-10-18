@@ -34,7 +34,7 @@ const arr = [
         dose: "500 mg"
     }
 ];
-
+//
 export const DrugsScreen = () => {
     return (
         <ScrollView>

@@ -3,15 +3,29 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { RootStack }  from '../../../routes/StackNavigator';
+import { RootStack } from '../../../routes/StackNavigator';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
+import { API_URL } from "../../../../config"
+import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface IFormInput
- {
+
+interface IFormInput {
   email: string;
   password: string;
 }
 
+
+
+const storeData = async (res?: string) => {
+  try {
+    await AsyncStorage.setItem(
+      'token', res
+    )
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 //validacion de errores de login screen con melanie code
 export const LoginScreen = () => {
@@ -20,6 +34,16 @@ export const LoginScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStack>>();
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
+
+    axios.post(
+      API_URL + "/auth/login", {
+      correo: data.email,
+      contrasena: data.password
+    }
+    ).then((res) => {
+
+      storeData(res.data);
+    }).catch((err) => console.log(err))
     console.log('Datos del formulario:', data);
     navigation.navigate('Home');
   };
