@@ -1,5 +1,4 @@
 import { View, Pressable, Modal, Text, StyleSheet, Button } from 'react-native';
-import { IonIcon } from "./Ionicon"
 import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from "react-native-modern-datepicker";
 import { useState } from "react";

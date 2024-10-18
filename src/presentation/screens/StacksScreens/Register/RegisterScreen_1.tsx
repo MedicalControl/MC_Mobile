@@ -33,7 +33,7 @@ export const RegisterScreen_1 = () => {
     const moreOptionAlert = () => {
         Alert.alert(
 
-            'Imagen Medical Control',
+            'Medical Control',
             "Seleccione una accion",
             [
                 {

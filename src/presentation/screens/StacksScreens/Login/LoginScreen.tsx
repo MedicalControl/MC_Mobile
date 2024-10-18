@@ -1,16 +1,27 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
 
+=======
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+>>>>>>> feature/Register
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { RootStack }  from '../../../routes/StackNavigator';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
+<<<<<<< HEAD
 import { RootStack } from '../../../routes/StackNavigator';
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
+=======
 
 
-interface IFormInput {
+>>>>>>> feature/Register
+
+interface IFormInput
+ {
   email: string;
   password: string;
 }
@@ -176,6 +187,10 @@ export const LoginScreen = () => {
           </View>
         )}
       />
+
+
+
+
       <TouchableOpacity style={styles.button}
         onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Acceder</Text>
@@ -189,12 +204,10 @@ export const LoginScreen = () => {
       >
         Regístrate
       </Text>
-
       <PrimaryButton
         onPress={() => navigation.navigate("Home")}
         label='home'
       />
-
     </View>
   );
 };

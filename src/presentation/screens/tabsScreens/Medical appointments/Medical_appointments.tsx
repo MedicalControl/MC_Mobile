@@ -54,33 +54,27 @@ export const Medical_appointments = () => {
     '11:00 AM', '12:00 PM', '01:00 PM', '02:00 PM',
     '03:00 PM', '04:00 PM'
   ];
+  const arr = [  //arreglo de citas 
+    {
+        hospital: "Hospital Roberto Huembe",
+        date: "Miércoles 17 de Enero",
+        time: "10:00 AM",
+        estado: "Reasignada",
+    },
+    {
+        hospital: "Clínica Dental Central",
+        date: "Viernes 20 de Enero",
+        time: "10:00 AM",
+        estado: "Aceptada",
+    },
+    {
 
-  const arr = [
-    {
-      title: "Cita médica",
-      hospital: "Hospital Roberto Huembe",
-      date: "Miércoles 17 de Enero",
-      time: "10:00 AM",
+        hospital: "Hospital Metropolitano",
+        date: "Lunes 22 de Enero",
+        time: "10:00 AM",
+        estado: "Revisión",
     },
-    {
-      title: "Consulta odontológica",
-      hospital: "Clínica Dental Central",
-      date: "Viernes 20 de Enero",
-      time: "10:00 AM",
-    },
-    {
-      title: "Chequeo general",
-      hospital: "Hospital Metropolitano",
-      date: "Lunes 22 de Enero",
-      time: "10:00 AM",
-    },
-    {
-      title: "Cita de oftalmología",
-      hospital: "Centro Médico Visión Clara",
-      date: "Jueves 25 de Enero",
-      time: "10:00 AM",
-    },
-  ]
+]
   return (
     <View style={{ flex: 1 }}>
       <Header />
@@ -106,8 +100,8 @@ export const Medical_appointments = () => {
                   key={`${i.hospital}-${index}`}
                   style={{ padding: 20 }}>
                   <DateTimeCita
-                    asunto={i.hospital}
                     Hospital={i.hospital}
+                    Estado={i.estado}
                     fecha={i.date}
                     hora={i.time}
                   />
@@ -115,7 +109,7 @@ export const Medical_appointments = () => {
               ))
             }
           </>
-        ):(
+        ) : (
           <Text></Text>
         )}
 
@@ -310,7 +304,7 @@ const styles = StyleSheet.create({
   },
   floatingButton: {
     position: 'absolute', //menu flotante azul
-    bottom: 130,
+    bottom: 100,
     right: 30,
     backgroundColor: '#0094B6',
     width: 55,
@@ -328,4 +322,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgray',
   },
 });
-

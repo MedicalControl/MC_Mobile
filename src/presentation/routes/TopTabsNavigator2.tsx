@@ -1,14 +1,13 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React from 'react';
 import { Header } from '../components/shared/Header';
-import { BuyScreen } from '../screens/MaterialBottom/Buy_Drug/BuyScreen';
-import { SearchScreen } from '../screens/MaterialBottom/Search_Drug/SearchScreen';
 import { globalColors } from '../theme/theme';
 import { IonIcon } from '../components/shared/Ionicon';
-import { DrugsScreen } from '../screens/MaterialBottom/Drugs/DrugsScreen';
-import { Medical_appointments } from '../screens/tabsScreens/Medical appointments/Medical_appointments';
+import { medica} from '../screens/MaterialBottom/medicamentos/medica';
+import { resultados } from '../screens/MaterialBottom/resultados/resultados';
+import { agenda } from '../screens/MaterialBottom/agenda/agenda';
 
-//añadir mas screens
+//pantallas de la nueva navegacion de control parental
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabsNavigator = () => {
@@ -42,34 +41,36 @@ export const TopTabsNavigator = () => {
                 }}
 
             >
-                <Tab.Screen name="Drug" options={{
-                    title: 'Medicamentos',
+                <Tab.Screen name="agenda" options={{
+                    title: 'Agenda',
                     tabBarIcon: ({ color }) => (
                         <IonIcon
-                            name='medkit'
+                            name='calendar-clear-outline'
                             size={20}
                             color={color}
                         />
                     )
-                }} component={DrugsScreen} />
-                <Tab.Screen name="Search"
+                }} component={agenda} />
+
+                <Tab.Screen name="medicamentos"
                     options={{
-                        title: "Buscar",
+                        title: "Medicamentos",
                         tabBarIcon: ({ color }) => (
-                            <IonIcon name="search-sharp" size={20} color={color} />
+                            <IonIcon name="medkit-outline" size={20} color={color} />
                         ),
                     }}
 
-                    component={SearchScreen} />
-                <Tab.Screen name="Buy"
+                    component={medica} />
+
+                <Tab.Screen name="resultados"
                     options={{
-                        title: 'Comprar',
+                        title: 'Resultados',
                         tabBarIcon: ({ color }) => (
-                            <IonIcon name='cart' size={20} color={color} />
+                            <IonIcon name="logo-buffer" size={20} color={color} />
                         )
                     }}
-                    component={BuyScreen} />
-               
+                    component={resultados} />
+
             </Tab.Navigator>
         </>
 

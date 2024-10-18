@@ -1,11 +1,10 @@
 import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '../screens/Home/HomeScreen';
 import { globalColors } from '../theme/theme';
-
-import { Medical_appointments } from '../screens/tabsScreens/Medical appointments/Medical_appointments';
 import { Control_Parental } from '../screens/tabsScreens/Control_Parental/Control_Parental';
 import { MyTabBar } from '../components/shared/TabBar';
 import { TopTabsNavigator } from './TopTabsNavigator';
+import { Medical_appointments } from '../screens/tabsScreens/Medical appointments/Medical_appointments';
 
 
 const Tab = createBottomTabNavigator();
