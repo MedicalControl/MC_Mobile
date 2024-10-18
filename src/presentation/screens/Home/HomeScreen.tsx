@@ -1,10 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { globalColors, globalStyles } from '../../theme/theme';
-import { useNavigation, NavigationProp, DrawerActions } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStack } from '../../routes/StackNavigator'
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Header } from '../../components/shared/Header';
 import { SecondButton, SecondButton_home } from '../../components/shared/SecondButton';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 

@@ -1,6 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { useState } from 'react'
+
+import { useState } from 'react';
 import { SideMenu } from './presentation/routes/SideMenuNavigator';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 export default function App() {
