@@ -1,7 +1,10 @@
-import { Pressable, StyleProp, Text, View, ViewStyle, StyleSheet, Image } from 'react-native';
+import { Pressable, StyleProp, Text, View, ViewStyle, StyleSheet, Image, Alert } from 'react-native';
 import { globalColors, globalStyles } from "../../theme/theme";
-import Icon from 'react-native-vector-icons/Ionicons';
 import { IonIcon } from './Ionicon';
+import { useState } from 'react';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import * as Notifications from 'expo-notifications';
+import { scheduleFlushOperations } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon';
 
 
 //Interface
@@ -19,6 +22,40 @@ interface Props {
 }
 
 export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, color_2, frecuency }: Props) => {
+
+    const [showTimePicker, setShowTimePicker] = useState(false);
+    const [selectedTime, setSelectedTime] = useState<Date | null>(null);
+
+    const onSetAlarm = () => {
+        setShowTimePicker(true);
+    };
+
+    const onTimeChange = (event: any, selectedTime: Date | undefined) => {
+        setShowTimePicker(false);
+        if (selectedTime) {
+            setSelectedTime(selectedTime);
+            scheduleTodoNotification(medication_name, selectedTime)
+        }
+    };
+
+    const scheduleTodoNotification = async (medication: string, date: Date) => {
+    
+        try {
+            await Notifications.scheduleNotificationAsync({
+                content: {
+                    title: 'vos hpta tomate la m',
+                    body: 'Recuerda tomar tus dosis :D'
+                },
+                trigger: {
+                    date,
+                    repeats: false
+                },
+            });
+            Alert.alert("Notificacion programada");
+        } catch (e) {
+            Alert.alert("Errorno sirve su porra");
+        }
+    };
 
     return (
 
@@ -39,11 +76,28 @@ export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, colo
             </View>
 
             <View style={{ position: 'relative', right: 10 }}>
-                <IonIcon
-                    name={name_2}
-                    size={size_2}
-                    color={color_2}
-                />
+
+                <Pressable onPress={onSetAlarm}>
+                    <IonIcon
+                        name={name_2}
+                        size={size_2}
+                        color={color_2}
+                    />
+                </Pressable>
+                {
+                    showTimePicker && (
+                        <DateTimePicker
+                            mode="time"
+                            value={selectedTime || new Date()}
+                            is24Hour={true}
+                            display='clock'
+                            onChange={onSetAlarm}
+
+                        />
+                    )
+
+                }
+
             </View>
         </Pressable>
 

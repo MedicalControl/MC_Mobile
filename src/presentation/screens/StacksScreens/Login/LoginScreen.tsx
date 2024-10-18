@@ -1,24 +1,27 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { RootStack }  from '../../../routes/StackNavigator';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
-
-
+import { API_URL } from '../../../../config';
 
 interface IFormInput
  {
   email: string;
   password: string;
 }
+
+
 //validacion de errores de login screen con melanie code
 export const LoginScreen = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
+
   const onSubmit: SubmitHandler<IFormInput> = data => {
+    console.log(API_URL)
     console.log('Datos del formulario:', data);
     navigation.navigate('Home');
   };
@@ -69,10 +72,6 @@ export const LoginScreen = () => {
           </View>
         )}
       />
-
-
-
-
 
       <Controller
         control={control}
@@ -260,5 +259,4 @@ const styles = StyleSheet.create({
     left: 52
   }
 });
-
 
