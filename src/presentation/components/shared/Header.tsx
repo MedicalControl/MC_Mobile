@@ -41,10 +41,7 @@ export const HeaderLeftOptions = () => {
     navigation.setOptions({
       headerRight: () => (
         <View style={styles.header}>
-          <Image
-            source={require('../../assets/Medical_Control.png')}
-            style={styles.logo}
-          />
+
           <View style={styles.iconsContainer}>
             <Pressable style={styles.headerOption} onPress={() => navigation.navigate("Notification")}>
               <IonIcon
