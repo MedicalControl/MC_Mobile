@@ -3,9 +3,9 @@ import { Header } from '../../../components/shared/Header';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { globalColors } from '../../../theme/theme';
 import { IonIcon } from '../../../components/shared/Ionicon';
-import { agenda } from '../../MaterialBottom/agenda/agenda';
-import { medica } from '../../MaterialBottom/medicamentos/medica';
-import { resultados } from '../../MaterialBottom/resultados/resultados';
+import { Agent } from '../../MaterialBottom/agenda/agenda';
+import { Medical } from '../../MaterialBottom/medicamentos/medica';
+import { Result} from '../../MaterialBottom/resultados/resultados';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -45,7 +45,7 @@ export const Control_Parental = () => {
                             color={color}
                         />
                     )
-                }} component={agenda} />
+                }} component={Agent} />
 
                 <Tab.Screen name="medicamentos" options={{
                     title: 'Medicamentos',
@@ -56,7 +56,7 @@ export const Control_Parental = () => {
                             color={color}
                         />
                     )
-                }} component={medica} />
+                }} component={Medical} />
 
                 <Tab.Screen name="resultados" options={{
                     title: 'Resultados',
@@ -67,7 +67,7 @@ export const Control_Parental = () => {
                             color={color}
                         />
                     )
-                }} component={resultados} />
+                }} component={Result} />
             </Tab.Navigator>
         </>
     );

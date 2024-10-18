@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
 
-export const resultados = () => {
+export const Result = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.titulo}>Resultados de</Text>

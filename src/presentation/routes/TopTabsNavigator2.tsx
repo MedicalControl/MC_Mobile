@@ -3,7 +3,6 @@ import React from 'react';
 import { Header } from '../components/shared/Header';
 import { globalColors } from '../theme/theme';
 import { IonIcon } from '../components/shared/Ionicon';
-import { Medical_appointments } from '../screens/tabsScreens/Medical appointments/Medical_appointments';
 import { medica} from '../screens/MaterialBottom/medicamentos/medica';
 import { resultados } from '../screens/MaterialBottom/resultados/resultados';
 import { agenda } from '../screens/MaterialBottom/agenda/agenda';

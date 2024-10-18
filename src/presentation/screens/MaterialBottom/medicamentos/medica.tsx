@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';  
 
-export const medica = () => {
+export const Medical = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.titulo}>Medicamentos</Text>
