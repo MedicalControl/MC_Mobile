@@ -1,12 +1,10 @@
 import { Pressable, StyleProp, Text, View, ViewStyle, StyleSheet, Image } from 'react-native';
 import { globalColors, globalStyles } from "../../theme/theme";
-import Icon from 'react-native-vector-icons/Ionicons';
 import { IonIcon } from './Ionicon';
 
 
 //Interface
 interface Props {
-
     medication_name: string;
     frecuency: number;
     dose: string
@@ -14,22 +12,17 @@ interface Props {
     name_2: string;
     size_2: number;
     color_2: string;
-
-
 }
 
 export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, color_2, frecuency }: Props) => {
-
     return (
-
         <Pressable
             style={globalStyles.three_Button}>
             <View style={styles.iconBox}>
                 <Image
-                    source={require('../../assets/Pill.png')}
-                    style={{ width: 40, height: 40 }}
+                    source={{ uri: 'https://img.icons8.com/color/96/000000/pill.png' }}
+                    style={{ width: 40, height: 40, justifyContent: 'center' }}
                 />
-
             </View>
 
             <View style={{ bottom: 5, right: 30, flex: 1 }}>
@@ -46,7 +39,6 @@ export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, colo
                 />
             </View>
         </Pressable>
-
     )
 }
 
@@ -54,8 +46,8 @@ const styles = StyleSheet.create({
     iconBox: {
         width: 70,
         height: 70,
-        backgroundColor: globalColors.items,  // Color de fondo del cuadro
-        borderRadius: 30,
+        backgroundColor: globalColors.background,  // Color de fondo del cuadro
+        borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 50,

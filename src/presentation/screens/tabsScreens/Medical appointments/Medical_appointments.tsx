@@ -5,6 +5,7 @@ import { getFormatedDate } from 'react-native-modern-datepicker';
 import { IonIcon } from '../../../components/shared/Ionicon';
 import { Calendar } from '../../../components/shared/Calendar';
 import { DateTimeCita } from '../../../components/shared/DateTimeCita';
+import { globalColors } from '../../../theme/theme';
 
 const today: Date = new Date();
 today.setDate(today.getDate() + 1);
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
-    shadowColor: '#000',
+    shadowColor: globalColors.dark,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
@@ -235,10 +236,10 @@ const styles = StyleSheet.create({
     margin: 2,
   },
   dayButtonActive: {   //boton de dia activo
-    backgroundColor: '#0094B6',
+    backgroundColor: globalColors.tertiary,
   },
   dayButtonInactive: {
-    backgroundColor: '#ffff',
+    backgroundColor: globalColors.background,
     borderRadius: 7,
     borderColor: '#545454',
     borderWidth: 1, // boton de dia sin tocar
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   hourButtonActive: {   //btn hras tocando
-    backgroundColor: '#0094B6',
+    backgroundColor: globalColors.tertiary,
   },
   hourButtonInactive: {
     backgroundColor: '#f0f0f0',  //btn horas sin tocar
@@ -279,14 +280,14 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     marginRight: 5,   //cancel btn
-    backgroundColor: '#ffff',
+    backgroundColor: globalColors.background,
     borderRadius: 7,
     borderColor: '#545454',
     borderWidth: 1, // Añade el ancho del borde
   },
   saveButton: {
     flex: 1,
-    backgroundColor: '#0094B6',
+    backgroundColor: globalColors.tertiary,
     padding: 10,
     borderRadius: 7,
     alignItems: 'center',  //save btn
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
 
   },
   saveButtonText: {
-    color: '#ffff',
+    color: globalColors.background,
     fontWeight: 'bold',  //txt de save btn
   },
   cancelButtonText: {
@@ -306,7 +307,7 @@ const styles = StyleSheet.create({
     position: 'absolute', //menu flotante azul
     bottom: 100,
     right: 30,
-    backgroundColor: '#0094B6',
+    backgroundColor: globalColors.tertiary,
     width: 55,
     height: 55,
     borderRadius: 30,

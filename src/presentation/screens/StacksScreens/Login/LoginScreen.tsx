@@ -103,9 +103,6 @@ export const LoginScreen = () => {
         )}
       />
 
-
-
-
       <TouchableOpacity style={styles.button}
         onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Acceder</Text>

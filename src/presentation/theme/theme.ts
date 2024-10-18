@@ -24,12 +24,12 @@ export const globalStyles = StyleSheet.create({
     },
     button_Text: {
         fontSize: 15,
-        color: '#fff',
+        color: globalColors.background,
         fontWeight: 'bold',
     },
     button_mine: {
         height: 48,
-        backgroundColor: '#2AB9B7',
+        backgroundColor: globalColors.secondary,
         borderRadius: 12,
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,8 +43,7 @@ export const globalStyles = StyleSheet.create({
         justifyContent: 'flex-start',
         paddingHorizontal: 20,
         paddingTop: 20,
-        backgroundColor: '#fff',
-
+        backgroundColor: globalColors.background,
     },
     inputContainer: {
         marginTop: 10,

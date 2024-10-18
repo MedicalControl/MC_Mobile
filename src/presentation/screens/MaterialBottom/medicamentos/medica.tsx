@@ -19,7 +19,6 @@ export const Medical = () => {
                 </View>
                 <Ionicons name="alarm-outline" size={23} color="#545454" style={styles.iconoReloj} /> 
             </View>
-
             <View style={styles.resultadoContainer}>
                 <Image
                     source={{ uri: 'https://img.icons8.com/color/96/000000/cream-tube.png' }}  

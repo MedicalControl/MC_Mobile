@@ -32,41 +32,6 @@ const arr = [
         name: "Amoxicilina",
         frecuency: 8,
         dose: "500 mg"
-    },
-    {
-        name: "Loratadina",
-        frecuency: 24,
-        dose: "10 mg"
-    },
-    {
-        name: "Metformina",
-        frecuency: 12,
-        dose: "850 mg"
-    },
-    {
-        name: "Omeprazol",
-        frecuency: 24,
-        dose: "40 mg"
-    },
-    {
-        name: "Clorfenamina",
-        frecuency: 6,
-        dose: "4 mg"
-    },
-    {
-        name: "Prednisona",
-        frecuency: 12,
-        dose: "20 mg"
-    },
-    {
-        name: "Enalapril",
-        frecuency: 24,
-        dose: "10 mg"
-    },
-    {
-        name: "Losartan",
-        frecuency: 24,
-        dose: "50 mg"
     }
 ];
 

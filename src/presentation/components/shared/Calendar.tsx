@@ -33,16 +33,16 @@ export const Calendar = ({ open, startDate, handleDateChange, handleOnPress }: P
                         onDateChange={handleDateChange}
                         onSelectedChange={(date: string) => setDate(date)}
                         options={{
-                            backgroundColor: '#FFFFFF',
+                            backgroundColor: globalColors.background,
                             textHeaderColor: globalColors.tertiary,
                             textDefaultColor: 'black',
-                            selectedTextColor: '#FFF',
+                            selectedTextColor: globalColors.background,
                             mainColor: globalColors.tertiary,
                             textSecondaryColor: globalColors.tertiary,
                             borderColor: 'rgba(120,146,165,0.1)',
                         }}
                     />
-                    <Pressable onPress={handleOnPress} style={{position:'relative', bottom:20}}>
+                    <Pressable onPress={handleOnPress} style={{ position: 'relative', bottom: 20 }}>
                         <Text>Cerrar</Text>
                     </Pressable>
                 </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 20,
         width: 320,
-        height:320,
+        height: 320,
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#000',
