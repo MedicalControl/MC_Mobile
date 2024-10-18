@@ -47,44 +47,48 @@ export const Medical_appointments = () => {
   }
 
   const dayNames = ['Lunes', 'Martes', 'Miércoles', 'Viernes', 'Sábado'];
-  const dayDates = ['13', '14', '17', '18', '19'];
+  const dayDates = ['13', '14', '17', '18', '19']; //parte del menu deslizante 
 
   const hourOptions = [
     '07:00 AM', '08:00 AM', '09:00 AM', '10:00 AM',
-    '11:00 AM', '12:00 PM', '01:00 PM', '02:00 PM',
+    '11:00 AM', '12:00 PM', '01:00 PM', '02:00 PM',  //opc menu deslizante
     '03:00 PM', '04:00 PM'
   ];
 
-  const arr = [
+  const arr = [  //arreglo de citas 
     {
-      title: "Cita médica",
+      
       hospital: "Hospital Roberto Huembe",
       date: "Miércoles 17 de Enero",
       time: "10:00 AM",
+      estado: "Reasignada",
     },
     {
-      title: "Consulta odontológica",
+      
       hospital: "Clínica Dental Central",
       date: "Viernes 20 de Enero",
       time: "10:00 AM",
+      estado: "Aceptada",
     },
     {
-      title: "Chequeo general",
+     
       hospital: "Hospital Metropolitano",
       date: "Lunes 22 de Enero",
       time: "10:00 AM",
+      estado: "Revisión",
     },
     {
-      title: "Cita de oftalmología",
+      
       hospital: "Centro Médico Visión Clara",
       date: "Jueves 25 de Enero",
       time: "5:00 AM",
+      estado: "Rechazada",
     },
   ]
   return (
     <View style={{ flex: 1 }}>
       <Header />
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>  {/*parte del calendario*/}
         <View style={styles.centeredView}>
           <Pressable onPress={handleOnPress} style={styles.calendarButton}>
             <Text style={styles.calendarButtonText}>Calendario</Text>
@@ -98,16 +102,18 @@ export const Medical_appointments = () => {
           </Pressable>
         </View>
 
+        { /*las citas cards*/}
+
         {!calendarOpen ? (
           <>
             {
-              arr.map((i, index) => (
+              arr.map((i, index) => (                                      
                 <View
                   key={`${i.hospital}-${index}`}
-                  style={{ padding: 20 }}>
+                  style={{ padding: 8 }}>
                   <DateTimeCita
-                    asunto={i.hospital}
                     Hospital={i.hospital}
+                    Estado={i.estado}
                     fecha={i.date}
                     hora={i.time}
                   />
@@ -120,6 +126,8 @@ export const Medical_appointments = () => {
         )}
 
       </ScrollView>
+
+     {/*menu deslizante*/}
 
 
       <Modal visible={menuVisible} animationType="slide" transparent={true}>
@@ -150,6 +158,8 @@ export const Medical_appointments = () => {
                 </TouchableOpacity>
               ))}
             </ScrollView>
+  
+              {/*condiciones de botones en el menu deslizante*/}
 
             <View style={styles.actionButtonsContainer}>
               <TouchableOpacity
@@ -176,13 +186,15 @@ export const Medical_appointments = () => {
         </View>
       </Modal>
 
+      {/*boton flotante*/}
+
       <TouchableOpacity style={styles.floatingButton} onPress={toggleMenu}>
         <Text style={styles.floatingButtonText}>+</Text>
       </TouchableOpacity>
     </View>
   );
 };
-//te comentareo los estilos melanie por cualquier cosa
+
 
 const styles = StyleSheet.create({
   centeredView: {

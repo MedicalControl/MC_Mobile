@@ -1,32 +1,74 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
 import { Header } from '../../../components/shared/Header';
-//esta es la de vacunas a editar
-//hay que poner botones en la parte de arriba
-//poner busqueda debajo
-//y la flatlist
-// a la flatlist poner navegacinon
-//hay que poner el .json en el login
-//en la parte de la fecha poner un  formato dia, fecha valido, menos del 2010
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { globalColors } from '../../../theme/theme';
+import { IonIcon } from '../../../components/shared/Ionicon';
+import { agenda } from '../../MaterialBottom/agenda/agenda';
+import { medica } from '../../MaterialBottom/medicamentos/medica';
+import { resultados } from '../../MaterialBottom/resultados/resultados';
+
+const Tab = createMaterialTopTabNavigator();
+
 export const Control_Parental = () => {
     return (
-        <View style={styles.container}>
+        <>
             <Header />
+            <Tab.Navigator
 
-        </View>
-    )
+                sceneContainerStyle={{
+                    backgroundColor: globalColors.background,
+                }}
+                screenOptions={{
+                    tabBarActiveTintColor: globalColors.tertiary,
+                    tabBarInactiveTintColor: globalColors.List_item,
+                    tabBarIndicatorStyle: {
+                        backgroundColor: globalColors.tertiary,
+                        height: 3,
+                    },
+                    tabBarIconStyle: {
+                        width: 25,
+                    },
+                    tabBarStyle: {
+                        backgroundColor: globalColors.background,
+                    },
+                    tabBarLabelStyle: {
+                        fontSize: 12,
+                    },
+                }}
+            >
+                <Tab.Screen name="agenda" options={{
+                    title: 'Agenda',
+                    tabBarIcon: ({ color }) => (
+                        <IonIcon
+                            name='calendar-clear-outline'
+                            size={20}
+                            color={color}
+                        />
+                    )
+                }} component={agenda} />
+
+                <Tab.Screen name="medicamentos" options={{
+                    title: 'Medicamentos',
+                    tabBarIcon: ({ color }) => (
+                        <IonIcon
+                            name='medkit-outline'
+                            size={20}
+                            color={color}
+                        />
+                    )
+                }} component={medica} />
+
+                <Tab.Screen name="resultados" options={{
+                    title: 'Resultados',
+                    tabBarIcon: ({ color }) => (
+                        <IonIcon
+                            name='logo-buffer'
+                            size={20}
+                            color={color}
+                        />
+                    )
+                }} component={resultados} />
+            </Tab.Navigator>
+        </>
+    );
 }
-
-
-const styles = StyleSheet.create({
-
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start', // arriba
-        paddingTop: 160, // more space
-        backgroundColor: '#fff',
-    },
-
-
-});
