@@ -58,20 +58,23 @@ export const Medical_appointments = () => {
     {
         hospital: "Hospital Roberto Huembe",
         date: "Miércoles 17 de Enero",
-        time: "10:00 AM",
+        time: "10:00",
+        ammpm: "am",
         estado: "Reasignada",
     },
     {
         hospital: "Clínica Dental Central",
         date: "Viernes 20 de Enero",
-        time: "10:00 AM",
+        time: "10:00",
+        ammpm: "am",
         estado: "Aceptada",
     },
     {
 
         hospital: "Hospital Metropolitano",
         date: "Lunes 22 de Enero",
-        time: "10:00 AM",
+        time: "10:00",
+        ammpm: "am",
         estado: "Revisión",
     },
 ]
