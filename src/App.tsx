@@ -1,8 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { useEffect, useState, useRef } from 'react'
 import { SideMenu } from './presentation/routes/SideMenuNavigator';
-import AlarmClock from './alarm';
-import * as Notifications from "expo-notifications";
+
 
 
 export default function App() {
@@ -10,9 +8,8 @@ export default function App() {
     <NavigationContainer>
       {/*<Stack_Navigator />*/} 
       {/*<ButtonTabs_Navigator />*/}
-      <AlarmClock />
+      <SideMenu />
     </NavigationContainer>
   )
 }
 
-//ahora

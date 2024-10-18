@@ -1,6 +1,6 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform, Button, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
@@ -8,7 +8,7 @@ import { RootStack } from '../../../routes/StackNavigator';
 import * as Notifications from 'expo-notifications';
 import axios from 'axios'
 import { API_URL } from '../../../../config';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface IFormInput {
   email: string;
@@ -34,25 +34,50 @@ export const LoginScreen = () => {
     navigation.navigate('Home');
 
     axios.post(
-      API_URL + "/auth/login", { 
+      API_URL + "/auth/login", {
       correo: data.email,
       contrasena: data.password
     }
     ).then((res) => {
       console.log(res.data.token);
       navigation.navigate('Home')
-    }).catch((err)=> {
-      console.log(err); //haha ya entendi
+    }).catch((err) => {
+      console.log(err);
     })
   };
-//ahora
- 
+
+
+  const handleSave = async () => {
+    const obj = {
+      gmail: 'Meliaaris19@gmail.com',
+      password: 123
+    }
+
+    try {
+      await AsyncStorage.setItem("@user", JSON.stringify(obj));
+      console.log(obj)
+    } catch (error) {
+      console.log("Error al guadar el objeto", error)
+    }
+  }
+
+  const remove = async () => {
+
+    try {
+      await AsyncStorage.removeItem("@user");
+      console.log("Dato delete")
+    } catch (error) {
+      console.log("Error al eliminar los datos", error)
+    }
+
+  }
+
   return (
     <View style={styles.container}>
       <Image
         source={require('../Login/medical.jpg')}
         style={styles.photo}
-        resizeMode='contain' 
+        resizeMode='contain'
       />
       <Image
         source={require('../Login/med.png')}
@@ -124,8 +149,12 @@ export const LoginScreen = () => {
           </View>
         )}
       />
-      <TouchableOpacity style={styles.button}
-        onPress={handleSubmit(onSubmit)}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleSave}
+      >
+
+
         <Text style={styles.buttonText}>Acceder</Text>
       </TouchableOpacity>
 
@@ -137,12 +166,20 @@ export const LoginScreen = () => {
       >
         Regístrate
       </Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={remove}
+      >
+        <Text>Delete</Text>
+      </TouchableOpacity>
 
-      <PrimaryButton
-        onPress={() => onSubmit}
-        label='home'
-      />
-      
+<PrimaryButton 
+
+label='home'
+onPress={()=> navigation.navigate("Home")}
+/>
+
+
     </View>
   );
 };
