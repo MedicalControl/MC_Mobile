@@ -1,24 +1,10 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
-
-=======
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
->>>>>>> feature/Register
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { RootStack }  from '../../../routes/StackNavigator';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
-<<<<<<< HEAD
-import { RootStack } from '../../../routes/StackNavigator';
-import * as Notifications from 'expo-notifications';
-import Constants from 'expo-constants';
-=======
-
-
->>>>>>> feature/Register
 
 interface IFormInput
  {
@@ -26,22 +12,9 @@ interface IFormInput
   password: string;
 }
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: false
-  })
-})
-
 
 //validacion de errores de login screen con melanie code
 export const LoginScreen = () => {
-
-  const [expoPushToken, setExpoPushToken] = useState<string | null>(null);
-  const [notification, setNotification] = useState<any>(false);
-  const notificationListener = useRef<any>();
-  const responseListener = useRef<any>();
 
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
@@ -50,64 +23,6 @@ export const LoginScreen = () => {
     console.log('Datos del formulario:', data);
     navigation.navigate('Home');
   };
-
-  useEffect(() => {
-    const registerNotificationAsync = async () => {
-      if (Constants.isDevice) {
-        const { status: existingStatus } = await Notifications.getPermissionsAsync();
-        let finalStatus = existingStatus;
-
-        if (existingStatus !== 'granted') {
-          const { status } = await Notifications.requestPermissionsAsync();
-          finalStatus = status;
-        }
-
-        if (finalStatus !== 'granted') {
-          Alert.alert("Permiso denegado", "No puedes recibir notificaciones sin permisos.");
-          return;
-        }
-
-        const projectId = "your-expo-project-id"; // Reemplaza con tu projectId
-        const token = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
-        setExpoPushToken(token);
-        console.log('Token de notificaciones: ', token);
-      } else {
-        Alert.alert('Error', 'Las notificaciones no están disponibles en simuladores.');
-      }
-    };
-
-    if (Platform.OS === 'android') {
-      Notifications.setNotificationChannelAsync('default', {
-        name: 'default',
-        importance: Notifications.AndroidImportance.MAX,
-        vibrationPattern: [0, 250, 250, 250],
-        lightColor: '#FF231F7C',
-      });
-    }
-
-    registerNotificationAsync();
-
-    // Listener para notificaciones en primer plano
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification);
-      console.log('Notificación recibida:', notification);
-    });
-
-    // Listener para la interacción con la notificación
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log('Interacción con la notificación:', response);
-    });
-
-    return () => {
-      // Limpieza de listeners al desmontar el componente
-      if (notificationListener.current) {
-        Notifications.removeNotificationSubscription(notificationListener.current);
-      }
-      if (responseListener.current) {
-        Notifications.removeNotificationSubscription(responseListener.current);
-      }
-    };
-  }, []);
 
   return (
     <View style={styles.container}>
