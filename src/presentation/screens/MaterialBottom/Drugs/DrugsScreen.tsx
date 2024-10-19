@@ -32,7 +32,8 @@ const arr = [
         name: "Amoxicilina",
         frecuency: 8,
         dose: "500 mg"
-    }
+    },
+    
 ];
 //
 export const DrugsScreen = () => {

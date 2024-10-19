@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Modal, TouchableOpacity, ScrollView, Pressable, StyleSheet } from 'react-native';
+import { Text, View, Modal, TouchableOpacity, ScrollView, Pressable, StyleSheet, Dimensions } from 'react-native';
 import { Header } from '../../../components/shared/Header';
 import { getFormatedDate } from 'react-native-modern-datepicker';
 import { IonIcon } from '../../../components/shared/Ionicon';
@@ -10,6 +10,9 @@ import { globalColors } from '../../../theme/theme';
 const today: Date = new Date();
 today.setDate(today.getDate() + 1);
 const startDate: string = getFormatedDate(today, 'DD/MM/YYYY');
+
+
+const { width, height } = Dimensions.get('window');
 
 export const Medical_appointments = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -57,25 +60,25 @@ export const Medical_appointments = () => {
   ];
   const arr = [  //arreglo de citas 
     {
-        hospital: "Hospital Roberto Huembe",
-        date: "Miércoles 17 de Enero",
-        time: "10:00 AM",
-        estado: "Reasignada",
+      hospital: "Hospital Roberto Huembe",
+      date: "Miércoles 17 de Enero",
+      time: "10:00 AM",
+      estado: "Reasignada",
     },
     {
-        hospital: "Clínica Dental Central",
-        date: "Viernes 20 de Enero",
-        time: "10:00 AM",
-        estado: "Aceptada",
+      hospital: "Clínica Dental Central",
+      date: "Viernes 20 de Enero",
+      time: "10:00 AM",
+      estado: "Aceptada",
     },
     {
 
-        hospital: "Hospital Metropolitano",
-        date: "Lunes 22 de Enero",
-        time: "10:00 AM",
-        estado: "Revisión",
+      hospital: "Hospital Metropolitano",
+      date: "Lunes 22 de Enero",
+      time: "10:00 AM",
+      estado: "Revisión",
     },
-]
+  ]
   return (
     <View style={{ flex: 1 }}>
       <Header />
@@ -226,7 +229,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: height * 0.021,
+    paddingHorizontal: width * 0.02
   },
   dayButton: {
     alignItems: 'center',
@@ -253,13 +257,14 @@ const styles = StyleSheet.create({
     color: '#545454'
   },
   hourScrollContainer: {
-    maxHeight: 150,
-    marginBottom: 20,  //el scroll de las horas
+    maxHeight: height * 0.2,
+    marginBottom: height * 0.03,  //el scroll de las horas
   },
   hourButton: {
-    padding: 10,
-    borderRadius: 5,  //btn general de horas
-    marginVertical: 5,
+    paddingVertical: height * 0.015,
+    paddingHorizontal: width * 0.05,  //btn general de horas
+    borderRadius: width * 0.02,
+    marginVertical: height * 0.01
   },
   hourButtonActive: {   //btn hras tocando
     backgroundColor: globalColors.tertiary,
@@ -274,6 +279,8 @@ const styles = StyleSheet.create({
   actionButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: width * 0.01,
+    paddingVertical: width * 0.02
   },
   cancelButton: {
     flex: 1,
@@ -306,18 +313,18 @@ const styles = StyleSheet.create({
   floatingButton: {
     position: 'absolute', //menu flotante azul
     bottom: 100,
-    right: 30,
+    right: width * 0.07,
     backgroundColor: globalColors.tertiary,
-    width: 55,
-    height: 55,
-    borderRadius: 30,
+    width: width * 0.15,
+    height: width * 0.15,
+    borderRadius: (width * 0.15) / 2,
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 5,
   },
   floatingButtonText: {  //texto del menu flotante
     color: 'white',
-    fontSize: 25,
+    fontSize: width * 0.06,
   },
   disabledButton: { // Estilo de confirmar cuando nadie lo toca
     backgroundColor: 'lightgray',

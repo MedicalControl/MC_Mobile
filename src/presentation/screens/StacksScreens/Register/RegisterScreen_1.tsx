@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity, useWindowDimensions, Dimensions } from 'react-native'
 import { globalStyles } from '../../../theme/theme';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton'
 import { useNavigation, type NavigationProp } from '@react-navigation/native'
@@ -8,14 +8,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { CameraAdapter } from '../../../setting/adapters/camera-adapters';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-//quitar titulo y logos (listo)
-//cambiar icono de atras (listo)
-//cambiar estilo inputs 
-//cambiar estructura en si de los inputs
-//añadir texto arribaa (listo)
-//poner espacio de foto en borde punteado(listo)
-//modificar boton(listo)
 
 interface IFormInput {
     nombres: string;
@@ -23,9 +17,16 @@ interface IFormInput {
     password: string;
     gmail: string;
     inss: string;
+
 }
 
+const { width, height } = Dimensions.get('window');
+
 export const RegisterScreen_1 = () => {
+
+    //Dimensions
+
+    const { width, height } = useWindowDimensions();
     const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
     const navigation = useNavigation<NavigationProp<RootStack>>();
     const [photoUri, setPhotoUri] = useState<string | null>(null);
@@ -66,20 +67,14 @@ export const RegisterScreen_1 = () => {
             ]
         )
     }
-
-
-
     const onSubmit = (_data: any) => {
         // Navegar a register_2 solo si no hay errores
         if (Object.keys(errors).length === 0) {
             navigation.navigate('Register_2');
         }
     };
-    //__________________________________________________________________________________________________________________________________
     return (
         <View style={styles.container}>
-
-
             <Icon name="arrow-back-circle-sharp" size={25} color="#616161" style={styles.icon}
                 onPress={() => navigation.navigate('Login')} />
             <Text style={globalStyles.tittle}>¡Bienvenido a</Text>
@@ -157,7 +152,7 @@ export const RegisterScreen_1 = () => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
                         <TextInput
-                            style={styles.input2}
+                            style={styles.input}
                             placeholder="Ingresa tus apellidos"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -193,7 +188,7 @@ export const RegisterScreen_1 = () => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
                         <TextInput
-                            style={styles.input3}
+                            style={styles.input}
                             placeholder="Ingresa tu correo"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -230,7 +225,7 @@ export const RegisterScreen_1 = () => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
                         <TextInput
-                            style={styles.input4}
+                            style={styles.input}
                             placeholder="Ingresa tu contraseña"
                             placeholderTextColor="#888"
                             onBlur={onBlur}
@@ -263,7 +258,7 @@ export const RegisterScreen_1 = () => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.container}>
                         <TextInput
-                            style={styles.input5}
+                            style={styles.input}
                             placeholder="Ingresa tu número INSS"
                             placeholderTextColor="#888"
                             onBlur={() => {
@@ -314,13 +309,12 @@ const styles = StyleSheet.create({
         left: 10,
         fontSize: 14,
         marginTop: 0,
-
     },
     container: {
         flex: 1,
         justifyContent: 'flex-start',
-        paddingHorizontal: 20,
-        paddingTop: 20,
+        paddingHorizontal: width * 0.05,
+        paddingTop: height * 0.02,
         backgroundColor: '#fff',
     },
     label: {
@@ -352,73 +346,27 @@ const styles = StyleSheet.create({
         color: '#66696E'
     },
     label5: { //inss
-
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 5,
         left: 30,
         color: '#66696E'
-
     },
     input: {
-        height: 40,
+        height: height * 0.06,
         borderWidth: 1,
         borderColor: '#66696E',
         borderRadius: 8,
-        fontSize: 16,
+        fontSize: width * 0.04,
         paddingHorizontal: 10,
         backgroundColor: 'white',
         marginHorizontal: 5,
-        width: 316,
-    },
-    input2: {
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#66696E',
-        borderRadius: 8,
-        fontSize: 16,
-        paddingHorizontal: 10,
-        backgroundColor: 'white',
-        marginHorizontal: 5,
-        width: 316,
-    },
-    input3: {
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#66696E',
-        borderRadius: 8,
-        fontSize: 16,
-        paddingHorizontal: 10,
-        backgroundColor: 'white',
-        marginHorizontal: 5,
-        width: 316,
-    },
-    input4: {
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#66696E',
-        borderRadius: 8,
-        fontSize: 16,
-        paddingHorizontal: 10,
-        backgroundColor: 'white',
-        marginHorizontal: 5,
-        width: 316,
-    },
-    input5: { //inss
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#66696E',
-        borderRadius: 8,
-        fontSize: 16,
-        paddingHorizontal: 10,
-        backgroundColor: 'white',
-        marginHorizontal: 5,
-        width: 316,
+        width: width * 0.8,
+        position : 'relative'
     },
     button: {
-
-        width: 325,
-        height: 135,
+        width: width * 0.8,
+        height: height * 0.14,
         borderRadius: 8,
         borderWidth: 2,
         borderColor: 'gray',
@@ -438,9 +386,8 @@ const styles = StyleSheet.create({
         left: 0
     },
     image: {
-        width: 320,
-        height: 130,
-
+        width: width * 0.88,
+        height: height * 0.17,
         borderRadius: 8
     }
 });

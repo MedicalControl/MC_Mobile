@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, StyleProp } from 'react-native';
+import { Text, View, StyleSheet, StyleProp, Dimensions } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { globalColors } from '../../../theme/theme';
 import { PrimaryButton } from '../../../components/shared/PrimaryButton';
 import { DateTimeCita } from '../../../components/shared/DateTimeCita';
+
+
+const {width, height} = Dimensions.get('window');
 
 export const Agent = () => {
 
@@ -97,17 +100,16 @@ const styles = StyleSheet.create({
         top: 15
     },
     inputAndroid: {
-        fontSize: 16,
+        fontSize: width * 0.04,
         color: globalColors.tertiary,
         backgroundColor: '#ffffff',
-        marginLeft: 48,
-        marginRight: 48,
+        marginLeft: width * 0.12,
+        marginRight: width * 0.12,
         position: 'relative',
-        top: 30,
+        top: height * 0.04,
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 5
-
     },
 });
 

@@ -1,36 +1,51 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';  
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { ThreeButton } from '../../../components/shared/ThreeButton';
+
+
+const arr = [
+    {
+        name: "Acetominafen",
+        frecuency: 8,
+        dose: "5 dosis mg"
+    },
+    {
+        name: "Malta",
+        frecuency: 8,
+        dose: "10 dosis mg"
+    },
+    {
+        name: "Ibuprofeno",
+        frecuency: 6,
+        dose: "15 dosis mg"
+    },
+    {
+        name: "Paracetamol",
+        frecuency: 12,
+        dose: "20 dosis mg"
+    },
+];
 
 export const Medical = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.titulo}>Medicamentos</Text>
-
-            <View style={styles.resultadoContainer}>
-                <Image
-                    source={{ uri: 'https://img.icons8.com/color/96/000000/pill.png' }}  
-                    style={styles.icono}
-                />
-                <View style={styles.textContainer}>
-                    <Text style={styles.tituloExamen}>Paracetamol 750 mg</Text>
-                    <Text style={styles.subtitulo}>Aztra Zeneca</Text>
-                    <Text style={styles.subtitulo}>Esemeprazol</Text>
-                </View>
-                <Ionicons name="alarm-outline" size={23} color="#545454" style={styles.iconoReloj} /> 
-            </View>
-            <View style={styles.resultadoContainer}>
-                <Image
-                    source={{ uri: 'https://img.icons8.com/color/96/000000/cream-tube.png' }}  
-                    style={styles.icono}
-                />
-                <View style={styles.textContainer}>
-                    <Text style={styles.tituloExamen}>Acetaminafén 500 mg</Text>
-                    <Text style={styles.subtitulo}>Aztra Zeneca</Text>
-                    <Text style={styles.subtitulo}>Esemeprazol</Text>
-                </View>
-                <Ionicons name="alarm-outline" size={23} color="#545454" style={styles.iconoReloj} />  
-            </View>
+            {
+                arr.map((i, index) => (
+                    <View
+                        key={`${i.name}-${index}`}
+                        style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <ThreeButton
+                            medication_name={i.name}
+                            frecuency={i.frecuency}
+                            dose={i.dose}
+                            name_2='alarm-outline'
+                            size_2={25}
+                            color_2='black'
+                        />
+                    </View>
+                ))
+            }
         </ScrollView>
     );
 };

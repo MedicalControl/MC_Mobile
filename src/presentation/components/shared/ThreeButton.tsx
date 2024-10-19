@@ -1,7 +1,10 @@
-import { Pressable, StyleProp, Text, View, ViewStyle, StyleSheet, Image } from 'react-native';
+import { Pressable, StyleProp, Text, View, ViewStyle, StyleSheet, Image, Dimensions } from 'react-native';
 import { globalColors, globalStyles } from "../../theme/theme";
 import { IonIcon } from './Ionicon';
 
+
+
+const { width } = Dimensions.get('window');
 
 //Interface
 interface Props {
@@ -17,21 +20,21 @@ interface Props {
 export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, color_2, frecuency }: Props) => {
     return (
         <Pressable
-            style={globalStyles.three_Button}>
+            style={[globalStyles.three_Button, { padding: width * 0.02 }]}>
             <View style={styles.iconBox}>
                 <Image
                     source={{ uri: 'https://img.icons8.com/color/96/000000/pill.png' }}
-                    style={{ width: 40, height: 40, justifyContent: 'center' }}
+                    style={{ width: width * 0.1, height: width * 0.1, justifyContent: 'center' }}
                 />
             </View>
 
-            <View style={{ bottom: 5, right: 30, flex: 1 }}>
+            <View style={{ bottom: 5, right: width * 0.08, flex: 1 }}>
                 <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{medication_name}</Text>
-                <Text style={{ color: '#82A0AA', fontWeight: 'bold' }}>Frecuencia: <Text style={{ color: 'black' }}>{frecuency}</Text></Text>
-                <Text style={{ color: '#82A0AA', fontWeight: 'bold' }}>Dosis restante: <Text style={{ color: 'black' }}>{dose}</Text></Text>
+                <Text style={{ color: '#82A0AA', fontWeight: 'bold', fontSize: width * 0.045 }}>Frecuencia: <Text style={{ color: 'black' }}>{frecuency}</Text></Text>
+                <Text style={{ color: '#82A0AA', fontWeight: 'bold', fontSize: width * 0.038 }}>Dosis restante: <Text style={{ color: 'black' }}>{dose}</Text></Text>
             </View>
 
-            <View style={{ position: 'relative', right: 10 }}>
+            <View style={{ position: 'relative', right: width * 0.02 }}>
                 <IonIcon
                     name={name_2}
                     size={size_2}
@@ -44,13 +47,13 @@ export const ThreeButton = ({ medication_name, style, dose, name_2, size_2, colo
 
 const styles = StyleSheet.create({
     iconBox: {
-        width: 70,
-        height: 70,
+        width: width * 0.18,
+        height: width * 0.18,
         backgroundColor: globalColors.background,  // Color de fondo del cuadro
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 50,
+        marginRight: width * 0.12,
         elevation: 2
     },
 }
