@@ -14,6 +14,7 @@ import { IonIcon } from "../../../components/shared/Ionicon";
 import { Calendar } from "../../../components/shared/Calendar";
 import { DateTimeCita } from "../../../components/shared/DateTimeCita";
 import Reminder from "../../../../reminder";
+import { windowWidth, windowHeight } from "../../../../constants/dimension";
 
 const today: Date = new Date();
 today.setDate(today.getDate() + 1);
@@ -367,12 +368,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   floatingButton: {
-    position: "absolute", //menu flotante azul
-    bottom: 100,
-    right: 30,
+    marginBottom: '10%',
+    marginLeft: 'auto',
+    marginRight: '10%',
     backgroundColor: "#0094B6",
-    width: 55,
-    height: 55,
+    width: 60,
+    height: 60,
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
