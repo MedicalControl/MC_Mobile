@@ -1,4 +1,4 @@
-import { View, Pressable, Modal, Text, StyleSheet, Button, Dimensions } from 'react-native';
+import { View, Pressable, Modal, Text, StyleSheet, Button } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from "react-native-modern-datepicker";
 import { useState } from "react";
@@ -15,9 +15,6 @@ interface PropsPicker {
     handleOnPress: () => void;
     handleDateChange: (date: string) => void;
 }
-
-
-const { width, height } = Dimensions.get('window');
 
 export const Calendar = ({ open, startDate, handleDateChange, handleOnPress }: PropsPicker) => {
     const [date, setDate] = useState<string>('13/10/2024');
@@ -64,13 +61,13 @@ const styles = StyleSheet.create({
     },
     datePickerContainer: {
         position: 'relative',
-        bottom: height * 0.1,
+        bottom: 125,
         margin: 10,
         backgroundColor: 'white',
         borderRadius: 8,
-        padding: width * 0.05,
-        width: width * 0.8,
-        height: height * 0.4,
+        padding: 20,
+        width: 320,
+        height: 320,
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#000',
