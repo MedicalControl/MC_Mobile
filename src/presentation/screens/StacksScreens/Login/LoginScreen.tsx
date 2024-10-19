@@ -1,14 +1,28 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Platform } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { RootStack }  from '../../../routes/StackNavigator';
-import { PrimaryButton } from '../../../components/shared/PrimaryButton';
-import { API_URL } from '../../../../config';
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Alert,
+  Platform,
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { RootStack } from "../../../routes/StackNavigator";
+import { PrimaryButton } from "../../../components/shared/PrimaryButton";
+import { API_URL } from "../../../../config";
+import axios from "axios";
+import { storeData } from "../../../../AsyncStorage";
 
-interface IFormInput
- {
+const axiosInstance = axios.create({
+  baseURL: API_URL,
+});
+
+interface IFormInput {
   email: string;
   password: string;
 }
@@ -16,48 +30,64 @@ interface IFormInput
 
 //validacion de errores de login screen con melanie code
 export const LoginScreen = () => {
-
-  const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
   const navigation = useNavigation<NavigationProp<RootStack>>();
 
-  const onSubmit: SubmitHandler<IFormInput> = data => {
-    console.log(API_URL)
-    console.log('Datos del formulario:', data);
-    navigation.navigate('Home');
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    axiosInstance
+      .post("/auth/login", {
+        correo: data.email,
+        contrasena: data.password,
+      })
+      .then((res) => {
+        storeData(res.data.token);
+        navigation.navigate('Home');
+      })
+      .catch((err) => {
+        console.log("ERR:", err);
+      });
   };
 
   return (
     <View style={styles.container}>
-
       <Image
-        source={require('../Login/medical.jpg')}
+        source={require("../Login/medical.jpg")}
         style={styles.photo}
-        resizeMode='contain'
+        resizeMode="contain"
       />
       <Image
-        source={require('../Login/med.png')}
+        source={require("../Login/med.png")}
         style={styles.photo1}
-        resizeMode='contain'
+        resizeMode="contain"
       />
       <Image
-        source={require('../Login/logo.png')}
+        source={require("../Login/logo.png")}
         style={styles.photo2}
-        resizeMode='contain'
+        resizeMode="contain"
       />
 
       <Controller
         control={control}
         name="email"
         rules={{
-          required: 'El correo es obligatorio',
+          required: "El correo es obligatorio",
           pattern: {
             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: 'El formato del correo no es válido',
+            message: "El formato del correo no es válido",
           },
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={styles.inputContainer}>
-            <Icon name="person-outline" size={20} color="black" style={styles.icon2} />
+            <Icon
+              name="person-outline"
+              size={20}
+              color="black"
+              style={styles.icon2}
+            />
             <TextInput
               style={styles.input}
               placeholder="Correo"
@@ -68,7 +98,9 @@ export const LoginScreen = () => {
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
+            {errors.email && (
+              <Text style={styles.errorText}>{errors.email.message}</Text>
+            )}
           </View>
         )}
       />
@@ -77,19 +109,24 @@ export const LoginScreen = () => {
         control={control}
         name="password"
         rules={{
-          required: 'La contraseña es obligatoria',
+          required: "La contraseña es obligatoria",
           minLength: {
             value: 8,
-            message: 'La contraseña debe tener al menos 8 caracteres',
+            message: "La contraseña debe tener al menos 8 caracteres",
           },
           maxLength: {
             value: 16,
-            message: 'La contraseña no puede tener más de 16 caracteres',
+            message: "La contraseña no puede tener más de 16 caracteres",
           },
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={styles.inputContainer}>
-            <Icon name="key-outline" size={20} color="black" style={styles.icon1} />
+            <Icon
+              name="key-outline"
+              size={20}
+              color="black"
+              style={styles.icon1}
+            />
             <TextInput
               style={styles.input2}
               placeholder="Contraseña"
@@ -100,16 +137,14 @@ export const LoginScreen = () => {
               secureTextEntry
               maxLength={16}
             />
-            {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
+            {errors.password && (
+              <Text style={styles.errorText}>{errors.password.message}</Text>
+            )}
           </View>
         )}
       />
 
-
-
-
-      <TouchableOpacity style={styles.button}
-        onPress={handleSubmit(onSubmit)}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Acceder</Text>
       </TouchableOpacity>
 
@@ -117,14 +152,11 @@ export const LoginScreen = () => {
       <Text style={styles.sentences2}>¿No tienes una cuenta?</Text>
       <Text
         style={styles.link}
-        onPress={() => navigation.navigate('Register_1')}
+        onPress={() => navigation.navigate("Register_1")}
       >
         Regístrate
       </Text>
-      <PrimaryButton
-        onPress={() => navigation.navigate("Home")}
-        label='home'
-      />
+      <PrimaryButton onPress={() => navigation.navigate("Home")} label="home" />
     </View>
   );
 };
@@ -132,131 +164,132 @@ export const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start', // arriba
+    justifyContent: "flex-start", // arriba
     paddingTop: 160, // more space
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   input: {
     paddingHorizontal: 40,
     fontSize: 15,
-    color: 'black',
+    color: "black",
     width: 300,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: 250,
     marginBottom: 0,
     height: 50,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 12,
     paddingLeft: 38,
     paddingRight: 10,
-
   },
   input2: {
     paddingHorizontal: 35,
     fontSize: 15,
-    color: 'black',
+    color: "black",
     width: 300,
-    alignSelf: 'center',
-    marginTop: 15, //bajarlo subirlo 
+    alignSelf: "center",
+    marginTop: 15, //bajarlo subirlo
     marginBottom: 5,
     height: 50,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 12,
     paddingLeft: 40,
     paddingRight: 10,
-
   },
-
 
   button: {
     height: 48,
-    backgroundColor: '#2AB9B7',
+    backgroundColor: "#2AB9B7",
     borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: 170,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: 10,
     marginBottom: 15,
   },
   buttonText: {
     fontSize: 15,
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
   sentences: {
     fontSize: 14,
-    color: 'black',
-    textAlign: 'center',
+    color: "black",
+    textAlign: "center",
     marginTop: 5,
   },
   sentences2: {
     fontSize: 14,
-    color: 'black',
-    textAlign: 'center',
+    color: "black",
+    textAlign: "center",
     marginTop: 2,
     left: -30,
   },
   link: {
     fontSize: 14,
-    color: '#2AB9B7',
-    textDecorationLine: 'underline',
-    textAlign: 'center',
+    color: "#2AB9B7",
+    textDecorationLine: "underline",
+    textAlign: "center",
     marginTop: -20,
     left: 75,
   },
   //iconos
-  icon1: { //contraseña
+  icon1: {
+    //contraseña
     marginTop: 0,
-    position: 'absolute',
+    position: "absolute",
     left: 70, // horizontal
     top: 30, //  alineado con el primer input
   },
 
-  icon2: { //correo
+  icon2: {
+    //correo
     marginTop: 0,
-    position: 'absolute',
+    position: "absolute",
     left: 70,
     top: 265,
   },
   errorText: {
-    color: 'red',
+    color: "red",
     left: 100,
     fontSize: 14,
     marginTop: 5,
   },
   inputContainer: {
-    position: 'relative',
-    width: '100%',
-    justifyContent: 'center',
+    position: "relative",
+    width: "100%",
+    justifyContent: "center",
   },
-  photo: { // mujer y hombre
+  photo: {
+    // mujer y hombre
     width: 500,
     height: 450,
-    alignSelf: 'center',
-    position: 'absolute',
+    alignSelf: "center",
+    position: "absolute",
     marginTop: 0,
     top: -90,
   },
-  photo1: { //elipse
-    alignSelf: 'center',
-    position: 'absolute',
+  photo1: {
+    //elipse
+    alignSelf: "center",
+    position: "absolute",
     marginTop: 0,
     top: 147,
     width: 330,
     height: 260,
-    left: 57
+    left: 57,
   },
-  photo2: { // logo
-    alignSelf: 'center',
-    position: 'absolute',
+  photo2: {
+    // logo
+    alignSelf: "center",
+    position: "absolute",
     marginTop: 0,
     top: 165,
     width: 332,
     height: 222,
-    left: 52
-  }
+    left: 52,
+  },
 });
-

@@ -79,8 +79,8 @@ export const Medical_appointments = () => {
     {
       hospital: "Hospital Roberto Huembe",
       date: "Miércoles 17 de Enero",
-      time: "3",
-      minutes: "24", 
+      time: "1",
+      minutes: "40", 
       ammpm: "am",
       estado: "Reasignada",
     },
