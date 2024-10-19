@@ -13,7 +13,7 @@ import { MessageScreen } from "../screens/SideBarMenu/Notification/Message/Messa
 import { LoginScreen } from "../screens/StacksScreens/Login/LoginScreen";
 import { DeviceScreen } from "../screens/SideBarMenu/Device/DeviceScreen";
 import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GET } from "../../AsyncStorage";
 import { HomeScreen } from "../screens/Home/HomeScreen";
 
 //Type of router_Navigation object
@@ -38,19 +38,21 @@ const Stack = createStackNavigator<RootStack>();
 export const Stack_Navigator = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
-    const checkstate = async () => {
-      try {
-        const token = await AsyncStorage.getItem("token");
-        setIsLoggedIn(!!token); 
-        console.log(token);
-      } catch (error) {
-        console.error("Error checking login status", error);
-      } finally {
-        setIsLoading(false); 
-      }
+    const checkLoginStatus = async () => {
+      const token = await GET();
+      console.log(token);
+      setIsLoggedIn(!!token);
+      setIsLoading(false);
     };
-  });
+
+    checkLoginStatus();
+  }, []);
+
+  if (isLoading) {
+    return null; // O un indicador de carga
+  }
   return (
     <Stack.Navigator
       screenOptions={{
@@ -62,11 +64,10 @@ export const Stack_Navigator = () => {
       }}
     >
       {isLoggedIn ? (
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={ButtonTabs_Navigator} />
       ) : (
         <Stack.Screen name="Login" component={LoginScreen} />
       )}
-      <Stack.Screen name="Home" component={ButtonTabs_Navigator} />
       <Stack.Screen name="Register_1" component={RegisterScreen_1} />
       <Stack.Screen name="Register_2" component={RegisterScreen_2} />
       <Stack.Screen

@@ -1,20 +1,21 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View} from 'react-native'
 import { globalColors, globalStyles } from '../../theme/theme';
 import { useNavigation, NavigationProp, DrawerActions } from '@react-navigation/native';
 import { RootStack } from '../../routes/StackNavigator'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Header } from '../../components/shared/Header';
 import { SecondButton, SecondButton_home } from '../../components/shared/SecondButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 
 
 
-export const HomeScreen = () => {
-
+export const HomeScreen =  () => {
+  
     const navigation = useNavigation<NavigationProp<RootStack>>();
     const { top } = useSafeAreaInsets();
     const name = 'Melanie Arias';
-
-
+    
     return (
         <View style={globalStyles.container}>
             <Header />
