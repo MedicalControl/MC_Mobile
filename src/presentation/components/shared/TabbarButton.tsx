@@ -54,7 +54,7 @@ const TabbarButton = ({ onPress, onLongPress, isFocused, routeName, color, label
             </Animated.View>
 
             <Animated.Text
-                style={[{ color: isFocused ? '#0094B6' : '#777', top:5 }, animatedTextStyle]}>
+                style={[{ color: isFocused ? '#0094B6' : '#777', top:5,  textAlign: 'center', width: '80%'}, animatedTextStyle]}>
                 {label}
             </Animated.Text>
         </Pressable>
@@ -68,5 +68,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+       
     }
 });

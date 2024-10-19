@@ -268,14 +268,12 @@ const styles = StyleSheet.create({
     width: 500,
     height: 450,
     alignSelf: "center",
-    position: "absolute",
     marginTop: 0,
     top: -90,
   },
   photo1: {
     //elipse
     alignSelf: "center",
-    position: "absolute",
     marginTop: 0,
     top: 147,
     width: 330,
@@ -285,7 +283,6 @@ const styles = StyleSheet.create({
   photo2: {
     // logo
     alignSelf: "center",
-    position: "absolute",
     marginTop: 0,
     top: 165,
     width: 332,

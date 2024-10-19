@@ -17,7 +17,7 @@ export function ButtonTabs_Navigator() {
       tabBar={(props: BottomTabBarProps) => <MyTabBar {...props} />}
       
       sceneContainerStyle={{
-        backgroundColor: globalColors.background
+        backgroundColor: globalColors.background, 
       }}
     >
       <Tab.Screen name="home" options={{ title: 'Inicio'}} component={HomeScreen} />
