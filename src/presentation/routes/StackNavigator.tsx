@@ -5,7 +5,7 @@ import { ButtonTabs_Navigator } from './ButtonTabs'
 import { Report_problemScreen } from '../screens/Report_problem/Report_problemScreen';
 import { Help_DeskScreen } from '../screens/Help_Desk/Help_DeskScreen';
 import { AboutScreen } from '../screens/About/AboutScreen';
-import { DarkScreen } from '../screens/SideBarMenu/Dark/DarkScreen';
+
 import { Notification } from '../screens/SideBarMenu/Notification/Notification';
 
 import { globalColors } from '../theme/theme';
@@ -28,7 +28,8 @@ export type RootStack = {
     Notification: undefined,
     Dark: undefined,
     Device: undefined,
-    Message: undefined
+    Message: undefined,
+    
 
 }
 
@@ -65,7 +66,7 @@ export const Stack_Navigator = () => {
             <Stack.Screen name="Help_Desk" component={Help_DeskScreen} />
             <Stack.Screen name="Report_problem" component={Report_problemScreen} />
             <Stack.Screen name="Notification" component={Notification} />
-            <Stack.Screen name="Dark" component={DarkScreen} />
+
             <Stack.Screen
                 options={{
                     headerShown: true,
@@ -75,6 +76,7 @@ export const Stack_Navigator = () => {
                 }}
                 name="Device" component={DeviceScreen} />
             <Stack.Screen name='Message' component = {MessageScreen} />
+
 
 
 
